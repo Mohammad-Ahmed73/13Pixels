@@ -8,13 +8,27 @@
 	}
 %}
 	{% block sectionContent %}
-		<div class="swiper w-full js-slider-{{ block.id }}" x-data="{{ block.type }}" x-init="slider('{{ block.id }}')">
+		<div class="swiper bg-dark w-full js-slider-{{ block.id }}" x-data="{{ block.type }}" x-init="slider('{{ block.id }}')">
 			<div class="swiper-wrapper !ease-linear">
 				{% for i in 0..5 %}
 					<div class="swiper-slide mr-[4vw] !w-auto">
-						<div class="flex items-center text-gray-300">
-							<div class="text-[10vw]/none md:text-[8vw]/none xl:text-[105px]/none">
-								{{ scrollingText }}
+						<div class="flex items-center py-[6vw]">
+							<div class="text-[10vw]/none font-bold md:text-[8vw]/none xl:text-[160px]/none">
+								{% set splitBusiness = scrollingText|split('business') %}
+								{% if (splitBusiness|length) == 2 %}
+									{% set splitYou = splitBusiness[1]|split('you') %}
+									{% if (splitYou|length) == 2 %}
+										<span class="text-white">{{ splitBusiness[0] }}</span>
+										<span style="color: #00A886;">business</span>
+										<span class="text-white">{{ splitYou[0] }}</span>
+										<span style="color: #00A886;">you</span>
+										<span class="text-white">{{ splitYou[1] }}</span>
+									{% else %}
+										<span class="text-white">{{ scrollingText }}</span>
+									{% endif %}
+								{% else %}
+									<span class="text-white">{{ scrollingText }}</span>
+								{% endif %}
 							</div>
 							<div class="ml-[4vw] mt-[1vw] h-[1vw] w-[1vw] rounded-full bg-current md:h-[0.6vw] md:w-[0.6vw] xl:mt-3 xl:h-2 xl:w-2"></div>
 						</div>

@@ -47,11 +47,13 @@
 
 			{# FAQ #}
 			<div class="md:col-span-6 2xl:col-span-7">
-				{% if faqEntries|length %}
-					{% include '_components/accordion' with {
-						rows: faqEntries
-					} only %}
-				{% endif %}
+				<div class="w-full max-w-[612px] ms-auto">
+					{% if faqEntries|length %}
+						{% include '_components/accordion' with {
+							rows: faqEntries
+						} only %}
+					{% endif %}
+				</div>
 			</div>
 		</div>
 	{% endblock %}

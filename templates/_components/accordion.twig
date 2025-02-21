@@ -46,7 +46,7 @@
                             type: 'button', 
                             size: 'small', 
                             attributes: 'x-show="visible == \'' ~ rowId ~ '\'"',
-                            class: 'w-auto h-auto'
+                            class: 'w-auto h-auto hover:text-green'
                         } %}
                         {% include '_components/buttons/buttonRound' with {
                             style: 'simple-btn', 
@@ -54,7 +54,7 @@
                             type: 'button', 
                             size: 'small', 
                             attributes: 'x-show="visible != \'' ~ rowId ~ '\'"',
-                            class: 'w-auto h-auto'
+                            class: 'w-auto h-auto hover:text-green'
                         } %}
                     </div>
                 </div>

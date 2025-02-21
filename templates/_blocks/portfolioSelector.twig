@@ -5,7 +5,7 @@
 		paddingX: 'flush',
 		paddingY: 'sectionPadding',
 		maxWidth: true,
-		class: 'bg-white'
+		class: ''
 	}
 %}
 	{% block sectionContent %}
@@ -59,10 +59,10 @@
 						</p>
 					</div>
 				</div>
-			{% endfor %}
+			{% endfor %}    
 
 			<!-- Button Section -->
-			<div class="mt-[50px] flex break-inside-avoid flex-col items-end justify-end text-end">
+			<div class="mt-[50px] flex break-inside-avoid flex-col items-end justify-end text-end min-h-[300px]">
 				{% include '_components/heading' with {
 					text: 'More Good Stuff',
 					size: '6xl',
@@ -73,7 +73,7 @@
 					{% include '_components/buttons/buttonBlock' with {
 						text: block.button.text,
 						type: 'a',
-						size: 'large',
+						size: 'medium',
 						style: 'green',
 						rounded: true,
 						icon: 'arrow-right',

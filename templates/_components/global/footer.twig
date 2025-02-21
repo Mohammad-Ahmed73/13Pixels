@@ -48,41 +48,38 @@
 				</div>
 				<!-- Navigation Links -->
 				{% for item in global.footerNavigationColumns.all() %}
-					<div class="flex flex-wrap items-start gap-3">
+					<div class="flex flex-wrap items-start md:gap-6 gap-4">
 						{% for link in item.links.all() %}
-							<a href="{{ link.button.url }}" class="font-semibold inline-block text-white text-base transition-colors duration-300 hover:text-[#E9550D] focus:text-[#E9550D] focus:outline-none md:text-md">{{ link.button.text }}</a>
+							<a href="{{ link.button.url }}" class="font-medium inline-block text-white text-base transition-colors duration-300 hover:text-green focus:text-green focus:outline-none md:text-md">{{ link.button.text }}</a>
 						{% endfor %}
 					</div>
 				{% endfor %}
 			</div>
 			<!-- Back to Top -->
-			<div class="flex h-full flex-col items-end justify-between gap-y-5 lg:col-span-6">
-				<div class="mt-12 flex-wrap lg:flex">
+			<div class="flex h-full flex-col items-end justify-between gap-y-5 lg:col-span-6 mt-4">
+				<div class="flex-wrap lg:flex">
 					{% include '_components/backToTop' %}
 				</div>
 			</div>
 			<!-- Footer Base -->
-			<div class="flex items-center justify-between border-t border-gray-600 py-4 text-sm xl:text-base 2xl:text-md">
+			<div class="flex md:flex-nowrap flex-wrap gap-4 items-center justify-between border-t border-[#F6F7FA] py-6 mt-6">
 				<!-- Copyright Message -->
-				<div class="text-left">
-					<span class="font-light text-white">
+				<div class="text-md text-white font-medium text-center md:text-left">
 						&copy; {{ now|date('Y') }}
 						{{ global.companyText1|length ? global.companyText1 : siteName }}
-					</span>
 				</div>
 				<!-- Social Links -->
 				{% if global.socialLinks|length %}
 					<div class="flex gap-x-4">
 						{% for item in global.socialLinks.all() %}
 							{% include '_components/buttons/buttonRound' with {
-								style: 'green-outline',
+								style: 'simple-btn',
 								icon: item.button.brandIcon.value,
 								type: 'a',
 								url: item.button.url,
 								size: 'normal',
 								iconStyle: '#FFFFFF',
 								target: '_blank'
-                                
 							} %}
 						{% endfor %}
 					</div>

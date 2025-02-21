@@ -50,7 +50,7 @@
     }
 } %}
 
-{% set sectionPadding = 'lg:py-[100px] md:py-[70px] py-[48px] px-4' %}
+{% set sectionPadding = 'lg:py-[100px] md:py-[70px] py-[48px] px-4 md:px-[20px] lg:px-[40px] xl:px-0' %}
 
 {# Check if paddingY is "sectionPadding" and handle it separately #}
 {% set paddingYClassValue = paddingY == 'sectionPadding' ? sectionPadding : attribute(attribute(paddingYClass, paddingYSize), paddingY) %}
