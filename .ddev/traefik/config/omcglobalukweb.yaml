@@ -1,0 +1,162 @@
+#ddev-generated
+# If you remove the ddev-generated line above you
+# are responsible for maintaining this file. DDEV will not then
+# update it, for example if you add `additional_hostnames`, etc.
+
+http:
+  routers:
+    omcglobalukweb-phpmyadmin-80-http:
+      entrypoints:
+        - http-8036
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-phpmyadmin-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "omcglobalukweb-redirectHttps"
+    omcglobalukweb-web-80-http:
+      entrypoints:
+        - http-8080
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-web-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "omcglobalukweb-redirectHttps"
+    omcglobalukweb-web-8080-http:
+      entrypoints:
+        - http-
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-web-8080"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "omcglobalukweb-redirectHttps"
+    omcglobalukweb-web-8025-http:
+      entrypoints:
+        - http-8025
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-web-8025"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "omcglobalukweb-redirectHttps"
+    omcglobalukweb-web-3000-http:
+      entrypoints:
+        - http-3001
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-web-3000"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "omcglobalukweb-redirectHttps"
+    
+    
+    omcglobalukweb-phpmyadmin-80-https:
+      entrypoints:
+        - http-8037
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-phpmyadmin-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+    
+    
+    
+    omcglobalukweb-web-80-https:
+      entrypoints:
+        - http-8443
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-web-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    omcglobalukweb-web-8443-https:
+      entrypoints:
+        - http-
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-web-8443"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    omcglobalukweb-web-8025-https:
+      entrypoints:
+        - http-8026
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-web-8025"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    omcglobalukweb-web-3000-https:
+      entrypoints:
+        - http-3000
+      rule: HostRegexp(`^omcglobalukweb\.ddev\.site$`)
+      
+      service: "omcglobalukweb-web-3000"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+
+  middlewares:
+    omcglobalukweb-redirectHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    omcglobalukweb-phpmyadmin-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-omcglobalukweb-phpmyadmin:80
+        
+    
+    omcglobalukweb-web-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-omcglobalukweb-web:80
+        
+    omcglobalukweb-web-8080:
+      loadbalancer:
+        servers:
+          - url: http://ddev-omcglobalukweb-web:8080
+        
+    omcglobalukweb-web-8025:
+      loadbalancer:
+        servers:
+          - url: http://ddev-omcglobalukweb-web:8025
+        
+    omcglobalukweb-web-3000:
+      loadbalancer:
+        servers:
+          - url: http://ddev-omcglobalukweb-web:3000
+        
+    
+    omcglobalukweb-web-8443:
+      loadbalancer:
+        servers:
+          - url: http://ddev-omcglobalukweb-web:8443
+        
+    
+    
+    
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/omcglobalukweb.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/omcglobalukweb.key

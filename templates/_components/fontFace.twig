@@ -1,0 +1,70 @@
+{#
+    Font Face Component
+
+    @type {include}   
+#}
+
+{% set fonts = {
+	barlow: [
+		{
+			file: 'GeneralSans-Light',
+			weight: 300,
+			style: 'normal'
+		},
+		{
+			file: 'GeneralSans-Regular',
+			weight: 400,
+			style: 'normal'
+		},
+		{
+			file: 'GeneralSans-Medium',
+			weight: 500,
+			style: 'normal'
+		},
+		{
+			file: 'GeneralSans-Bold',
+			weight: 700,
+			style: 'normal'
+		}
+	]
+} %}
+
+{# prettier-ignore-start #}
+{% for family, fonts in fonts %}
+    {% for font in fonts %}
+        <link rel="preload" href="/dist/fonts/{{ font.file }}.woff2" as="font" crossorigin>
+    {% endfor %}
+{% endfor %}
+
+{# prettier-ignore-start #}
+<style>
+	@font-face {
+		font-display: swap;
+		font-family: 'GeneralSans';
+		font-style: normal;
+		font-weight: 300;
+		src: url('/dist/fonts/GeneralSans-Light.woff2') format('woff2');
+	}
+	@font-face {
+		font-display: swap;
+		font-family: 'GeneralSans';
+		font-style: normal;
+		font-weight: 400;
+		src: url('/dist/fonts/GeneralSans-Regular.woff2') format('woff2');
+	}
+	@font-face {
+		font-display: swap;
+		font-family: 'v';
+		font-style: normal;
+		font-weight: 500;
+		src: url('/dist/fonts/GeneralSans-Medium.woff2') format('woff2');
+	}
+	@font-face {
+		font-display: swap;
+		font-family: 'GeneralSans';
+		font-style: normal;
+		font-weight: 700;
+		src: url('/dist/fonts/GeneralSans-Bold.woff2') format('woff2');
+	}
+</style>
+{# prettier-ignore-end #}

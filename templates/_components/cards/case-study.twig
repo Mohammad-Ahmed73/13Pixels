@@ -1,0 +1,64 @@
+{#
+	Case Study Component
+
+	@type {include}
+    @param {object} content
+
+	@example
+    {% include '_components/cards/case-study' with {
+        content: entry,
+    } %}
+#}
+
+{% set image = content.image.one() %}
+{% set heading = content.title %}
+{% set url = content.url %}
+{% set category = content.caseStudyCategory.one().title %}
+
+<a href="{{ url }}" class="group relative block focus-visible:outline-none">
+	{# Text + Info #}
+	<div class="absolute inset-x-5 bottom-5 z-30 flex items-end text-white md:inset-x-8 md:bottom-8 lg:inset-x-12 lg:bottom-12">
+		<div class="flex flex-col gap-y-3 lg:gap-y-5">
+			<div class="flex flex-wrap gap-5">
+				{% if category|length %}
+					<div class="flex items-center gap-x-2 text-xs">
+						<i class="fa-sharp fa-light fa-layer-group"></i>
+						<span class="inline-block font-light">{{ category }}</span>
+					</div>
+				{% endif %}
+				<div class="flex items-center gap-x-2 text-xs">
+					<i class="fa-sharp fa-light fa-calendar-day"></i>
+					<span class="inline-block font-light">{{ entry.caseStudyDate|date('F j, Y') }}</span>
+				</div>
+			</div>
+
+			{% include '_components/heading' with {
+				text: heading,
+				tag: 'div',
+				size: '5xl',
+				class: 'text-xl pr-24'
+			} %}
+		</div>
+	</div>
+
+	{# CTA Button #}
+	{% include '_components/buttons/buttonRound' with {
+		style: 'green-outline',
+		icon: 'arrow-up-right',
+		type: 'div',
+		class: 'absolute z-30 hidden md:inline-block md:bottom-8 md:right-8 lg:bottom-12 lg:right-12'
+	} %}
+
+	{# Image + Overlay #}
+	<div class="absolute inset-x-0 bottom-0 z-20 h-3/4 bg-gradient-to-t from-black to-transparent transition-opacity duration-500 group-hover:opacity-50 group-focus-visible:opacity-50 md:h-1/2"></div>
+	<div class="aspect-h-8 aspect-w-12 relative z-10 w-full overflow-hidden md:aspect-h-9 md:aspect-w-16">
+		{% include '_components/picture' with {
+			image: image.url,
+			transform: '4x3',
+			ratio: false,
+			focalPoint: false,
+			alt: '',
+			imgClass: 'object-cover w-full h-full transition-transform duration-500 group-hover:scale-[1.03] group-focus-visible:scale-[1.03]'
+		} %}
+	</div>
+</a>

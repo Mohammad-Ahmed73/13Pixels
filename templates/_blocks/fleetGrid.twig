@@ -1,0 +1,33 @@
+{# Entries + Pagination #}
+{% set entriesParams = {
+	section: 'fleet',
+	limit: 10
+} %}
+
+{% set entries = craft.entries(entriesParams) %}
+{% paginate entries as pageInfo, pageEntries %}
+
+{% embed '_components/section'
+	with {
+		paddingY: block.padding.value
+	}
+%}
+	{% block sectionContent %}
+		<div id="entries-grid" class="grid md:grid-cols-2 {{ vars.class.gap.x }} {{ vars.class.gap.y }}">
+			{% for item in entries %}
+				{% include '_components/cards/fleet' with {
+					content: item
+				} %}
+			{% endfor %}
+		</div>
+
+		{% if pageInfo.totalPages > 1 %}
+			<div class="pt-12">
+				{% include '_components/pagination' with {
+					pageInfo: pageInfo,
+					scrollTarget: '#entries-grid'
+				} %}
+			</div>
+		{% endif %}
+	{% endblock %}
+{% endembed %}

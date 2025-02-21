@@ -1,0 +1,163 @@
+{% extends '_layouts/global' %}
+
+{% block site %}
+
+	<section aria-label="Hero" class="relative flex bg-gray-1000">
+		<div class="w-full pb-16 pt-24 md:pb-24 md:pt-32 {{ vars.class.siteMargin.x }}">
+			<div class="pt-16 text-center text-white md:pt-20 md:mb-10">
+				{% if entry.heading|length %}
+					{% include '_components/heading' with {
+						tag: 'h1',
+						size: '7xl',
+						text: entry.heading
+					} %}
+				{% endif %}
+			</div>
+			{% if entry.quoteProgress|length %}
+				<div class="mx-auto hidden max-w-[800px] justify-between md:flex">
+					{% for item in entry.quoteProgress.all() %}
+						<div class="flex flex-col items-center gap-y-2">
+							{# Progress indicator #}
+							<div class="relative h-4 w-4 rounded-full border border-white bg-gray-600">
+								{# Active indicator #}
+								<div class="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-white"></div>
+							</div>
+							<div class="text-sm/none text-white">
+								{{ item.heading }}
+							</div>
+							<div class="text-xs/none text-gray-500">
+								{{ item.text }}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+	</section>
+
+	{% embed '_components/section' with {
+		paddingYSize: 'body',
+		class: 'bg-gray-100'
+	} %}
+		{% block sectionContent %}
+			
+			{% set form = craft.formie.forms({ handle: 'requestAQuote' }).one() %}
+
+			<div class="bg-white p-5 max-w-screen-2xl mx-auto | md:p-10 | xl:p-20">
+
+				{% set submissionId = craft.app.request.param('submissionId') %}
+
+				{% set submission = submissionId|length ? craft.formie.submissions().id(submissionId).one() : null %}
+
+				{% if submissionId|length and submission|length %}
+
+					{% set dateFormat = 'Y-m-d' %}
+					{% set timeFormat = 'H:i' %}
+
+					{% set body = {
+						job_date: submission.collectionDate|date(dateFormat),
+						job_time: submission.collectionTime|date(timeFormat),
+						pickup: submission.collectionPostcode,
+						destination: submission.destinationPostcode,
+						destination_date: null,
+						destination_time: null,
+						return_date: submission.returnDate|length ? submission.returnDate|date(dateFormat) : null,
+						return_time: submission.returnTime|length ? submission.returnTime|date(timeFormat) : null,
+						vehicle_to_stay: submission.vehicleToStay ? 'yes' : 'no',
+						different_collection_address: submission.differentCollectionAddress ? 'yes' : 'no',
+						different_collection_postcode: submission.differentCollectionPostcode,
+						different_destination_address: submission.differentDestinationAddress ? 'yes' : 'no',
+						different_destination_postcode: submission.differentDestinationPostcode,
+						notes: submission.notes,
+						num_of_people: submission.passengers,
+						vehicle_type: submission.vehicleClass.value,
+						vehicle_name: submission.vehicleClass.value,
+						luggage: submission.luggage.value,
+						name: submission.fullName,
+						email: submission.email,
+						telephone: submission.phoneNumber.number,
+						company_name: submission.company
+					} %}
+
+					{% if submission.stops|length %}
+
+						{% set stops = [] %}
+
+						{% for stop in submission.stops %}
+							{% set stopData = {
+								address: stop.postcode,
+								time: null
+							} %}
+							{% set stops = stops|merge([stopData]) %}
+						{% endfor %}
+
+						{% set body = body|merge({ stops: stops }) %}
+
+					{% endif %}
+
+					{% if submission.returnStops|length %}
+
+						{% set returnStops = [] %}
+
+						{% for stop in submission.returnStops %}
+							{% set returnStopsData = {
+								address: stop.postcode,
+								time: null
+							} %}
+							{% set returnStops = returnStops|merge([returnStopsData]) %}
+						{% endfor %}
+
+						{% set body = body|merge({ return_stops: returnStops }) %}
+
+					{% endif %}
+
+					{% set bodyEncoded = body|json_encode %}
+
+					{# demo #}
+
+					{% set client = {
+						base_uri: getenv('SAVARI_API_URL') ~ '?company_name=' ~ getenv('SAVARI_API_COMPANY') ~ '&action=save_web_job',
+						format: 'raw',
+						body: bodyEncoded|raw
+					} %}
+
+					{% set data = consume(client, 'POST', '', {
+						includeErrorResponse: true
+					}) %}
+
+					{% set response = data|json_decode %}
+
+					{% set success = response is iterable and response.status is defined and response.status == 'success' ? true : false %}
+
+					{% include '_components/heading' with {
+						tag: 'h2',
+						size: '6xl',
+						text: success ? globals.quoteSuccessHeading : globals.quoteErrorHeading,
+						class: 'text-center mb-7'
+					} only %}
+
+					<div class="w-6/12 mx-auto">
+						{% include '_components/richText' with {
+							content: success ? globals.quoteSuccessText : globals.quoteErrorText,
+							class: 'font-light'
+						} only %}
+					</div>
+
+				{% elseif submission|length == 0 %}
+
+					{% include '_components/form' with {
+						form: form,
+						style: 'custom-light',
+						settings: {
+							redirectUrl: entry.url ~ '?submissionId={id}'
+						}
+					} %}
+
+				{% endif %}
+
+			</div>
+
+		{% endblock %}
+	{% endembed %}
+	
+{% endblock %}

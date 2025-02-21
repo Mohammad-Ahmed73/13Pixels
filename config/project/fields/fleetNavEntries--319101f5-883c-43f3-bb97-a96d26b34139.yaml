@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: fleetNavEntries
+instructions: null
+name: 'Fleet Nav Entries'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: 3
+  minRelations: null
+  selectionLabel: 'Add fleet'
+  showCardsInGrid: false
+  showSiteMenu: true
+  sources:
+    - 'section:4a8338c2-82b0-433a-8180-45877510d28d' # Fleet
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

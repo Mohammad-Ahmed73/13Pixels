@@ -1,0 +1,77 @@
+{% set slides = block.sliderImages.all() %}
+{% set slideCount = slides|length %}
+
+{% embed '_components/section'
+	with {
+		paddingY: block.padding.value,
+		paddingX: 'flush',
+		class: 'overflow-hidden'
+	}
+%}
+	{% block sectionContent %}
+		<div class="relative {{ vars.class.siteMargin.x }}">
+			{# Slider #}
+			<section x-data="{{ block.type }}" x-init="slider({{ block.id }})">
+				<div class="swiper z-10 !overflow-visible js-slider-{{ block.id }}">
+					<div class="swiper-wrapper !ease-linear">
+						{% for image in slides %}
+							<div class="swiper-slide !h-auto !w-[35vw]">
+								<div class="flex h-full items-end">
+									<div class="{{ loop.index is odd ? 'aspect-h-[10.5] aspect-w-12' : 'aspect-h-9 aspect-w-12' }} w-full">
+										{% include '_components/picture' with {
+											image: image.image.one(),
+											transform: '4x3',
+											ratio: false,
+											alt: image.title,
+											imgClass: 'w-full h-full object-cover'
+										} %}
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</section>
+
+			{% include '_components/ctaFaces' with {
+				style: 'regular',
+				class: 'pt-10 lg:pt-16',
+				text: block.ctaText|length ? block.ctaText : null,
+				button: block.ctaButton|length ? block.ctaButton : null,
+				theme: block.theme|length ? block.theme : null
+			} %}
+		</div>
+	{% endblock %}
+{% endembed %}
+
+{# prettier-ignore-start #}
+{% js %}
+   document.addEventListener('alpine:init', () => {
+      Alpine.data('{{ block.type }}', () => ({
+         slider(id) { 
+            const carousel = document.querySelector(`.js-slider-${id}`)
+            const swiper = new Swiper(carousel, {
+                loop: true, 
+                grabCursor: false,
+                autoHeight: false,  
+                centeredSlides: true, 
+                allowTouchMove: false,
+                slidesPerView: 'auto',
+                spaceBetween: 10,
+                initialSlide: 1,
+                speed: 10000,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                breakpoints: { 
+					768: {
+                        centeredSlides: false, 
+					},
+				},
+            })            
+         }
+      }))
+   })
+{% endjs %}
+{# prettier-ignore-end #}

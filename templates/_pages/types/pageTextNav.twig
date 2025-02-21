@@ -1,0 +1,24 @@
+{% extends '_layouts/global' %}
+
+{% block site %}
+	{% for block in entry.hero.all() %}
+		{% include '_blocks/hero/' ~ block.type %}
+	{% endfor %}
+
+	<div class="grid pt-14 md:grid-cols-12 lg:pt-[90px] xl:pt-32 {{ vars.class.gap.x }} {{ vars.class.siteMargin.x }}">
+		<div class="hidden md:col-span-3 md:block md:pr-10">
+			<div class="sticky top-28 pb-20">
+				{% include '_components/bodyNavigation' %}
+			</div>
+		</div>
+		<div class="col-span-full md:col-span-full md:col-start-4 lg:col-span-6">
+			{% for block in entry.contentBuilder.all() %}
+				<div id="block-{{ block.id }}">
+					{% include '_blocks/body/' ~ block.type.handle with {
+						paddingY: loop.last ? 'flush' : 'bottom'
+					} %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

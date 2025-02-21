@@ -1,0 +1,30 @@
+columnSuffix: null
+handle: hero
+instructions: null
+name: Hero
+searchable: false
+settings:
+  createButtonLabel: 'Add hero'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - cf08515e-fc2b-4b56-bd6d-70d5f33a049b # Hero - Logo
+    -
+      __assoc__:
+        -
+          - uid
+          - f7a459f6-1d4b-4655-bcc9-f2eec0df4844 # Hero - Text
+  includeTableView: false
+  maxEntries: 1
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

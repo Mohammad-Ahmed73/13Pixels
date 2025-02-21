@@ -1,0 +1,370 @@
+{% set dropdownBlockTypes = ['linkDropdownCards', 'linkDropdownFleet'] %}
+{% set mainLogo = source('_svg/logo_main.svg') %}
+{% set mainLogoDark = source('_svg/logo_main_dark.svg') %}
+
+<header 
+	x-data="{ 
+		dropdown: false, 
+		openMenu: false,
+		accordion: null,
+        whiteHeader: {{ whiteHeader ? 'true' : 'false' }},
+		toggleBodyScroll() {
+            document.body.classList.toggle('overflow-hidden', this.openMenu);
+        },
+	}" 
+	x-on:keydown.escape="dropdown = false"
+	class="absolute z-50 inset-x-0 top-0">
+
+	<div 
+		class="absolute top-0 left-0 z-50 w-full flex items-center h-24 md:h-32 {{ vars.class.siteMargin.x }}"
+		:class="openMenu ? 'hidden lg:flex' : ''"
+	>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WVSBBVLV');</script>
+<!-- End Google Tag Manager -->
+		{# Main logo #}
+		<a 
+            href="{{ siteUrl }}" 
+            class="relative z-20 block w-28 md:w-32 focus:outline-none"
+            role="button"
+            aria-label="Main header logo">
+            <template x-if="dropdown || whiteHeader">
+                {{
+                    svg(mainLogoDark)|attr({
+                        class: 'fill-current w-full',
+                        'aria-hidden':'true'
+                    })
+                }}
+			</template>
+            <template x-if="!dropdown && !whiteHeader">
+                {{
+                    svg(mainLogo)|attr({
+                        class: 'fill-current w-full',
+                        'aria-hidden':'true'
+                    })
+                }}
+			</template>
+		</a>
+
+		{# Mobile Nav Open Button #}
+		{% include '_components/buttons/buttonRound' with {
+			icon: 'bars',
+			style: 'green',
+			attributes: 'aria-label="Open menu" @click="openMenu = !openMenu; toggleBodyScroll()"',
+			class: 'ml-auto lg:hidden'
+		} %}
+
+		{# Desktop - Main Navigation Buttons #}
+		<nav 
+			x-on:click.away="dropdown = false" 
+			x-cloak
+			class="hidden absolute z-20 lg:flex lg:-translate-x-1/2 lg:left-1/2"
+			aria-label="Header navigation" 
+			role="navigation">
+			<div class="flex items-center gap-x-7 xl:gap-x-16">
+				{% for block in global.headerNavigation.all() %}
+					<a 
+						href="{{ block.button.url }}" 
+						class="group relative flex items-center gap-x-1.5 flex-shrink-0 font-light py-1 text-sm/none focus:outline-none {{ whiteHeader == true ? 'text-white' : 'text-black' }}"
+						:class="dropdown ? 'text-black' : 'text-white'"
+						role="button"
+						{% if block.type.handle in dropdownBlockTypes %}
+							x-on:mouseover="dropdown = '{{ block.id }}'"
+							x-on:keydown.enter.prevent="dropdown = '{{ block.id }}'"
+							x-on:keydown.space.prevent="dropdown = '{{ block.id }}'"
+							aria-haspopup="true"
+						{% else %}
+							x-on:mouseover="dropdown = false"
+						{% endif %}
+					>
+						{# Label + Line #}
+						<span class="block relative z-20 py-1">
+							<span>{{ block.button.text }}</span>
+							<span 
+							class="{{ whiteHeader == true ? 'bg-white' : 'bg-black' }} block absolute bottom-0 h-[0.5px] w-full left-1/2 -translate-x-1/2 transform scale-x-0 transition-transform duration-150 group-hover:duration-500 group-hover:scale-x-100 group-focus:scale-x-100"
+							:class="dropdown == '{{ block.id }}' ? 'bg-black scale-x-100' : 'bg-white scale-x-0'"></span>
+						</span>
+
+						{# Dropdown Icon #}
+						{% if block.type.handle in dropdownBlockTypes %}
+							<span 
+								class="block duration-300 transition-transform"
+								:class="dropdown == '{{ block.id }}' ? ' rotate-45' : 'rotate-0'"
+							>+</span>
+						{% endif %}
+					</a>
+				{% endfor %}
+			</div>
+		</nav>
+
+		{# Desktop - Dropdown Navigations #}
+		{% for block in global.headerNavigation.all() %} 
+			{% if block.type.handle in dropdownBlockTypes %}
+				{# Dropdown Background #}
+				<div 
+					class="hidden absolute bg-white z-10 top-0 pt-32 w-full left-0 lg:flex lg:items-center lg:justify-center {{ vars.class.siteMargin.x }}" 
+					x-show="dropdown == '{{ block.id }}'"
+					x-on:mouseleave="dropdown = false"
+					x-transition:enter="transition duration-300"
+					x-transition:enter-start="opacity-0"
+					x-transition:enter-end="opacity-100"
+					x-transition:leave="transition duration-300"
+					x-transition:leave-start="opacity-100"
+					x-transition:leave-end="opacity-0"
+					x-cloak
+				>
+					{# Dropdown - Cards #}
+					{% if block.type.handle == 'linkDropdownCards' %}
+						<nav class="w-full">
+							<div class="grid mb-10 md:grid-cols-4 {{ vars.class.gap.x }}">
+								{% for item in block.dropdownCards.all() %}
+									<a href="{{ item.linksTo.url }}" class="group flex flex-col outline-none">
+										<div class="aspect-w-12 aspect-h-8 w-full overflow-hidden">
+										   {% include '_components/picture' with {
+												image: item.image.one(),
+												transform: '4x3',
+												ratio: false,
+												focalPoint: false,
+												imgClass: 'object-cover w-full h-full transition-transform duration-500 group-hover:scale-[1.03] group-focus-visible:scale-[1.03]',
+											} %}
+										</div>
+										{% include '_components/heading' with {
+											text: item.heading,
+											tag: 'div',
+											size: '2xl',
+											class: 'pt-6 pb-4 pr-5 group-hover:text-green transition-colors duration-300 group-focus-visible:text-green'
+										} %}
+										{% include '_components/richText' with {
+											content: item.text,
+											class: 'pr-5'
+										} %}
+									</a>
+								{% endfor %}
+							</div>
+							
+							{% if block.buttonCTA.url|length %}
+								<div class="grid mb-10 md:grid-cols-12">
+									<div class="lg:col-start-9 lg:col-span-4">
+										<div>
+											{% include '_components/buttons/button' with {
+												text: block.buttonCTA.text,
+												type: 'a',
+												url: block.buttonCTA.url,
+												class: 'w-full'
+											} %}
+										</div>
+									</div>
+								</div>
+							{% endif %}
+						</nav>
+					{% endif %}
+				
+					{# Dropdown - Fleet #}
+					{% if block.type.handle == 'linkDropdownFleet' %}
+						<nav class="w-full">
+							<div class="grid mb-10 md:grid-cols-3 {{ vars.class.gap.x }}">
+								{% for item in block.fleet.all() %}
+									{% include '_components/cards/fleet' with {
+										content: item
+									} %}
+								{% endfor %}
+							</div>
+							
+							{% if block.buttonCTA.url|length %}
+								<div class="grid mb-10 md:grid-cols-12">
+									<div class="lg:col-start-9 lg:col-span-4">
+										<div>
+											{% include '_components/buttons/button' with {
+												text: block.buttonCTA.text,
+												type: 'a',
+												url: block.buttonCTA.url,
+												class: 'w-full'
+											} %}
+										</div>
+									</div>
+								</div>
+							{% endif %}
+						</nav>
+					{% endif %}
+				</div>
+			{% endif %}
+		{% endfor %}
+
+		{# Phone and CTA #}
+		<div class="hidden lg:relative lg:z-20 lg:ml-auto lg:flex lg:gap-x-5 lg:items-center lg:justify-end xl:gap-x-9 {{ vars.class.gap.x }}">
+			{% set phoneNumber = entry.phoneNumber|length ? entry.phoneNumber : global.phoneNumber %}
+			
+			{% if phoneNumber|length %}
+				<template x-if="dropdown || whiteHeader">
+					<a href="tel:{{ phoneNumber }}" class="flex items-center gap-x-2 text-black transition-colors duration-300 hover:text-green focus-visible:text-green outline-none focus:outline-none">
+						<i class="fa-sharp fa-thin fa-phone-office"></i>
+						<span class="relative block text-sm/none font-light after:absolute after:bg-current after:h-[0.5px] after:left-0 after:w-full after:bottom-0">{{ phoneNumber }}</span>
+					</a>
+				</template>
+				<template x-if="!dropdown && !whiteHeader">
+					<a href="tel:{{ phoneNumber }}" class="flex items-center gap-x-2 text-white transition-colors duration-300 hover:text-green focus-visible:text-green outline-none focus:outline-none">
+						<i class="fa-sharp fa-thin fa-phone-office"></i>
+						<span class="relative block text-sm/none font-light after:absolute after:bg-current after:h-[0.5px] after:left-0 after:w-full after:bottom-0">{{ phoneNumber }}</span>
+					</a>
+				</template>
+			{% endif %}
+			
+			{% if global.ctaButton|length %}
+				{% include '_components/buttons/buttonBlock' with {
+					type: 'a',
+					style: 'green',
+					text: global.ctaButton.text,
+					url: global.ctaButton.url,
+				} %}
+			{% endif %}
+		</div>
+	</div>
+
+	{# Mobile - Navigation #}
+	<div 
+		x-show="openMenu" 
+		x-cloak
+		class="fixed inset-x-0 top-0 z-40 lg:hidden"
+		>
+		<div class="relative w-full">
+			{# Mobile Header #}
+			<div class="relative z-30 flex items-center h-24 md:h-32 {{ vars.class.siteMargin.x }}">
+				<a 
+					href="{{ siteUrl }}" 
+					class="relative z-20 block w-28 md:w-32 focus:outline-none"
+					aria-label="Mobile header logo">
+					{{
+						svg(mainLogo)|attr({
+							class: 'fill-current text-white',
+							'aria-hidden':'true'
+						})
+					}}
+				</a>
+				
+				{% include '_components/buttons/buttonRound' with {
+					icon: 'xmark',
+					style: 'green',
+					attributes: 'aria-label="Close menu" @click="openMenu = !openMenu; toggleBodyScroll()"',
+					class: 'relative z-20 ml-auto'
+				} %}
+			</div>
+
+			<div class="relative z-20 flex flex-col {{ vars.class.siteMargin.x }}">
+				{# Mobile Nav Buttons #}
+				<div 
+					class="mt-10"
+					x-show="openMenu" 
+					x-transition:enter="transition ease-out duration-500 delay-300"
+					x-transition:enter-start="opacity-0 translate-x-4"
+					x-transition:enter-end="opacity-100 translate-x-0"
+					x-transition:leave="transition ease-in duration-150"
+					x-transition:leave-start="opacity-100"
+					x-transition:leave-end="opacity-0"
+					>
+					{% for block in global.headerNavigation.all() %}
+						{% if block.type.handle in dropdownBlockTypes %}
+							{% if block.type.handle == 'linkDropdownCards' %}
+								{% set dropdownLinks = block.dropdownCards.all() %}
+							{% else %}
+								{% set dropdownLinks = block.fleet.all() %}
+							{% endif %}
+						{% else %}
+							{% set dropdownLinks = null %}
+						{% endif %}
+						{# Mobile - Main Navigation Buttons #}
+						<a 
+							{% if dropdownLinks|length >= 1 %}
+								@click.prevent="accordion === '{{ block.id }}' ? accordion = null : accordion = '{{ block.id }}'"
+							{% endif %}
+							href="{{ block.button.url }}" 
+							class="relative flex justify-between items-center py-3 pr-3"
+							role="button">
+							<span 
+								class="block text-xl font-light leading-none transition-colors duration-150 " 
+								x-bind:class="{'text-green' : accordion == '{{ block.id }}', 'translate-x-0 text-white' : accordion != '{{ block.id }}'}"
+							>{{ block.button.text }}</span>
+							
+							{% if dropdownLinks|length >= 1 %}
+								<span
+									class="flex items-center justify-center transition-all transform -translate-x-0.5"
+									x-bind:class="{'rotate-180 text-green' : accordion == '{{ block.id }}', 'rotate-0 text-white' : accordion != '{{ block.id }}'}"
+								>
+									<i class="fa-light fa-solid fa-chevron-down"></i>
+								</span>
+							{% endif %}
+						</a>
+
+						{# Dropdowns Links #}
+						{% if block.type.handle in dropdownBlockTypes %}
+							<div x-show="accordion == '{{ block.id }}'" x-collapse>
+								<div class="pt-2 pb-5 flex flex-col">
+									{% for row in dropdownLinks %}
+										{% set btnLabel = row.heading ? row.heading : row.title %}
+										<a href="{{ row.url }}" class="block text-white font-light text-base py-1">
+											{{ btnLabel }}
+										</a>									
+									{% endfor %}
+
+									{% if block.buttonCTA.url|length %}
+										<a href="{{ block.buttonCTA.url }}" class="block text-white font-light text-base py-1">
+											{{ block.buttonCTA.text }}
+										</a>
+									{% endif %}
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+
+				{# Mobile CTA #}
+				<div 
+					class="mt-12"
+					x-show="openMenu" 
+					x-transition:enter="transition ease-out duration-500 delay-500"
+					x-transition:enter-start="opacity-0 translate-x-4"
+					x-transition:enter-end="opacity-100 translate-x-0"
+					x-transition:leave="transition ease-in duration-150"
+					x-transition:leave-start="opacity-100"
+					x-transition:leave-end="opacity-0"
+					>
+					{% if global.ctaButton|length %}
+						{% include '_components/buttons/buttonBlock' with {
+							type: 'a',
+							style: 'green',
+							text: global.ctaButton.text,
+							url: global.ctaButton.url,
+						} %}
+					{% endif %}
+				</div>
+			</div>
+			
+			{# Mobile Nav Background #}
+			<div 
+				class="absolute z-10 inset-x-2 top-2 -bottom-4 bg-black"
+				x-show="openMenu" 
+				x-transition:enter="transition ease-out duration-300"
+				x-transition:enter-start="opacity-0 -translate-y-10"
+				x-transition:enter-end="opacity-100 translate-y-0"
+				x-transition:leave="transition ease-in duration-150"
+				x-transition:leave-start="opacity-100"
+				x-transition:leave-end="opacity-0"
+			></div>
+		</div>
+	</div>
+
+	{# Background #}
+	<div 
+		x-show="dropdown || openMenu" 
+		x-transition:enter="transition duration-300"
+		x-transition:enter-start="opacity-0"
+		x-transition:enter-end="opacity-100"
+		x-transition:leave="transition duration-300"
+		x-transition:leave-start="opacity-100"
+		x-transition:leave-end="opacity-0"
+		class="fixed z-0 pointer-events-none inset-x-0 top-0 h-screen bg-black backdrop-blur bg-opacity-60"
+	></div>
+</header>

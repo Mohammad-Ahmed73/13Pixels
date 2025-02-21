@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: faqEntries
+instructions: null
+name: 'FAQ Entries'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: 'Add FAQ'
+  showCardsInGrid: false
+  showSiteMenu: false
+  sources:
+    - 'section:31370897-985c-4000-80ba-25963b89b6bb' # FAQ
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

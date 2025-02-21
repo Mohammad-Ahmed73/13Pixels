@@ -1,0 +1,68 @@
+{#
+	Pagination Component
+
+	@type {include}
+	@param {object} pageInfo
+	@param {string} scrollTarget
+
+	@example
+	{% include '_components/pagination' with {
+		pageInfo: pageInfo,
+		scrollTarget: '#fleet-grid'
+	} %}
+#}
+
+{% set scrollTarget = scrollTarget ?? '' %}
+
+<nav class="flex justify-center">
+	<div class="flex gap-2">
+		{# Previous #}
+		{% set prevButtonStyle = pageInfo.currentPage > 1 ? 'green-outline' : 'disabled' %}
+		{% include '_components/buttons/buttonRound' with {
+			style: prevButtonStyle,
+			icon: 'arrow-left',
+			type: pageInfo.currentPage > 1 ? 'a' : 'div',
+			url: pageInfo.prevUrl ~ scrollTarget
+		} %}
+
+		{# Page Numbers #}
+		<div class="flex items-center gap-2">
+			{# Previous 5 Pages #}
+			{% for page, url in pageInfo.getPrevUrls(5) %}
+				{% include '_components/buttons/buttonRound' with {
+					style: 'green-outline',
+					text: page,
+					type: 'a',
+					url: url ~ scrollTarget
+				} %}
+			{% endfor %}
+
+			{# Current Page #}
+			{% include '_components/buttons/buttonRound' with {
+				style: 'green-disabled',
+				text: pageInfo.currentPage,
+				type: 'a',
+				url: pageInfo.prevUrl ~ scrollTarget
+			} %}
+
+			{# Next 5 Pages #}
+			{% for page, url in pageInfo.getNextUrls(5) %}
+				{% include '_components/buttons/buttonRound' with {
+					style: 'green-outline',
+					text: page,
+					type: 'a',
+					url: url ~ scrollTarget
+				} %}
+			{% endfor %}
+		</div>
+
+		{# Next #}
+		{% set nextButtonStyle = pageInfo.currentPage < pageInfo.totalPages ? 'green-outline' : 'disabled' %}
+		{% include '_components/buttons/buttonRound' with {
+			style: nextButtonStyle,
+			icon: 'arrow-right',
+			type: pageInfo.currentPage < pageInfo.totalPages ? 'a' : 'div',
+			url: pageInfo.nextUrl ~ scrollTarget
+		} %}
+	</div>
+</nav>

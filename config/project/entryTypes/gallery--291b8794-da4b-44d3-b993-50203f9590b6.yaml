@@ -1,0 +1,168 @@
+color: teal
+fieldLayouts:
+  ba686115-d39b-4ee1-a8a2-e92e465b4597:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 987fbe82-f0d8-4c02-99ba-6f30e9a8b600
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 67f3a8e1-fb07-4135-9632-b9d51eb53605 # Eyebrow
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 267c8bc1-692f-440e-aa24-f7f7119bf782
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 32972c85-b85e-45de-a6a1-d58a643d3e81 # Headiing
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6de2b9e4-952f-4833-9e9e-5019bdce5897
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 86899528-1337-4454-925f-173f3a7861de # Gallery Images
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b7267cde-0cdb-4d77-ac99-df0600160be9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 7ece9284-4261-4c8c-86e1-5413f7b48008
+            userCondition: null
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            dismissible: false
+            elementCondition: null
+            style: tip
+            tip: 'Leave blank to use the CTA content set in globals.'
+            type: craft\fieldlayoutelements\Tip
+            uid: 2db37024-84e2-4842-a987-d8d28e622d87
+            userCondition: null
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: dee0e12a-d0be-4dce-864e-96f853d767f2 # Plain Text
+            handle: ctaText
+            includeInCards: false
+            instructions: null
+            label: 'CTA Text'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 43a0f08e-e969-4381-ab70-6fe8356e17df
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: ctaButton
+            includeInCards: false
+            instructions: null
+            label: 'CTA Button'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5f3979e2-fb55-441d-a87b-be4232584698
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 3de04874-24ab-4bac-9c67-2f309539f036
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: b8cf975c-8b0e-4f79-968b-ae246d2f8bf1 # Padding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b1becf9d-f2ad-4081-88b8-dca9157a795a
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Block Settings'
+        uid: a9f9819d-5970-44e6-b58c-10a1128573fa
+        userCondition: null
+handle: gallery
+hasTitleField: false
+icon: gallery-thumbnails
+name: Gallery
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

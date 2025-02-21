@@ -1,0 +1,50 @@
+defaultPlacement: end
+fieldLayouts:
+  d90af68a-37ee-4524-a9b2-1b90efb284e7:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: 9aa41f36-07a6-463e-9a39-f255086257c9
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 74178f99-a5c4-42e4-ae17-938910b5997c
+        userCondition: null
+handle: caseStudy
+name: 'Case Study'
+siteSettings:
+  08c386f4-5a41-4c9f-8282-f6785af06bfc: # $CRAFT_SITE_NAME
+    hasUrls: true
+    template: _pages/types/pageCaseStudiesExterior.twig
+    uriFormat: 'case-studies/{slug}'
+structure:
+  maxLevels: 1
+  uid: b59d66f4-60a7-4aef-916f-5664c6d6d5ba

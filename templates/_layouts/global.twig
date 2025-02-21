@@ -1,0 +1,30 @@
+{% extends '_layouts/base' %}
+
+{% set global = craft.entries.section('globals').one() %}
+
+{% set vars = {
+	class: {
+		siteMargin: {
+			x: 'px-5 md:px-10 xl:px-20 2xl:px-28',
+			r: 'pr-5 md:pr-10 xl:pr-20 2xl:pr-28',
+			l: 'pl-5 md:pl-10 xl:pl-20 2xl:pl-28'
+		},
+		gap: {
+			x: 'gap-x-2.5',
+			y: 'gap-y-2.5'
+		},
+		containerWidth: 'max-w-[1170px]'
+	}
+} %}
+
+{% block body %}
+	{% set whiteHeader = false %}
+
+	{% include '_components/global/header' %}
+
+	{% block site %}
+
+	{% endblock %}
+
+	{% include '_components/global/footer' %}
+{% endblock %}

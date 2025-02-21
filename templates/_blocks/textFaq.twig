@@ -1,0 +1,58 @@
+{# Use Global or Block FAQ #}
+{% set faqEntries = block.faqEntries|length ? block.faqEntries : global.faqEntries %}
+{% set faqText = block.faqText ? block.faqText : global.faqText %}
+{% set faqProfileImage = block.faqProfileImage|length ? block.faqProfileImage.one() : global.faqProfileImage.one() %}
+{% set faqProfileName = block.faqProfileName ? block.faqProfileName : global.faqProfileName %}
+{% set faqProfileTitle = block.faqProfileTitle ? block.faqProfileTitle : global.faqProfileTitle %}
+
+{% embed '_components/section'
+	with {
+		paddingX: 'flush',
+		paddingY: 'sectionPadding',
+		maxWidth: true
+	}
+%}
+	{% block sectionContent %}
+		<div class="grid items-center gap-x-10 gap-y-10 md:grid-cols-12">
+			{# Heading + Text #}
+			<div class="md:col-span-6 2xl:col-span-5">
+				<div class="w-full md:max-w-[468px]">
+					{% if block.heading|length %}
+						{% include '_components/heading' with {
+							tag: 'h2',
+							size: '5xl',
+							text: block.heading,
+							class: 'text-dark font-bold mb-6'
+						} %}
+					{% endif %}
+
+					{% if block.faqdescription|length %}
+						{% include '_components/richText' with {
+							tag: 'p',
+							class: 'text-[#0D0920CC] font-medium mb-8',
+							content: block.faqdescription
+						} %}
+					{% endif %}
+					{% if block.button.url|length %}
+						{% include '_components/buttons/buttonBlock' with {
+							text: block.button.text,
+							type: 'a',
+							url: block.button.url,
+							style: 'green',
+							icon: 'arrow-right'
+						} %}
+					{% endif %}
+				</div>
+			</div>
+
+			{# FAQ #}
+			<div class="md:col-span-6 2xl:col-span-7">
+				{% if faqEntries|length %}
+					{% include '_components/accordion' with {
+						rows: faqEntries
+					} only %}
+				{% endif %}
+			</div>
+		</div>
+	{% endblock %}
+{% endembed %}

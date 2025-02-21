@@ -1,0 +1,248 @@
+{% set slides = entry.offices.all() %}
+{% set slideCount = slides|length %}
+
+{% extends '_layouts/global' %}
+
+{% block site %}
+	<div class="bg-gray-1000 pb-16 pt-32 md:pb-24 md:pt-40 lg:pt-56">
+		<div class=" {{ vars.class.siteMargin.x }}">
+			<div class="grid gap-y-10 pb-12 md:grid-cols-12 md:pb-24 {{ vars.class.gap.x }}">
+				{# Text + Form #}
+				{% if (entry.eyebrow|length) or (entry.heading|length) %}
+					<div class="flex flex-col gap-y-3 md:col-span-7">
+						{% if entry.eyebrow|length %}
+							{% include '_components/eyebrow' with {
+								text: entry.eyebrow,
+								spacing: '',
+								class: 'text-white'
+							} only %}
+						{% endif %}
+						{% if entry.heading|length %}
+							{% include '_components/heading' with {
+								tag: 'h1',
+								size: '7xl',
+								text: entry.heading,
+								class: 'text-white md:!text-5xl lg:!text-6xl xl:!text-7xl'
+							} %}
+						{% endif %}
+
+						{% if entry.formText|length %}
+							{% include '_components/richText' with {
+								content: entry.formText,
+								class: 'text-white font-light pt-2 md:pt-5'
+							} only %}
+						{% endif %}
+
+						{% if entry.form|length %}
+							<div class="max-w-[680px] pt-5">
+								{% include '_components/form' with {
+									form: entry.form.one(),
+									style: 'custom-dark'
+								} %}
+							</div>
+						{% endif %}
+					</div>
+				{% endif %}
+
+				{# Image + Info #}
+				<div class="flex flex-col items-start gap-y-6 text-white md:col-span-4 md:col-start-9">
+					<div class="aspect-h-3 aspect-w-4 w-full md:aspect-h-4 md:aspect-w-3">
+						{% include '_components/picture' with {
+							image: entry.image.one(),
+							transform: '4x3',
+							ratio: false,
+							focalPoint: true
+						} %}
+					</div>
+					{% if entry.contactText|length %}
+						{% include '_components/richText' with {
+							content: entry.contactText,
+							class: 'font-light py-0 text-md md:py-2'
+						} only %}
+					{% endif %}
+
+					{% if entry.emailAddress|length %}
+						<a href="{{ entry.emailAddress }}" class="flex items-center gap-x-2 outline-none transition-colors duration-300 hover:text-green focus:outline-none focus-visible:text-green">
+							<i class="fa-sharp fa-thin fa-paper-plane"></i>
+							<span class="relative block text-md/none font-light after:absolute after:bottom-0 after:left-0 after:h-[0.5px] after:w-full after:bg-current">{{ entry.emailAddress|replace('mailto:', '') }}</span>
+						</a>
+					{% endif %}
+
+					{% if entry.phoneNumber|length %}
+						<a href="tel:{{ entry.phoneNumber }}" class="flex items-center gap-x-2 outline-none transition-colors duration-300 hover:text-green focus:outline-none focus-visible:text-green">
+							<i class="fa-sharp fa-thin fa-phone-office"></i>
+							<span class="relative block text-md/none font-light after:absolute after:bottom-0 after:left-0 after:h-[0.5px] after:w-full after:bg-current">{{ entry.phoneNumber }}</span>
+						</a>
+					{% endif %}
+
+					{% if entry.button.url|length %}
+						{% include '_components/buttons/buttonBlock' with {
+							text: entry.button.text,
+							type: 'a',
+							url: entry.button.url,
+							class: 'mt-2'
+						} %}
+					{% endif %}
+				</div>
+			</div>
+
+			{# Offices #}
+			{% if entry.officeHeading|length %}
+				{% include '_components/eyebrow' with {
+					text: entry.officeHeading,
+					class: '!pb-10'
+				} only %}
+			{% endif %}
+
+			{% if entry.offices|length and entry.offices|length > 1 %}
+				{# Slider #}
+				<section x-data="officeSlider" x-init="officeSlider()">
+					<div class="swiper js-office-slider z-10 !overflow-visible">
+						<div class="swiper-wrapper">
+							{% for item in slides %}
+								<div class="swiper-slide !h-auto bg-white text-black">
+									{% if item.image|length %}
+										<div class="px-3.5 pt-3.5">
+											{% include '_components/picture' with {
+												image: item.image.one(),
+												transform: '5x3',
+												ratio: false,
+												focalPoint: true
+											} %}
+										</div>
+									{% endif %}
+									<div class="flex flex-col gap-y-3 p-7 pt-6">
+										{% if item.heading|length %}
+											<h3 class="font-semibold text-2xl xl:text-3xl">
+												{{ item.heading }}
+											</h3>
+										{% endif %}
+										{% if item.address|length %}
+											<div class="flex gap-x-2 text-md/none font-light">
+												<i class="fa-sharp fa-thin fa-map-marker-alt pt-0.5"></i>
+												<div>
+													<address class="not-italic">
+														<span class="relative block text-base/6">{{ item.address|nl2br }}</span>
+													</address>
+													{% if item.directionsLink|length %}
+														<a href="{{ item.directionsLink }}" class="group block outline-none transition-colors duration-300 hover:text-green focus:outline-none focus-visible:text-green">
+															<span class="relative inline-block text-base/none font-light after:absolute after:bottom-0 after:left-0 after:h-[0.5px] after:w-full after:bg-current">Get Directions</span>
+														</a>
+													{% endif %}
+												</div>
+											</div>
+										{% endif %}
+										{% if item.phoneNumber|length %}
+											<a href="tel:{{ item.phoneNumber }}" class="mt-5 flex items-center gap-x-2 outline-none transition-colors duration-300 hover:text-green focus:outline-none focus-visible:text-green">
+												<i class="fa-sharp fa-thin fa-phone-office"></i>
+												<span class="relative block text-base/none font-light after:absolute after:bottom-0 after:left-0 after:h-[0.5px] after:w-full after:bg-current">{{ item.phoneNumber }}</span>
+											</a>
+										{% endif %}
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+
+					{# Slider Nav #}
+					<div class="mt-10 flex items-center justify-center md:mt-16">
+						<div class="flex items-center justify-center gap-3 md:absolute md:right-10 xl:right-20 2xl:right-28 {{ slideCount < 2 ? 'hidden' : slideCount == 2 ? 'md:hidden' : slideCount == 3 ? 'xl:hidden' : '' }}">
+							{% include '_components/buttons/buttonRound' with {
+								type: 'button',
+								icon: 'arrow-left',
+								style: 'green-outline',
+								class: 'slider-button-prev'
+							} %}
+							{% include '_components/buttons/buttonRound' with {
+								type: 'button',
+								icon: 'arrow-right',
+								style: 'green-outline',
+								class: 'slider-button-next'
+							} %}
+						</div>
+					</div>
+				</section>
+			{% else %}
+				{% for item in slides %}
+					<div class="grid grid-cols-12 bg-white text-black">
+						{% if item.image|length %}
+							<div class="col-span-12 md:col-span-5 p-3.5">
+								{% include '_components/picture' with {
+									image: item.image.one(),
+									transform: '5x3',
+									ratio: false,
+									focalPoint: true
+								} %}
+							</div>
+						{% endif %}
+						<div class="col-span-12 md:col-span-5 flex flex-col gap-y-3 p-7 pt-6">
+							{% if item.heading|length %}
+								<h3 class="font-semibold text-2xl xl:text-3xl">
+									{{ item.heading }}
+								</h3>
+							{% endif %}
+							{% if item.address|length %}
+								<div class="flex gap-x-2 text-md/none font-light">
+									<i class="fa-sharp fa-thin fa-map-marker-alt pt-0.5"></i>
+									<div>
+										<address class="not-italic">
+											<span class="relative block text-base/6">{{ item.address|nl2br }}</span>
+										</address>
+										{% if item.directionsLink|length %}
+											<a href="{{ item.directionsLink }}" class="group block outline-none transition-colors duration-300 hover:text-green focus:outline-none focus-visible:text-green">
+												<span class="relative inline-block text-base/none font-light after:absolute after:bottom-0 after:left-0 after:h-[0.5px] after:w-full after:bg-current">Get Directions</span>
+											</a>
+										{% endif %}
+									</div>
+								</div>
+							{% endif %}
+							{% if item.phoneNumber|length %}
+								<a href="tel:{{ item.phoneNumber }}" class="mt-5 flex items-center gap-x-2 outline-none transition-colors duration-300 hover:text-green focus:outline-none focus-visible:text-green">
+									<i class="fa-sharp fa-thin fa-phone-office"></i>
+									<span class="relative block text-base/none font-light after:absolute after:bottom-0 after:left-0 after:h-[0.5px] after:w-full after:bg-current">{{ item.phoneNumber }}</span>
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
+
+{# prettier-ignore-start #}
+{% js %}
+   document.addEventListener('alpine:init', () => {
+      Alpine.data('officeSlider', () => ({
+         officeSlider(id) { 
+            const carousel = document.querySelector('.js-office-slider');
+            const slides = carousel.querySelectorAll('.swiper-slide');
+            const slidesCount = slides.length;
+
+            const swiper = new Swiper(carousel, {
+                loop: false, 
+                grabCursor: true,
+                allowTouchMove: true,
+                speed: 750,
+                navigation: {
+                    nextEl: '.slider-button-next',
+                    prevEl: '.slider-button-prev',
+                },
+                slidesPerView: 1,
+                spaceBetween: 10,
+                breakpoints: { 
+                    768: {
+                        slidesPerView: 2,
+                        centeredSlides: false, 
+                    },
+                    1280: {
+                        slidesPerView: slidesCount === 2 ? 2 : 3,
+                        centeredSlides: false, 
+                    },
+                },
+            });            
+         }
+      }));
+   });
+{% endjs %}
+{# prettier-ignore-end #}

@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: imageRowImages
+instructions: null
+name: 'Image Row Images'
+searchable: false
+settings:
+  createButtonLabel: 'Add image'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 38b2c1bd-af85-4e3f-a0e8-572d2bb16fb0 # Image
+  includeTableView: false
+  maxEntries: 2
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

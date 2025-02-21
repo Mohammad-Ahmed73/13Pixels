@@ -1,0 +1,67 @@
+color: cyan
+fieldLayouts:
+  49f64ccd-75d1-4157-918d-53646190a3d5:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 6cc05165-9dd8-47b1-b099-4003f7fcd5df
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 2e3c4108-1411-475f-91e0-aea4ece9866d # Button - Brand
+            handle: button
+            includeInCards: false
+            instructions: null
+            label: Button
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1055da06-f2d5-40d8-b4f6-9db435a340e0
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: c9917019-9375-418c-b2fc-9bdad17c5f42
+        userCondition: null
+handle: socialLinks
+hasTitleField: false
+icon: hashtag
+name: 'Social Links'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: '{brand.text}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

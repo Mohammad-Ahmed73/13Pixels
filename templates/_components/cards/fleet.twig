@@ -1,0 +1,58 @@
+{#
+	Fleet Card Component
+
+	@type {include}
+    @param {object} content
+
+	@example
+    {% include '_components/cards/fleet' with {
+        content: item
+    } %}
+#}
+
+{% set image = content.image.one() %}
+{% set heading = content.title %}
+{% set passengers = content.numberOfPassengers %}
+{% set url = content.url %}
+{% set tag = content.fleetTag.one().title ?? null %}
+{% set randomInfo = item.fleetInformation[random((item.fleetInformation|length) - 1)] %}
+
+<a href="{{ url }}" class="group relative block focus-visible:outline-none">
+	{% if tag %}
+		<div class="absolute left-5 top-5 z-30 rounded-full bg-green px-2 py-1 text-xs text-white">
+			{{ tag }}
+		</div>
+	{% endif %}
+	<div class="absolute inset-x-5 bottom-5 z-30 flex items-end text-white">
+		<div class="flex flex-col">
+			{% include '_components/heading' with {
+				text: heading,
+				tag: 'div',
+				size: '2xl',
+				class: 'pb-3'
+			} %}
+			<div class="flex flex-wrap gap-5">
+				<div class="flex gap-x-0.5">
+					<i class="fa-sharp fa-light fa-people w-5 pt-1 text-xs"></i>
+					<span class="inline-block text-xs">Up to {{ passengers }} passengers</span>
+				</div>
+
+				{% include '_components/fleetInfoStrip' with {
+					item: randomInfo,
+					size: 'small'
+				} %}
+			</div>
+		</div>
+	</div>
+	<div class="absolute inset-x-0 bottom-0 z-20 h-1/2 bg-gradient-to-t from-black to-transparent transition-opacity duration-500 group-hover:opacity-50 group-focus-visible:opacity-50"></div>
+	<div class="aspect-h-8 aspect-w-12 relative z-10 w-full overflow-hidden">
+		{% include '_components/picture' with {
+			image: image,
+			transform: '4x3',
+			ratio: false,
+			focalPoint: false,
+			alt: '',
+			imgClass: 'object-cover w-full h-full transition-transform duration-500 group-hover:scale-[1.03] group-focus-visible:scale-[1.03]'
+		} %}
+	</div>
+</a>

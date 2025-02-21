@@ -1,0 +1,127 @@
+{% set slides = block.fleet|length ? block.fleet.all() : craft.entries.section('fleet').all() %}
+{% set slideCount = slides|length %}
+
+{% if (block.theme|length) and block.theme == 'light' %}
+	{% set bgClass = '' %}
+	{% set textClass = '' %}
+	{% set btnStyle = 'green-outline-light' %}
+	{% set navBtnStyle = 'green-outline' %}
+{% else %}
+	{% set bgClass = 'bg-gray-1000 py-16 lg:py-32' %}
+	{% set textClass = 'text-white' %}
+	{% set btnStyle = 'white' %}
+	{% set navBtnStyle = 'white' %}
+{% endif %}
+
+{% embed '_components/section'
+	with {
+		paddingY: block.padding.value,
+		paddingX: 'flush',
+		class: 'overflow-hidden'
+	}
+%}
+	{% block sectionContent %}
+		<div class="{{ bgClass }}">
+			<div class="relative {{ vars.class.siteMargin.x }}">
+				{# Heading #}
+				{% if (block.eyebrow|length) or (block.heading|length) %}
+					<div class="flex flex-col items-center gap-5 pb-8 text-center lg:pb-16 {{ textClass }}">
+						{% if block.eyebrow|length %}
+							{% include '_components/eyebrow' with {
+								text: block.eyebrow,
+								spacing: ''
+							} only %}
+						{% endif %}
+						{% if block.heading|length %}
+							{% include '_components/heading' with {
+								tag: 'h2',
+								size: '6xl',
+								text: block.heading
+							} %}
+						{% endif %}
+					</div>
+				{% endif %}
+
+				{# Slider #}
+				<section x-data="{{ block.type }}" x-init="slider({{ block.id }})">
+					<div class="swiper z-10 !overflow-visible js-slider-{{ block.id }}">
+						<div class="swiper-wrapper">
+							{% for item in slides %}
+								<div class="swiper-slide relative">
+									{% include '_components/cards/fleet' with {
+										content: item
+									} %}
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+
+					{# Slider Nav + Button #}
+					<div class="mt-5 flex flex-row items-center justify-between gap-y-5 md:mt-12 md:flex-row md:justify-center">
+						{% if block.button.url|length %}
+							<div class="">
+								{% include '_components/buttons/buttonBlock' with {
+									type: 'a',
+									url: block.button.url,
+									text: block.button.text,
+									style: btnStyle
+								} %}
+							</div>
+						{% endif %}
+						<div class="flex items-center justify-center gap-3 md:absolute md:right-10 xl:right-20 2xl:right-28 {{ slideCount <= 3 ? 'hidden' }}">
+							{% include '_components/buttons/buttonRound' with {
+								type: 'button',
+								icon: 'arrow-left',
+								style: navBtnStyle,
+								class: 'slider-button-prev-' ~ block.id
+							} %}
+							{% include '_components/buttons/buttonRound' with {
+								type: 'button',
+								icon: 'arrow-right',
+								style: navBtnStyle,
+								class: 'slider-button-next-' ~ block.id
+							} %}
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	{% endblock %}
+{% endembed %}
+
+{# prettier-ignore-start #}
+{% js %}
+   document.addEventListener('alpine:init', () => {
+      Alpine.data('{{ block.type }}', () => ({
+         slider(id) { 
+            const carousel = document.querySelector(`.js-slider-${id}`)
+            const swiper = new Swiper(carousel, {
+                loop: false, 
+                grabCursor: true,
+                autoHeight: false,  
+                centeredSlides: true, 
+                allowTouchMove: true,
+                speed: 750,
+                navigation: {
+                    nextEl: '.slider-button-next-' + id,
+                    prevEl: '.slider-button-prev-' + id,
+                },
+                slidesPerView: 1,
+                spaceBetween: 10,
+                initialSlide: 1,
+                breakpoints: { 
+					768: {
+						slidesPerView: 2,
+                        centeredSlides: false, 
+					},
+					1280: {
+						slidesPerView: 2,
+                        centeredSlides: false, 
+					},
+				},
+            })            
+         }
+      }))
+   })
+{% endjs %}
+{# prettier-ignore-end #}

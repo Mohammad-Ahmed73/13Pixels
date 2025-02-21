@@ -1,0 +1,35 @@
+columnSuffix: null
+handle: assetsFiles
+instructions: null
+name: 'Assets - Files'
+searchable: false
+settings:
+  allowSelfRelations: false
+  allowSubfolders: false
+  allowUploads: true
+  allowedKinds: null
+  branchLimit: null
+  defaultUploadLocationSource: 'volume:77c19ebd-f9b9-4505-93be-58e538528e16' # Files
+  defaultUploadLocationSubpath: null
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  previewMode: full
+  restrictFiles: false
+  restrictLocation: false
+  restrictedDefaultUploadSubpath: null
+  restrictedLocationSource: 'volume:77c19ebd-f9b9-4505-93be-58e538528e16' # Files
+  restrictedLocationSubpath: null
+  selectionLabel: 'Add file'
+  showCardsInGrid: false
+  showSiteMenu: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  sources:
+    - 'volume:77c19ebd-f9b9-4505-93be-58e538528e16' # Files
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Assets

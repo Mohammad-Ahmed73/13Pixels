@@ -1,0 +1,66 @@
+{#
+   Section Component
+
+   @type {embed}
+   @param {string} paddingX
+   @param {string} paddingY
+   @param {string} paddingYSize
+   @param {string} class
+   @param {string} innerClass
+   @param {bool} maxWidth
+
+    @example
+    {% embed '_components/section' with {
+         paddingX: 'leftRight',
+         paddingY: 'bottom',
+         paddingYSize: 'base',
+         maxWidth: true
+    } %}
+         {% block sectionContent %}
+              <p>Section content</p>
+         {% endblock %}
+    {% endembed %}
+
+#}
+
+{% set paddingX = paddingX ?? 'leftRight' %}
+{% set paddingY = paddingY ?? 'topBottom' %}
+{% set paddingYSize = paddingYSize ?? 'base' %}
+{% set maxWidth = maxWidth ?? false %}
+
+{% set paddingXClass = {
+    leftRight: 'px-5 md:px-10 xl:px-20 2xl:px-28',
+    left: 'pl-5 md:pl-10 xl:pl-20 2xl:pl-28',
+    right: 'pr-5 md:pr-10 xl:pr-20 2xl:pr-28',
+    flush: 'px-0'
+} %}
+
+{% set paddingYClass = {
+    base: {
+        top: 'pt-14 lg:pt-[90px] xl:pt-32',
+        bottom: 'pb-14 lg:pb-[90px] xl:pb-32',
+        topBottom: 'py-14 lg:py-[90px] xl:py-32',
+        flush: 'py-0'
+    },
+    body: {
+        top: 'pt-10 lg:pt-20',
+        bottom: 'pb-10 lg:pb-20',
+        topBottom: 'py-10 lg:py-20',
+        flush: 'py-0'
+    }
+} %}
+
+{% set sectionPadding = 'lg:py-[100px] md:py-[70px] py-[48px] px-4' %}
+
+{# Check if paddingY is "sectionPadding" and handle it separately #}
+{% set paddingYClassValue = paddingY == 'sectionPadding' ? sectionPadding : attribute(attribute(paddingYClass, paddingYSize), paddingY) %}
+
+<section class="w-full {{ paddingYClassValue }}{{ class is defined ? ' ' ~ class }}">
+    <div class="{{ attribute(paddingXClass, paddingX) }} {{ innerClass is defined ? ' ' ~ innerClass }}">
+        <div class="{{ maxWidth ? 'mx-auto ' ~ vars.class.containerWidth : '' }}">
+            {% block sectionContent %}
+
+            {% endblock %}
+        </div>
+    </div>
+</section>

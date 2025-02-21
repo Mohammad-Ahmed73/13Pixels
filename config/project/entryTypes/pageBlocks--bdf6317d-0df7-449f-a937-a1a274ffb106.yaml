@@ -1,0 +1,127 @@
+color: null
+fieldLayouts:
+  71660a2a-5e9c-456e-9584-e81e70baf6f2:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 0cf026d5-6d08-4e27-8a1f-ab30bca41c98
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 3ea47485-f5ba-4aa3-952e-e0f5283984c7 # Phone Number
+            handle: null
+            includeInCards: false
+            instructions: 'Unique phone number for this page.'
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a27817d1-c6ba-4fc8-ad38-bf3a7114ed08
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 379979f8-8b8a-4d0e-be50-cf55272ecf6c # Hero
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 90ec0cb0-70ef-4946-9ca9-ddc78beb23bb
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'General + Hero'
+        uid: 0102572d-d127-40b1-b9c0-704387cc932f
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: f961ae4f-abe8-4842-b296-16d412036c48 # Content Builder
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cd594991-0378-4d3f-b0c7-9cc24ecf3562
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d4588e1c-b25c-4cbe-af71-0f6a895dedd7
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 787967f0-9a61-4502-9ec1-b413d02b9279 # Meta & Social Data
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bed71e44-7b7d-4b58-86ff-c71e44351a7f
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Meta & Social Data'
+        uid: e8c5cb2a-13a4-4ae7-84a2-4f1999dcd549
+        userCondition: null
+handle: pageBlocks
+hasTitleField: true
+icon: file
+name: 'Page - Blocks'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

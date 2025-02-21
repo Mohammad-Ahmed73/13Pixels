@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: offices
+instructions: null
+name: Offices
+searchable: false
+settings:
+  createButtonLabel: 'Add office'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 4ae8e042-ab6e-4b2b-b674-edcd7a01d4b8 # Office
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

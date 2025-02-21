@@ -1,0 +1,99 @@
+color: lime
+fieldLayouts:
+  0a39fa9b-5262-49e4-bae9-7b2c43104cb9:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-08-09T08:07:44+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: eec555ab-48b0-419e-94e4-9e183ad25915
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:07:44+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: button
+            includeInCards: false
+            instructions: null
+            label: Button
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 607cc2ed-5f09-4b0b-bf86-64ec4b01ea19
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:07:44+00:00'
+            elementCondition: null
+            fieldUid: 319101f5-883c-43f3-bb97-a96d26b34139 # Fleet Nav Entries
+            handle: fleet
+            includeInCards: false
+            instructions: null
+            label: Fleet
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 62c38ecf-983c-4fd2-b879-1e52625e53b0
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:07:44+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: buttonCTA
+            includeInCards: false
+            instructions: null
+            label: 'Button CTA'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9ab0754b-88d6-4c3f-b7c2-f880e2bea7af
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 55ef5a95-de88-4f7c-9a7e-02aacaf59c9f
+        userCondition: null
+handle: linkDropdownFleet
+hasTitleField: false
+icon: van-shuttle
+name: 'Link - Dropdown Fleet'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

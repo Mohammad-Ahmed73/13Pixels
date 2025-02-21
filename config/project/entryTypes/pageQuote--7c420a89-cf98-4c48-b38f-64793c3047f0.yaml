@@ -1,0 +1,105 @@
+color: null
+fieldLayouts:
+  b75c74d4-ff31-416c-bf3d-49b43c3d46c5:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-08-08T09:46:59+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: abbec0de-6d27-4004-a7f7-80bfa14e7d44
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-08T09:51:55+00:00'
+            elementCondition: null
+            fieldUid: 7e2defb7-ea6e-4c6b-bcf2-e146804bc1c6 # Quote Progress
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7c57b579-9b63-4fb5-bb3f-e9012dae9f3e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-08T09:51:55+00:00'
+            elementCondition: null
+            fieldUid: e47e78ea-7cd0-4cc6-988b-f68b3801cd66 # Entry Title
+            handle: heading
+            includeInCards: false
+            instructions: null
+            label: Heading
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8d025e2f-008e-40fa-8653-6ed15e8a8218
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 53d3af45-6f5d-42e9-befb-f5a6e8de8584
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-08-08T09:46:59+00:00'
+            elementCondition: null
+            fieldUid: 787967f0-9a61-4502-9ec1-b413d02b9279 # Meta & Social Data
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1f06c23a-3ada-4162-a478-12d9a42aa7ae
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Meta & Social Data'
+        uid: 3962d660-c89c-4536-aff9-3a97a96268f8
+        userCondition: null
+handle: pageQuote
+hasTitleField: true
+icon: money-bill
+name: 'Page - Quote'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

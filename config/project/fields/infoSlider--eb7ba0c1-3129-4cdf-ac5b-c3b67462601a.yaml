@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: infoSlider
+instructions: null
+name: 'Info Slider'
+searchable: false
+settings:
+  createButtonLabel: 'New info'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 04e1c8bd-fe67-47db-9064-8610c35b6816 # Info Slide
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

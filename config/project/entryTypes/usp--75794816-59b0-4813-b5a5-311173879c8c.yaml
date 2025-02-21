@@ -1,0 +1,113 @@
+color: fuchsia
+fieldLayouts:
+  9f5ed8a7-1415-496b-84d4-9891fef38cca:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-03T12:55:01+00:00'
+            elementCondition: null
+            fieldUid: 32972c85-b85e-45de-a6a1-d58a643d3e81 # Headiing
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ec6e4300-4c0c-477f-99c2-45ff47005103
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-03T12:56:29+00:00'
+            elementCondition: null
+            fieldUid: 1cb7081f-f82f-481e-bf0b-30eb3e8bc1e0 # Usp Description
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a237723f-b6d6-4663-be5f-ed8d55ce4a0b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-03T12:55:01+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: button1
+            includeInCards: false
+            instructions: null
+            label: 'Button - 1'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a1f0785f-319a-4b83-a126-29c2d32d2e2b
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-02-03T12:55:01+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: e4c800d4-c626-4240-91cc-67b2148713f4
+            userCondition: null
+          -
+            dateAdded: '2025-02-03T12:55:01+00:00'
+            elementCondition: null
+            fieldUid: 3ce0ab58-6a6b-49a8-96c5-412dc9ae77f1 # USP Cards
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5251c3be-be01-4e03-a2eb-b88fd91ed44a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 9af40641-270e-4328-87bd-583f6e556db9
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-03T12:55:01+00:00'
+            elementCondition: null
+            fieldUid: b8cf975c-8b0e-4f79-968b-ae246d2f8bf1 # Padding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 785dae4d-1d3a-42fa-b303-db2b76af9979
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Block Settings'
+        uid: a7859e6a-5c72-46f3-af38-fc5d8a30a9b3
+        userCondition: null
+handle: usp
+hasTitleField: false
+icon: star-shooting
+name: USP
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

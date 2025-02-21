@@ -1,0 +1,59 @@
+{% set heading = heading ?? '' %}
+
+{% set navHeadings = entry.contentBuilder.all()|filter(block => block.navigationHeading|length) %}
+
+{% if navHeadings|length %}
+    <div class="mb-2">
+        {% if heading|length %}
+            <div class="text-xs mb-2 font-medium text-white">
+                {{ heading }}
+            </div>
+        {% endif %}
+        <div class="flex flex-col"
+            x-data="textNav"
+            x-on:scroll.window="updateActiveSection()">
+            {% for block in navHeadings %}
+                <a 
+                    href="#block-{{ block.id }}" 
+                    class="group py-1 pl-2 inline-block transition focus:outline-none"
+                    :class="{'border-l border-l-gray-200 duration-300 hover:border-gray-400 focus:border-gray-400': active != 'block-{{ block.id }}', 'border-l border-l-green': active == 'block-{{ block.id }}'}"
+                    x-on:click.prevent="scrollToSection($event.currentTarget.hash)"
+                    >
+                    <span class="inline-block font-light leading-tight text-white-100 text-xs">{{ block.navigationHeading }}</span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{# prettier-ignore-start #}
+{% js %}
+document.addEventListener('alpine:init', () => {
+    Alpine.data('textNav', () => ({
+        // First heading active by default
+        active: 'block-{{ navHeadings|first.id|default('') }}',
+        offset: 56,
+
+        // Update active on scroll position
+        updateActiveSection() {
+            const scrollY = window.scrollY + this.offset;
+            this.active = Array.from(document.querySelectorAll('[id^="block-"]'))
+                .reduce((closest, section) => {
+                    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+                    const isCloser = Math.abs(scrollY - sectionTop) < Math.abs(scrollY - (closest.top || 0));
+                    return isCloser ? { id: section.id, top: sectionTop } : closest;
+                }, {}).id || this.active;
+        },
+
+        // Scroll to section on click
+        scrollToSection(hash) {
+            const section = document.querySelector(hash);
+            if (section) {
+                const sectionTop = section.getBoundingClientRect().top + window.scrollY - this.offset;
+                window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+            }
+        }
+    }));
+});
+{% endjs %}
+{# prettier-ignore-end #}

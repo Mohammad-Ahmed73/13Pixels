@@ -1,0 +1,50 @@
+{#
+    Heading Component
+
+    @type {include}
+    @param {string} text - required
+    @param {string} tag
+    @param {string} size
+    @param {string} class
+
+    @example
+    {% include '_components/heading' with {
+        text: 'Heading',
+        tag: 'h2',
+        size: 'xl',
+        class: 'text-white'
+    } %}
+#}
+
+{% set headingSizes = {
+    'xs': 'text-xs',
+    'sm': 'text-sm',
+    'base': 'text-base',
+    'md': 'text-md',
+    'lg': 'text-base md:text-md lg:text-lg', 
+    'xl': 'text-xl',
+    '2xl': 'text-md md:text-lg lg:text-2xl',
+    '3xl': 'text-xl md:text-2xl lg:text-3xl',
+    '4xl': 'text-2xl md:text-3xl lg:text-4xl',
+    '5xl': 'text-3xl md:text-5xl lg:text-6xl',
+    '6xl': 'text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl',
+    '7xl': 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl',
+} %}
+
+{% set highlightStyles = [ 
+    ['attr', 'u', { class: 'no-underline text-green' }],
+] %}
+
+{# Set heading defaults #}
+{% set tag = tag ?? 'h2' %}
+{% set size = size ?? 'xl' %}
+
+{# Apply highlight styles to heading text #}
+{% set modifiedHeading = text|retcon(highlightStyles) %}
+
+{# Strip tags from heading text #}
+{% set strippedHeadingText = modifiedHeading|replace({'<p>': '', '</p>': ''}) %}
+
+<{{tag}} class="leading-[1.1] {{ attribute(headingSizes, size) }} {{ class is defined ? ' ' ~ class }}" {{ attributes is defined ? attributes|raw }}>
+	{{ strippedHeadingText|raw|nl2br }}
+</{{tag}}>

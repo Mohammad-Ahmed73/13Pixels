@@ -1,0 +1,113 @@
+color: yellow
+fieldLayouts:
+  0ac3ef64-0c9b-4e42-9507-1b181725d0b1:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-08-07T13:36:48+00:00'
+            elementCondition: null
+            fieldUid: b85568a4-73fb-48e5-9348-39aba103ded5 # Hero Quote Title
+            handle: heading
+            includeInCards: false
+            instructions: null
+            label: Heading
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: db00e165-0eca-49fa-b65f-e660e4fda637
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-07T13:36:48+00:00'
+            elementCondition: null
+            fieldUid: dee0e12a-d0be-4dce-864e-96f853d767f2 # Plain Text
+            handle: text
+            includeInCards: false
+            instructions: null
+            label: Text
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 88b7b7d9-f026-462f-a7a4-e805b7533eb8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-11T12:55:29+00:00'
+            elementCondition: null
+            fieldUid: 78647ab1-8c52-45e0-aff2-3232685b4ee5 # Assets - Images
+            handle: leftimage
+            includeInCards: false
+            instructions: null
+            label: 'Left Image'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e0c83254-4bfc-41a1-b2c7-962814886897
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-07T13:36:48+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 5b9d73f6-f62a-4a88-806d-afb95feb349a
+            userCondition: null
+          -
+            dateAdded: '2025-02-11T16:07:32+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 29d20513-595e-4ecb-b74f-418e8a22e5e7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-07T13:36:48+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: e053035d-fb1b-4f20-bd63-ae43542bdef2
+            userCondition: null
+          -
+            dateAdded: '2024-08-07T13:36:48+00:00'
+            elementCondition: null
+            fieldUid: eb7ba0c1-3129-4cdf-ac5b-c3b67462601a # Info Slider
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3217a825-bd10-4e12-a1a5-503d1ff5c198
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 4d8dfc61-dcc8-4df2-9acf-ccb6e4651579
+        userCondition: null
+handle: heroLogo
+hasTitleField: false
+icon: dollar-sign
+name: 'Hero - Logo'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: serviceEntry
+instructions: null
+name: 'Service Entry'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionLabel: 'Add service'
+  showCardsInGrid: false
+  showSiteMenu: false
+  sources:
+    - 'section:b24beb43-c574-494f-b131-1b256743f9a6' # Services
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

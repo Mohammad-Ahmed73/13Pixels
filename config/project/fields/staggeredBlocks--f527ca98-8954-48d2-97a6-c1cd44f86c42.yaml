@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: staggeredBlocks
+instructions: null
+name: 'Staggered Blocks'
+searchable: false
+settings:
+  createButtonLabel: 'New block'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - e21e545b-038e-4468-aa8f-237310d0a026 # Staggered Block
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

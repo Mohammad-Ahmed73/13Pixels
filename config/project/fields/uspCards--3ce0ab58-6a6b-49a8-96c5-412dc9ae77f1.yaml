@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: uspCards
+instructions: null
+name: 'USP Cards'
+searchable: false
+settings:
+  createButtonLabel: 'New card'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 102e50e8-7d25-40ec-b71a-e6e8c8550f66 # USP Card
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

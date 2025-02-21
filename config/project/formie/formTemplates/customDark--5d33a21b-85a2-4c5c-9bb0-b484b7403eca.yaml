@@ -1,0 +1,11 @@
+handle: customDark
+name: 'Custom Dark'
+outputCssLayout: true
+outputCssLocation: page-header
+outputCssTheme: true
+outputJsBase: true
+outputJsLocation: page-footer
+outputJsTheme: true
+sortOrder: null
+template: _forms/_form-custom-dark
+useCustomTemplates: true

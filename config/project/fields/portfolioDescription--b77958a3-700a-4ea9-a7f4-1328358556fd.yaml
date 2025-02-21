@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: portfolioDescription
+instructions: null
+name: 'Portfolio Description'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  ckeConfig: 08f6274d-3c73-407b-82ac-6cf8d0dcffcb # Full
+  createButtonLabel: null
+  defaultTransform: null
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

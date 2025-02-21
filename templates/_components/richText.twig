@@ -1,0 +1,51 @@
+{#
+    Rich Text Component
+
+    @type {include}
+    @param {string} content - required
+    @param {string} class
+    @param {boolean} highlightFirst
+
+    @example
+    {% include '_components/richText' with {
+        content: 'Rich text content',
+        class: 'mt-10',
+        highlightFirst: true
+    } %}
+#}
+
+{% set highlightFirst = highlightFirst ?? false %}
+
+{# prettier-ignore-start #}
+{% set styles = [
+    ['attr', 'h1', { class: 'text-6xl' }],
+    ['attr', 'h2', { class: 'text-2xl md:text-3xl lg:text-4xl xl:text-5xl' }],
+    ['attr', 'h3', { class: 'text-xl md:text-2xl lg:text-3xl' }],
+    ['attr', 'h4', { class: 'text-3xl' }],
+    ['attr', 'h5', { class: 'text-2xl' }],
+    ['attr', 'h6', { class: 'text-xl' }],
+    ['attr', 'a', { class: 'text-green decoration-1 underline transition-colors duration-300 hover:text-black focus-visible:text-black focus-visible:outline-none' }],
+    ['attr', 'p', { class: '' }],
+    ['attr', ['ul', 'ol'], { class: 'list-outside my-5 lg:my-7' }],
+    ['attr', 'ul', { class: '' }],
+    ['attr', 'ol', { class: '' }],
+    ['attr', 'li', { class: 'relative font-light pl-8 mb-5 last:mb-0 after:absolute after:z-10 after:text-green after:fill-green after:border after:border-green after:rounded-full after:bg-transparent after:left-0 after:top-1 after:w-5 after:h-5 after:bg-no-repeat after:bg-center after:bg-[length:12px_12px] after:bg-check' }],
+    ['attr', 'strong', { class: 'font-bold' }],
+    ['attr', 'img', { class: 'w-full h-auto' }],
+    ['attr', 'blockquote', { class: 'font-medium' }],
+    ['inject', 'blockquote', '<span class="absolute top-0 left-0">"</span>'],
+    ['inject', 'blockquote', '<span class="absolute bottom-0 right-0">"</span>'],
+    ['attr', ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'], { class: 'font-semibold tracking-tighter leading-[0.88] mt-12 mb-5 lg:mb-7' }, false],
+] %}
+
+{% if highlightFirst %}
+    {% set styles = styles|merge([
+        ['attr', 'p:first-of-type', { class: 'font-normal mb-5' }],
+    ]) %}
+{% endif %}
+
+{# prettier-ignore-end #}
+
+<div class="rich-text {{ class is defined ? ' ' ~ class }}">
+	{{ content|retcon(styles) }}
+</div>

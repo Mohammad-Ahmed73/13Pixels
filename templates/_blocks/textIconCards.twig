@@ -1,0 +1,116 @@
+{% if (block.theme|length) and block.theme == 'light' %}
+	{% set bgClass = '' %}
+	{% set textClass = '' %}
+	{% set btnStyle = 'green-outline-light' %}
+	{% set navBtnStyle = 'green-outline' %}
+	{% set lineDetail = 'bg-gray-600' %}
+{% else %}
+	{% set bgClass = 'bg-gray-1000 py-16 md:py-20 lg:py-36' %}
+	{% set textClass = 'text-white' %}
+	{% set btnStyle = 'green-outline' %}
+	{% set navBtnStyle = 'green-outline' %}
+	{% set lineDetail = 'bg-gray-500' %}
+{% endif %}
+
+{% embed '_components/section'
+	with {
+		paddingY: block.padding.value,
+		paddingX: 'flush'
+	}
+%}
+	{% block sectionContent %}
+		<div class="{{ bgClass }}">
+			<div class=" {{ vars.class.siteMargin.x }}">
+				{# Heading #}
+				{% if (block.eyebrow|length) or (block.heading|length) %}
+					<div class="flex flex-col items-center gap-5 px-10 pb-12 text-center lg:pb-16 {{ textClass }}">
+						{% if block.eyebrow|length %}
+							{% include '_components/eyebrow' with {
+								text: block.eyebrow,
+								spacing: ''
+							} only %}
+						{% endif %}
+						{% if block.heading|length %}
+							{% include '_components/heading' with {
+								tag: 'h2',
+								size: '5xl',
+								text: block.heading
+							} %}
+						{% endif %}
+						{% if block.description|length %}
+							{% include '_components/richText' with {
+								class: 'text-sm font-light',
+								content: block.description
+							} %}
+						{% endif %}
+					</div>
+				{% endif %}
+
+				{# Icons + Text #}
+				<div class="flex flex-col items-center justify-center gap-y-10 md:flex-row md:items-start">
+					{% for item in block.textIconCards.all() %}
+						<div class="relative flex h-full w-full max-w-[420px] flex-col items-center gap-y-5 px-5 text-center lg:px-10">
+							{% if (item.icon|length) or (item.textIcon|length) %}
+								<div class="flex h-16 w-16 items-center justify-center rounded-full bg-green text-2xl text-white">
+									{% if item.icon|length %}
+										<i class="{{ item.icon }}" aria-hidden="true"></i>
+									{% endif %}
+									{% if item.textIcon|length %}
+										<span class="block text-md/none">{{ item.textIcon }}</span>
+									{% endif %}
+								</div>
+							{% endif %}
+							{% if item.heading|length %}
+								<h3 class="text-2xl/none leading-none md:text-xl/none lg:text-2xl/none {{ textClass }}">{{ item.heading }}</h3>
+							{% endif %}
+							{% if item.text|length %}
+								{% include '_components/richText' with {
+									content: item.text,
+									class: 'text-sm font-light' ~ ' ' ~ textClass
+								} %}
+							{% endif %}
+							{# Hide the last line detail #}
+							{% if loop.revindex != 1 %}
+								<div class="absolute right-0 top-12 hidden h-24 w-[0.5px] lg:block {{ lineDetail }}"></div>
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+				{% if block.richTextFull|length %}
+					{% include '_components/richText' with {
+						class: 'text-sm font-light text-center pt-2',
+						content: block.richTextFull
+					} %}
+				{% endif %}
+				{% include '_components/ctaFaces' with {
+					style: 'regular',
+					class: 'pt-10 lg:pt-16',
+					text: block.ctaText|length ? block.ctaText : null,
+					button: block.ctaButton|length ? block.ctaButton : null,
+					theme: block.theme|length ? block.theme : null
+				} %}
+			</div>
+		</div>
+
+		{# Image #}
+		{% if block.image|length %}
+			<div class="relative {{ (block.theme|length) and block.theme == 'light' ? 'pt-12 lg:pt-24' }} {{ vars.class.siteMargin.x }}">
+				<div class="relative z-20">
+					{% include '_components/infoSlider' with {
+						slides: block.infoSlider,
+						class: 'absolute z-20 bottom-0 left-0'
+					} %}
+					<div class="aspect-h-3 aspect-w-4 md:aspect-h-8 md:aspect-w-16">
+						{% include '_components/picture' with {
+							image: block.image.one(),
+							transform: '4x3',
+							ratio: false,
+							focalPoint: true
+						} %}
+					</div>
+				</div>
+				<div class="absolute left-0 top-0 z-10 h-1/2 w-full {{ bgClass }}"></div>
+			</div>
+		{% endif %}
+	{% endblock %}
+{% endembed %}

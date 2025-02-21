@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: ceoSlider
+instructions: null
+name: 'Ceo Slider'
+searchable: false
+settings:
+  createButtonLabel: 'New Slide'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 12159bca-23a6-47a1-8912-ac7c99cba13d
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

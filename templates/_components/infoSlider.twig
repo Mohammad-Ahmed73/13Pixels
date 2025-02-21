@@ -1,0 +1,59 @@
+{#
+    Logo Slider Component
+
+    @type {include}
+    @param {object} slides
+    @param {string} class
+
+    @example
+    {% include '_components/logoSlider' with {
+        slides: block.slider
+    } %}
+#}
+
+{% set slides = slides ?? [] %}
+{% set slideCount = slides|length %}
+
+<div class="w-full overflow-hidden {{ class ?? class }}" x-data="{{ block.type }}" x-init="slider({{ block.id }})">
+    <div class="swiper js-slider-{{ block.id }}">
+        <div class="swiper-wrapper flex items-center">
+        {% for item in slides %}
+        {% set image = item.assetsImage.one() %}
+            {% if image %}
+                <div class="swiper-slide !w-auto !flex-shrink-0 inline-block !whitespace-nowrap">
+                    {% include '_components/picture' with {
+                        image: image,
+                        transform: '4x3',
+                        ratio: false,
+                        imgClass: 'max-h-[100px] w-auto'
+                    } %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{# prettier-ignore-start #}
+{% js %}
+   document.addEventListener('alpine:init', () => {
+      Alpine.data('{{ block.type }}', () => ({
+         slider(id) { 
+            const carousel = document.querySelector(`.js-slider-${id}`)
+            const swiper = new Swiper(carousel, {
+                loop: true, 
+                speed: 2000,
+                autoplay: {
+                    delay: 1,
+                    disableOnInteraction: false,
+                },
+                slidesPerView: 'auto',
+                spaceBetween: 30,
+                freeMode: true,
+                centeredSlides: false,
+            })            
+         }
+      }))
+   })
+{% endjs %}
+{# prettier-ignore-end #}

@@ -1,0 +1,89 @@
+{% extends '_layouts/global' %}
+{% set global = craft.entries.section('globals').one() %}
+{% block site %}
+	{# Hero #}
+	{% include '_components/heroImage' with {
+		heading: entry.title,
+		text: entry.introductionText,
+		eyebrow: global.fleetEyebrow|length ? global.fleetEyebrow : 'Our Fleet',
+		image: entry.image.one(),
+		videoUrl: entry.videoUrl,
+		button: {
+			text: global.fleetButton|length ? global.fleetButton.text : 'Get a free Quote',
+			url: global.fleetButton|length ? global.fleetButton.url : '/quote'
+		}
+	} %}
+
+	{% embed '_components/section'
+		with {
+			paddingY: 'topBottom'
+		}
+	%}
+		{% block sectionContent %}
+			<div class="grid gap-y-10 md:grid-cols-12">
+				{# Heading + Text #}
+				<div class="md:col-span-7">
+					<div class="flex flex-col gap-y-6">
+						{% include '_components/eyebrow' with {
+							text: global.fleetIntroEyebrow|length ? global.fleetIntroEyebrow : 'About Our Fleet',
+							spacing: ''
+						} %}
+
+						{# Heading #}
+						{% include '_components/heading' with {
+							tag: 'h2',
+							size: '5xl',
+							text: global.fleetIntroHeading|length ? global.fleetIntroHeading : '<p>Travel in comfort and style with our <u>Luxuries Mercedes Jet Class fleet</u></p>'
+						} %}
+
+						{# Text #}
+						{% include '_components/richText' with {
+							content: global.fleetIntroText|length
+								? global.fleetIntroText
+								: "<p>Step into a world of luxury and sophistication with the OMC Global fleet. Each vehicle in our collection is a masterpiece, meticulously chosen to redefine your travel experience. From the iconic Range Rover, a symbol of timeless elegance, to the versatile Vito and V-Class, offering spacious comfort, and the cutting-edge Tesla for the eco-conscious, our fleet is a testament to opulence.</p><p>Whether you seek corporate class, wedding elegance, or school safety, OMC Global's diverse range of vehicles is crafted to meet your every need. Discover a new standard of travel — where the journey is as exceptional as the destination.</p>"
+						} %}
+					</div>
+				</div>
+				{# More Information #}
+				<div class="md:col-span-4 md:col-start-9 xl:col-span-3 xl:col-start-10">
+					{% include '_components/eyebrow' with {
+						text: global.fleetInfoEyebrow|length ? global.fleetInfoEyebrow : 'More Information',
+						style: 'none'
+					} %}
+
+					{% if entry.fleetInformation|length %}
+						<div class="flex flex-col gap-y-2">
+							{# Passengers #}
+							<div class="flex gap-x-2">
+								<i class="fa-light fa-people w-5 pt-1"></i>
+								<span class="inline-block text-base font-light">Up to {{ entry.numberOfPassengers }} passengers</span>
+							</div>
+							{# Suitcases #}
+							<div class="flex gap-x-2">
+								<i class="fa-light fa-suitcase w-5 pt-1"></i>
+								<span class="inline-block text-base font-light">Up to {{ entry.numberOfSuitcases }} suitcases</span>
+							</div>
+							{# Remaining Info #}
+							{% for item in entry.fleetInformation %}
+								{% include '_components/fleetInfoStrip' with {
+									item: item
+								} %}
+							{% endfor %}
+						</div>
+					{% endif %}
+
+					{% include '_components/buttons/button' with {
+						text: global.fleetInfoButton|length ? global.fleetInfoButton.text : 'Get a free Quote',
+						url: global.fleetInfoButton|length ? global.fleetInfoButton.url : '/quote',
+						type: 'a',
+						class: 'w-full mt-8'
+					} %}
+				</div>
+			</div>
+		{% endblock %}
+	{% endembed %}
+
+	{% for block in entry.contentBuilder.all() %}
+		{% include '_blocks/' ~ block.type %}
+	{% endfor %}
+{% endblock %}

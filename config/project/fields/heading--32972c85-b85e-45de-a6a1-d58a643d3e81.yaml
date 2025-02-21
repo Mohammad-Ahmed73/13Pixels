@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: heading
+instructions: 'Use underline to highlight text.'
+name: Headiing
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  ckeConfig: 20dc9d31-8659-4d8e-8e2f-578b7cf5c6a6 # Heading
+  createButtonLabel: null
+  defaultTransform: null
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

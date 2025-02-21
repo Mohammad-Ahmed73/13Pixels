@@ -1,0 +1,15 @@
+enabled: '1'
+handle: fontAwesome
+name: 'Font Awesome'
+settings:
+  apiKey: $FONTAWESOME_API_KEY
+  cdnLicense: free
+  cdnVersion: 6.2.0
+  kits:
+    - '0d1e414ec2:6.x:pro'
+  styles:
+    - 'sharp:light'
+    - brands
+  type: kit
+sortOrder: 2
+type: verbb\iconpicker\iconsets\FontAwesome

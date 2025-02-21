@@ -1,0 +1,20 @@
+{# settings #}
+{% set wordsPerMinute = 350 %}
+{% set showLessThanMinute = true %}
+{# logic #}
+{# prettier-ignore-start #}
+{% set plaintext = text|striptags|replace({'â€”': ' ', 'â€“': ' ', '-': ' ', '\n': ' '}) %}
+{# prettier-ignore-end #}
+{% set words = plaintext|split(' ') %}
+{% set minutes = ceil((words|length) / wordsPerMinute) %}
+{% set seconds = minutes * 60 %}
+{% set formatter =
+	create({
+		class: 'craft\\i18n\\Formatter'
+	})
+%}
+{% if (words|length) / wordsPerMinute * 60 < 60 and showLessThanMinute %}
+	{{ ('Under'|t) ~ ' ' ~ formatter.asDuration(60) }}
+{% else %}
+	{{ minutes ~ ' Min' }}
+{% endif %}

@@ -1,0 +1,16 @@
+columnSuffix: null
+handle: serviceShortTitle
+instructions: null
+name: 'Service Short Title'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 19
+  code: false
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

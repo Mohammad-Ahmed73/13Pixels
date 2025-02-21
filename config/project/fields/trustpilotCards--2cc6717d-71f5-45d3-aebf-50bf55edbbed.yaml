@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: trustpilotCards
+instructions: null
+name: 'Trustpilot Cards'
+searchable: false
+settings:
+  createButtonLabel: 'New card'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - c6a736fe-4c28-4127-8e44-57ec4ba836cd # Trustpilot Card
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,71 @@
+{% set id = random(100,999) %}
+
+<form x-data="quoteForm" method="POST" action="/quote" id="quoteForm-{{ id }}" x-on:submit.prevent="redirect(event)">
+
+	<div class="flex flex-wrap mx-auto max-w-[600px] bg-white p-3 md:p-5 xl:flex-nowrap xl:max-w-[1220px] xl:p-3">
+		<div class="relative w-full grid grid-cols-12">
+			<div class="col-span-12 mb-3 md:col-span-6 xl:col-span-3 xl:mb-0">
+				{% include '_components/fields/input' with {
+					label: 'Pick up date',
+					name: 'collectionDate',
+					type: 'date',
+					required: true
+				} only %}
+			</div>
+			<div class="col-span-12 mb-3 md:col-span-6 xl:col-span-3 xl:mb-0">
+				{% include '_components/fields/input' with {
+					label: 'Pick up time',
+					name: 'collectionTime',
+					type: 'time',
+					required: true
+				} only %}
+			</div>
+			<div class="col-span-12 mb-3 md:col-span-6 xl:col-span-3 xl:mb-0">
+				{% include '_components/fields/input' with {
+					label: 'Pick address',
+					name: 'collectionPostcode',
+					type: 'text',
+					required: true,
+					addressLookup: true
+				} only %}
+			</div>
+			<div class="col-span-12 mb-3 md:col-span-6 xl:col-span-3 xl:mb-0">
+				{% include '_components/fields/input' with {
+					label: 'Drop off address',
+					name: 'destinationPostcode',
+					type: 'text',
+					required: true,
+					addressLookup: true
+				} only %}
+			</div>
+		</div>
+		<div class="w-full flex-shrink-0 xl:w-auto">
+			{% include '_components/buttons/buttonBlock' with {
+				text: 'Get a quote',
+				type: 'button',
+				style: 'green-light',
+				class: 'w-full xl:w-auto'
+			} only %}
+		</div>
+	</div>
+
+</form>
+
+
+
+{% js %}
+
+   document.addEventListener('alpine:init', () => {
+	  Alpine.data('quoteForm', () => ({
+		 redirect() { 
+
+			const form = event.target;
+			const formData = new FormData(form);
+			const queryString = new URLSearchParams(formData).toString();
+			window.location.href = `/quote?${queryString}`;
+
+		 }
+	  }))
+   })
+   
+{% endjs %}

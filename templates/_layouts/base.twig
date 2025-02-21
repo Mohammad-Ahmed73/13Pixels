@@ -1,0 +1,38 @@
+{%- minify -%}
+
+<!DOCTYPE html>
+<html class="no-js" lang="{{ craft.app.language|slice(0, 2) }}">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		 <!-- Basic Favicon -->
+        <link rel="icon" type="image/x-icon" href="/favicons/favicon.png">
+
+		{# Fonts #}
+		{% include '_components/fontFace' %}
+
+		{# CSS / JS #}
+		{{ craft.vite.script('/src/index.js', false) }}
+
+		{# Favicons #}
+		{{ craft.vite.inline('@webroot/dist/favicons/webapp.html') }}
+
+		{# Font Awesome #}
+		<script src="https://kit.fontawesome.com/0d1e414ec2.js" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+		{# AlpineJS "blip" Fix #}
+		<style>
+			[x-cloak] { display: none; }
+		</style>
+
+	</head>
+
+	<body class="bg-white text-black antialiased">
+		{% block body %}
+
+		{% endblock %}
+	</body>
+</html>
+
+{%- endminify -%}

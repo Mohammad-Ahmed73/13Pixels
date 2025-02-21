@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: galleryImages
+instructions: null
+name: 'Gallery Images'
+searchable: false
+settings:
+  createButtonLabel: 'New image'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - f0c3bd54-deee-4341-af79-8badf1af0e17 # Gallery Image
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,83 @@
+color: rose
+fieldLayouts:
+  562f0dd7-0d08-4ca7-af45-5e80beb9df43:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 7dadecc9-3f3d-4f5b-80ee-0d1e38917c81
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: cb5451de-7ba9-4d1a-a1e8-a521c12cf67b # Service Short Title
+            handle: text
+            includeInCards: true
+            instructions: null
+            label: Text
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1eb861ea-017a-43b4-a53c-1f931606b141
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 803cdff6-4499-4c9c-b7f8-a204015301dc # Service Entry
+            handle: service
+            includeInCards: false
+            instructions: null
+            label: Service
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 448bd8ba-1ee6-4782-a23e-414a798f6011
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 254153d6-eb96-4e8a-b8e1-95ea36fb6427
+        userCondition: null
+handle: serviceSelectorItem
+hasTitleField: false
+icon: taxi
+name: 'Service Selector Item'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

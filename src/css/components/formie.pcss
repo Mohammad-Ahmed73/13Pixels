@@ -1,0 +1,162 @@
+:root {
+
+	.fui-form {
+		@apply w-full;
+	}
+
+	/* Multi Line */
+	.fui-type-multi-line-text .fui-input {
+		@apply h-32 resize-none;
+	}
+
+	/* Select dropdown */
+	.form-select,
+	.fui-select:not([multiple]):not([size]) {
+		background-size: 12px 8px;
+	}
+
+	.fui-select:not([multiple]):not([size]) {
+		@apply pr-14;
+	}
+
+	.form-select,
+	.fui-custom .fui-select:not([multiple]):not([size]) {
+		background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDE0IDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTcuMzQzNzUgNy4zNzVDNy4xNTYyNSA3LjU2MjUgNi44MTI1IDcuNTYyNSA2LjYyNSA3LjM3NUwwLjYyNSAxLjM3NUMwLjQzNzUgMS4xODc1IDAuNDM3NSAwLjg0Mzc1IDAuNjI1IDAuNjU2MjVDMC44MTI1IDAuNDY4NzUgMS4xNTYyNSAwLjQ2ODc1IDEuMzQzNzUgMC42NTYyNUw3IDYuMzEyNUwxMi42MjUgMC42NTYyNUMxMi44MTI1IDAuNDY4NzUgMTMuMTU2MiAwLjQ2ODc1IDEzLjM0MzggMC42NTYyNUMxMy41MzEyIDAuODQzNzUgMTMuNTMxMiAxLjE4NzUgMTMuMzQzOCAxLjM3NUw3LjM0Mzc1IDcuMzc1WiIgZmlsbD0iYmxhY2siLz48L3N2Zz4=')
+			no-repeat right 20px center;
+	}
+
+	/* Error */
+	/* .fui-alert {
+		@apply mb-5 p-5 text-md;
+	}
+
+	.fui-alert-error {
+		@apply bg-green font-bold text-white;
+	}
+
+	.fui-alert-success {
+		@apply bg-green font-bold text-white;
+	} */
+
+	/* Checkbox */
+	/* Checkbox square  */
+	.fui-checkbox label:before {
+		@apply top-0 rounded-sm bg-transparent;
+	}
+	.fui-checkbox label {
+		@apply focus:outline-none focus:ring-0;
+	}
+
+	/* Checkbox Text Label */
+	.fui-checkbox-label {
+		@apply text-xs/tight font-light md:text-sm xl:text-md;
+	}
+
+	/* **************************************************** */
+	/* Theme - Custom Dark */
+	/* **************************************************** */
+
+		/* Inputs */
+		.fui-custom-dark .fui-input[type='text'],
+		.fui-custom-dark .fui-input[type='email'],
+		.fui-custom-dark .fui-input[type='number'],
+		.fui-custom-dark .fui-input[type='tel'],
+		.fui-custom-dark .fui-select,
+		.fui-custom-dark .fui-type-multi-line-text .fui-input {
+			@apply block w-full appearance-none rounded-none border-none bg-white px-4 py-3 text-base leading-tight text-black outline-none transition-colors focus:shadow-none focus:outline-none;
+		}
+
+		/* Button */
+		.fui-custom-dark .fui-btn-wrapper {
+			@apply pt-10;
+		}
+
+		/* Checkbox */
+		.fui-custom-dark .fui-checkbox label:before {
+			@apply border-white;
+		}
+
+		.fui-custom-dark .fui-checkbox-label {
+			@apply text-gray-500;
+		}
+		.fui-custom-dark .fui-checkbox-label a {
+			@apply text-white underline;
+		}
+
+	/* **************************************************** */
+	/* Theme - Custom Light */
+	/* **************************************************** */
+
+		/* Single field styles */
+
+		.fui-custom-light .fui-field {
+			@apply relative mb-0;
+		}
+
+		.fui-custom-light .fui-input,
+		.fui-select:not([multiple]):not([size]) {
+			@apply w-full px-3 pt-8 pb-3 text-base border rounded-none border-gray-300 ring-4 ring-transparent hover:border-gray-400 focus:border-black focus:shadow-none focus:ring-black/10;
+		}
+
+		.fui-custom-light .fui-label,
+		.fui-custom-light .fui-legend,
+		.fui-custom-light .fui-heading.fui-heading-h4 {
+			@apply pointer-events-none absolute top-3 left-3 z-30 text-sm/none font-light text-black;
+		}
+
+		.fui-custom-light .fui-heading.fui-heading-h2 {
+			@apply text-2xl mb-0;
+		}
+
+		.fui-custom-light .fui-repeater-row {
+			@apply bg-gray-100 rounded-none;
+		}
+
+		.fui-custom-light .fui-checkbox label {
+			@apply text-base;
+		}
+
+		.fui-custom-light .fui-checkbox label:before {
+			@apply mt-1 bg-green-600 border-green-600;
+		}
+
+	/* **************************************************** */
+	/* Theme - Quote */
+	/* **************************************************** */
+
+		.fui-quote .fui-input {
+			@apply border-none px-0 py-2;
+		}
+
+		/* Single field styles */
+		.fui-quote .fui-field {
+			@apply mb-0;
+		}
+
+		.fui-quote .fui-input {
+			@apply w-full;
+		}
+
+		.fui-quote .fui-btn-wrapper {
+			@apply m-0 p-0 pt-5 xl:absolute xl:right-0 xl:top-1/2 xl:-translate-y-1/2 xl:pt-0;
+		}
+
+		.fui-quote .fui-page-row {
+			@apply grid-cols-1 md:grid-cols-2 xl:grid-cols-4;
+		}
+
+		.fui-quote .fui-field {
+			@apply relative;
+		}
+
+		.fui-quote .fui-label,
+		.fui-quote .fui-legend,
+		.fui-quote .fui-heading.fui-heading-h4 {
+			@apply pointer-events-none absolute -top-1 left-0 z-30 text-xs/none font-light text-black;
+		}
+
+		.fui-quote .fui-input {
+			@apply border-none px-0 py-2;
+		}
+	
+}

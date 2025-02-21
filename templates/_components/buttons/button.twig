@@ -1,0 +1,90 @@
+{#
+    Button Component
+
+    @type {include}
+    @param {string} text - required
+    @param {string} style
+    @param {string} type
+    @param {string} url
+    @param {string} icon
+    @param {string} class
+    @param {string} attributes
+    @param {integer} tabIndex - optional tab index value; default is 0. Use -1 to remove from tab order.
+
+    @example
+    {% include '_components/buttons/button' with {
+        text: 'Button text',
+        style: 'white',
+        type: 'button',
+        url: '#',
+        class: 'mt-10',
+        attributes: 'data-foo="bar"',
+        tabIndex: 0
+    } %}
+#}
+
+{% set style = style|default('white') %}
+{% set type = type ?? 'button' %}
+{% set url = url ?? '#' %}
+{% set icon = icon ?? 'arrow-up-right' %}
+{% set tabIndex = tabIndex|default(0) %}
+
+{% switch style %}
+    {% case 'white' %}
+        {% set textClass = 'text-gray-600' %}
+        {% set iconClass = 'text-gray-600' %}
+        {% set btnClass = 'border-gray-600 bg-white' %}
+    {% case 'white-outline' %}
+        {% set textClass = 'text-white' %}
+        {% set iconClass = 'text-white' %}
+        {% set btnClass = 'border-white' %}
+    {% case 'white-outline-green' %}
+        {% set textClass = 'text-white' %}
+        {% set iconClass = 'text-green' %}
+        {% set btnClass = 'border-white' %}
+{% endswitch %}
+
+{% set baseClass = '
+    inline-flex
+    items-center
+    group
+    relative
+    cursor-pointer
+    flex-shrink-0
+    shadow-none
+    h-12
+    px-5
+    duration-300
+    outline-none
+    focus:outline-none
+' %}
+
+<{{ type }}
+    {{ type == 'a' ? ('href="' ~ (url ?? '#') ~ '"')|raw }} 
+    class="{{ baseClass }} {{ class ?? '' }} js-button"
+    {{ attributes|default('')|raw }}
+    aria-label="{{ text|default('Button') }}"
+    tabindex="{{ tabIndex }}"
+    {{ target is defined  and target|length ? 'target="_blank" rel="noreferrer noopener"' }}
+>
+    {# Text + Icon #}
+    <div class="relative z-20 w-full pr-8">
+        <span class="block text-light {{ textClass }}">{{ text }}<span>
+        {% set svgContent = source('_svg/' ~ icon ~ '.svg') %}
+        {{
+            svg(svgContent)|attr({
+                class: 'absolute top-1/2 right-0 fill-current w-4 h-4 transform -translate-y-1/2 duration-300 transition-all  group-hover:opacity-0 group-focus-visible:opacity-0 group-hover:translate-x-full group-focus-visible:translate-x-full ' ~ iconClass,
+                'aria-hidden':'true'
+            })
+        }}
+        {{
+            svg(svgContent)|attr({
+                class: 'absolute top-1/2 right-0 fill-current w-4 h-4 transform -translate-y-1/2 -translate-x-full duration-300 transition-all opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 group-hover:translate-x-0 group-focus-visible:translate-x-0 ' ~ iconClass,
+                'aria-hidden':'true'
+            })
+        }}
+    </div>
+
+    {# Background #}
+    <div class="absolute z-10 inset-0 overflow-hidden border transition-[border-radius] duration-500 group-hover:rounded-[60px] group-focus-visible:rounded-[60px] {{ btnClass }}"></div>
+</{{ type }}>

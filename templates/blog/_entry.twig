@@ -1,0 +1,144 @@
+{% set timeContent %}
+	{% for block in entry.contentBuilder.all() %}
+		{% include '_blocks/body/' ~ block.type.handle %}
+	{% endfor %}
+{% endset %}
+{# prettier-ignore-start #}
+{% set readTime = include('_components/readTime', { text: timeContent }) %}
+{# prettier-ignore-end #}
+
+{% extends '_layouts/global' %}
+
+{% block site %}
+	<section aria-label="Hero" class="pb-14 lg:pb-[90px] xl:pb-32">
+		<div class="bg-gray-1000">
+			<div class="grid gap-y-10 pb-5 pt-36 text-white md:grid-cols-12 md:pb-16 md:pt-52 {{ vars.class.siteMargin.x }}">
+				{# Text #}
+				<div class="flex flex-col gap-y-5 md:col-span-11 md:pr-10">
+					{# Info #}
+					<div class="flex flex-wrap items-center gap-5">
+						{% if entry.blogTag|length %}
+							<div class="rounded-full border-[0.5px] border-white px-3 py-1 text-xs font-light">
+								{{ entry.blogTag.one().title }}
+							</div>
+						{% endif %}
+						<div class="flex items-center gap-x-2 text-xs">
+							<i class="fa-sharp fa-light fa-clock"></i>
+							<span class="inline-block font-light">{{ readTime ~ ' Read' }}</span>
+						</div>
+						<div class="flex items-center gap-x-2 text-xs">
+							<i class="fa-sharp fa-light fa-calendar-day"></i>
+							<span class="inline-block font-light">{{ entry.postDate|date('F j, Y') }}</span>
+						</div>
+					</div>
+
+					{% if entry.entryTitle|length %}
+						{% include '_components/heading' with {
+							tag: 'h2',
+							size: '8xl',
+							text: entry.entryTitle,
+							class: 'text-5xl md:!text-6xl lg:!text-5xl xl:!text-6xl 2xl:!text-[77px]'
+						} %}
+					{% endif %}
+					{% include '_components/richText' with {
+						content: '<p>' ~ entry.headingText ~ '</p>',
+						class: 'max-w-[970px]'
+					} %}
+				</div>
+			</div>
+		</div>
+
+		{# Image #}
+		{% if entry.image|length %}
+			<div class="relative">
+				<div class="relative z-20 {{ vars.class.siteMargin.x }}">
+					<div class="aspect-h-3 aspect-w-4 md:aspect-h-8 md:aspect-w-16">
+						{% include '_components/picture' with {
+							image: entry.image.one(),
+							transform: '4x3',
+							ratio: false,
+							focalPoint: true
+						} %}
+					</div>
+				</div>
+				<div class="absolute left-0 top-0 z-10 h-1/2 w-full bg-gray-1000"></div>
+			</div>
+		{% endif %}
+	</section>
+
+	{# Content #}
+	<div class="relative z-20 grid md:grid-cols-12 {{ vars.class.gap.x }} {{ vars.class.siteMargin.x }}">
+		{# Article Content #}
+		<div class="col-span-full md:col-span-full lg:col-span-8 lg:col-start-3 2xl:col-span-6 2xl:col-start-4">
+			{% for block in entry.contentBuilder.all() %}
+				<div id="block-{{ block.id }}">
+					{% include '_blocks/body/' ~ block.type %}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	{# More Articles #}
+	{% embed '_components/section'
+		with {
+			paddingY: 'flush'
+		}
+	%}
+		{% block sectionContent %}
+			{# Heading + Button #}
+			<div class="grid gap-y-10 md:grid-cols-12">
+				{# Text #}
+				<div class="flex flex-col gap-y-5 md:col-span-9 md:pr-10">
+					{% if global.moreArticlesEyebrow|length %}
+						{% include '_components/eyebrow' with {
+							text: global.moreArticlesEyebrow,
+							style: 'grey',
+							spacing: ''
+						} only %}
+					{% endif %}
+					{% if global.moreArticlesHeading|length %}
+						{% include '_components/heading' with {
+							tag: 'h2',
+							size: '8xl',
+							text: global.moreArticlesHeading,
+							class: 'text-5xl md:!text-6xl lg:!text-5xl xl:!text-6xl 2xl:!text-[77px]'
+						} %}
+					{% endif %}
+				</div>
+
+				{# Button #}
+				{% if global.moreArticlesButton|length %}
+					<div class="md:col-span-3 md:flex md:items-end md:justify-end">
+						{% include '_components/buttons/buttonBlock' with {
+							text: global.moreArticlesButton.text,
+							type: 'a',
+							style: 'green-outline-light',
+							url: global.moreArticlesButton.url,
+							class: 'w-full md:w-auto'
+						} %}
+					</div>
+				{% endif %}
+			</div>
+
+			{# Entries #}
+			<div id="entries-grid" class="grid gap-y-12 pt-10 md:grid-cols-12 md:gap-y-16 lg:gap-y-24 lg:pt-16 {{ vars.class.gap.x }} {{ vars.class.gap.y }}">
+				{% for item in craft.entries.section('blog').limit(3).all() %}
+					{% set timeContent %}
+						{% for block in item.contentBuilder.all() %}
+							{% include '_blocks/body/' ~ block.type.handle %}
+						{% endfor %}
+					{% endset %}
+					{# prettier-ignore-start #}
+					{% set readTime = include('_components/readTime', { text: timeContent }) %}
+                    {# prettier-ignore-end #}
+					<div class="md:col-span-6 lg:col-span-4">
+						{% include '_components/cards/blog' with {
+							content: item,
+							read: readTime
+						} %}
+					</div>
+				{% endfor %}
+			</div>
+		{% endblock %}
+	{% endembed %}
+{% endblock %}

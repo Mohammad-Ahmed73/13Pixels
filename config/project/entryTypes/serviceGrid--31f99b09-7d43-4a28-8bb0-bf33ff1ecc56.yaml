@@ -1,0 +1,114 @@
+color: lime
+fieldLayouts:
+  14876809-2fd6-4fb3-bbe3-719ad8cc70c8:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: a91d4aac-91d3-4160-ae83-88ae3144e24f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            dismissible: false
+            elementCondition: null
+            style: tip
+            tip: 'Leave blank to use the CTA content set in globals.'
+            type: craft\fieldlayoutelements\Tip
+            uid: 8f1df45b-52e3-4d9b-bd2f-27990625aa2a
+            userCondition: null
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: dee0e12a-d0be-4dce-864e-96f853d767f2 # Plain Text
+            handle: ctaText
+            includeInCards: false
+            instructions: null
+            label: 'CTA Text'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0d835160-67a5-4849-975f-fe464e5cc576
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: ctaButton
+            includeInCards: false
+            instructions: null
+            label: 'CTA Button'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d8a9019f-0409-441a-acf1-48d6c7e8206a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 95b43e20-23e9-41f4-899b-82f6b90ef62f
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: b8cf975c-8b0e-4f79-968b-ae246d2f8bf1 # Padding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0e74d51c-be37-44bb-ba16-9871d3e0d000
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Block Settings'
+        uid: 771c0623-1092-4d62-b62c-2d7a1bc33e5d
+        userCondition: null
+handle: serviceGrid
+hasTitleField: false
+icon: taxi
+name: 'Service Grid'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

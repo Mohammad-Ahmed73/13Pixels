@@ -1,0 +1,93 @@
+{% set mainLogo = source('_svg/logo_main.svg') %}
+{% set mainLogoDark = source('_svg/logo_main_dark.svg') %}
+
+<footer class="relative">
+	<div class="bg-[#F6F7FA] md:px-4 md:py-[80px]">
+		<div class="bg-dark relative z-[0] mx-auto max-w-[1170px] px-4 py-[40px] md:rounded-30 md:px-[30px] md:py-[60px] lg:px-[60px] lg:py-[80px]">
+			<div class="flex flex-wrap items-center justify-center gap-y-6 md:flex-nowrap md:justify-between">
+				<h3 class="mb-0 text-2xl font-bold text-white xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+					{{ global.footerImageHeading|nl2br }}
+				</h3>
+				{% include '_components/buttons/buttonBlock' with {
+					text: global.footerButton1.text,
+					type: 'a',
+					style: 'green',
+					url: global.footerButton1.url,
+					rounded: true,
+                    icon: 'arrow-right'
+				} %}
+			</div>
+			{% include '_components/picture' with {
+				image: global.footerImage.one(),
+				transform: 'noRatio',
+				ratio: false,
+				focalPoint: true,
+				loading: 'lazy',
+				imgClass: 'object-cover w-full h-full absolute inset-0 z-[-1] rounded-30 none md:block'
+			} %}
+		</div>
+	</div>
+	<div class="bg-dark py-5xl relative px-4 md:py-[60px] lg:py-[80px]">
+		<div class="mx-auto max-w-[1170px]">
+			<div class="">
+				<div class="mb-8">
+					<!-- Logo and Button (Single Line on Mobile) -->
+					<a href="{{ siteUrl }}" class="mb-4 block h-16 w-36 focus:outline-none" role="button" aria-label="Main header logo">
+						{{
+							svg(mainLogo)|attr({
+								class: 'fill-current w-full',
+								'aria-hidden': 'true'
+							})
+						}}
+					</a>
+					{% if global.companyText2|length %}
+						<p class="leading[1.1] font-semibold mb-0 text-base text-white">
+							{{ global.companyText2 }}
+						</p>
+					{% endif %}
+				</div>
+				<!-- Navigation Links -->
+				{% for item in global.footerNavigationColumns.all() %}
+					<div class="flex flex-wrap items-start gap-3">
+						{% for link in item.links.all() %}
+							<a href="{{ link.button.url }}" class="font-semibold inline-block text-white text-base transition-colors duration-300 hover:text-[#E9550D] focus:text-[#E9550D] focus:outline-none md:text-md">{{ link.button.text }}</a>
+						{% endfor %}
+					</div>
+				{% endfor %}
+			</div>
+			<!-- Back to Top -->
+			<div class="flex h-full flex-col items-end justify-between gap-y-5 lg:col-span-6">
+				<div class="mt-12 flex-wrap lg:flex">
+					{% include '_components/backToTop' %}
+				</div>
+			</div>
+			<!-- Footer Base -->
+			<div class="flex items-center justify-between border-t border-gray-600 py-4 text-sm xl:text-base 2xl:text-md">
+				<!-- Copyright Message -->
+				<div class="text-left">
+					<span class="font-light text-white">
+						&copy; {{ now|date('Y') }}
+						{{ global.companyText1|length ? global.companyText1 : siteName }}
+					</span>
+				</div>
+				<!-- Social Links -->
+				{% if global.socialLinks|length %}
+					<div class="flex gap-x-4">
+						{% for item in global.socialLinks.all() %}
+							{% include '_components/buttons/buttonRound' with {
+								style: 'green-outline',
+								icon: item.button.brandIcon.value,
+								type: 'a',
+								url: item.button.url,
+								size: 'normal',
+								iconStyle: '#FFFFFF',
+								target: '_blank'
+                                
+							} %}
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</footer>

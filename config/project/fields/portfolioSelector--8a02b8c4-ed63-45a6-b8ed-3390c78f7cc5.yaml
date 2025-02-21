@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: portfolioSelector
+instructions: null
+name: 'Portfolio Selector'
+searchable: false
+settings:
+  createButtonLabel: 'New Portfolio'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 18edcccd-07a3-48b5-a907-592a5c81f4ee # Portfolio Card Selector
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

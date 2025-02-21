@@ -1,0 +1,58 @@
+{#
+	Fleet Card Component
+
+	@type {include}
+    @param {object} content
+
+	@example
+    {% include '_components/cards/fleet' with {
+        content: item
+    } %}
+#}
+
+{% set image = content.image.one() %}
+{% set heading = content.title %}
+{% set text = content.textExcerpt %}
+{% set url = content.url %}
+{% set tag = content.blogTag|length ? content.blogTag.one().title : null %}
+{% set date = content.postDate|date('F j, Y') %}
+{% set read = read ?? '' %}
+
+<a href="{{ item.url }}" class="group relative block focus-visible:outline-none">
+	<div class="relative mb-4">
+		{% if tag|length %}
+			<div class="absolute left-5 top-5 z-30 rounded-full px-5 py-2 text-base font-medium text-dark bg-[#FFFFFFF5]">
+				{{ tag }}
+			</div>
+		{% endif %}
+		{# Image + Overlay #}
+		<div class="absolute inset-x-0 bottom-0 z-20 h-1/2 bg-gradient-to-t from-black to-transparent transition-opacity duration-500 group-hover:opacity-50 group-focus-visible:opacity-50"></div>
+		<div class="aspect-h-9 aspect-w-12 relative z-10 w-full rounded-30 overflow-hidden">
+			{% include '_components/picture' with {
+				image: image,
+				transform: '4x3',
+				ratio: false,
+				focalPoint: false,
+				alt: '',
+				imgClass: 'object-cover w-full h-full transition-transform duration-500 group-hover:scale-[1.03] group-focus-visible:scale-[1.03]'
+			} %}
+		</div>
+	</div>
+
+	<div>
+		{# Text #}
+		<div class="text-base text-[#0E0A20CC] font-medium mb-4">
+			<span class="inline-block font-light">{{ date }}</span>
+		</div>
+		{% include '_components/heading' with {
+			text: item.title,
+			tag: 'h4',
+			size: '2xl',
+			class: 'text-dark font-semibold mb-2'
+		} %}
+		{% include '_components/richText' with {
+			content: text,
+			class: 'font-medium text-dark'
+		} only %}
+	</div>
+</a>

@@ -1,0 +1,44 @@
+{% set images = block.images.all() %}
+{% set aspectRatio = block.aspectRatio.value %}
+
+{% set aspectRatios = {
+	landscape: 'aspect-w-4 aspect-h-3',
+	portrait: 'aspect-w-3 aspect-h-4',
+	square: 'aspect-w-1 aspect-h-1'
+} %}
+{% set selectedAspectRatio = aspectRatios[aspectRatio] ?? 'aspect-w-4 aspect-h-3' %}
+
+{% set transforms = {
+	landscape: '4x3',
+	portrait: '3x4',
+	square: '1x1'
+} %}
+{% set selectedTransform = transforms[aspectRatio] ?? '4x3' %}
+
+{% embed '_components/section'
+	with {
+		paddingY: paddingY ?? 'bottom',
+		paddingYSize: 'body',
+		paddingX: 'flush'
+	}
+%}
+	{% block sectionContent %}
+		{% if block.images|length %}
+			<div class="grid gap-y-10 md:grid-cols-12 md:gap-x-7">
+				{% for item in images %}
+					<div class="{{ (images|length) == 2 ? 'md:col-span-6' : 'md:col-span-full' }}">
+						<div class="{{ selectedAspectRatio }}">
+							{% include '_components/picture' with {
+								image: item.image.one(),
+								transform: selectedTransform,
+								ratio: false,
+								alt: item.image.one().title,
+								imgClass: 'object-cover w-full h-full'
+							} %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	{% endblock %}
+{% endembed %}

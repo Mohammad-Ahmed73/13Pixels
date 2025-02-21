@@ -1,0 +1,21 @@
+columnSuffix: null
+handle: fleetTag
+instructions: null
+name: 'Fleet Tag'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionLabel: 'Add tag'
+  showCardsInGrid: false
+  showSiteMenu: true
+  source: 'group:13c1aa4b-e319-4318-89d6-6d9706cbb7ff' # Fleet Tag
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Categories

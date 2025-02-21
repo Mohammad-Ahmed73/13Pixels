@@ -1,0 +1,11 @@
+handle: quote
+name: Quote
+outputCssLayout: true
+outputCssLocation: page-header
+outputCssTheme: true
+outputJsBase: true
+outputJsLocation: page-footer
+outputJsTheme: true
+sortOrder: 2
+template: _forms/_form-quote
+useCustomTemplates: true

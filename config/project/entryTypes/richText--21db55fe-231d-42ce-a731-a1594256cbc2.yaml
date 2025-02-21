@@ -1,0 +1,83 @@
+color: purple
+fieldLayouts:
+  02573f00-56a7-4762-ae51-caa5eda98706:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 3c2b020d-10a7-4aa2-964a-22878fca2d83
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: 86b0adf0-5bb4-4cc3-b597-b32bd746081e # Rich Text - Full
+            handle: richText
+            includeInCards: false
+            instructions: null
+            label: 'Rich Text'
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6339395d-2c7b-49fc-bb47-e20a521ffaa1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: dee0e12a-d0be-4dce-864e-96f853d767f2 # Plain Text
+            handle: navigationHeading
+            includeInCards: false
+            instructions: 'Add heading text to add this section to page navigation (if available).'
+            label: 'Navigation Heading'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2a5f7348-645a-4828-9f92-e972c1002d3e
+            userCondition: null
+            warning: null
+            width: 50
+        name: Content
+        uid: 8dc52551-9b6c-4b6d-b02d-5da901264e2e
+        userCondition: null
+handle: richText
+hasTitleField: false
+icon: text
+name: 'Rich Text'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

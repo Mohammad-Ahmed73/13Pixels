@@ -1,0 +1,85 @@
+color: yellow
+fieldLayouts:
+  d194dd27-0cbc-4266-8264-06f5970a735f:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-13T12:22:11+00:00'
+            elementCondition: null
+            fieldUid: 86b0adf0-5bb4-4cc3-b597-b32bd746081e # Rich Text - Full
+            handle: quote
+            includeInCards: false
+            instructions: null
+            label: Quote
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 414354b8-c34c-4463-903e-068cc565af64
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-13T12:22:11+00:00'
+            elementCondition: null
+            fieldUid: bf1b5716-c9c3-4a8a-9304-dfe36409e9a0 # Person Image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6331ec68-aa7f-4506-b832-cc28cca15d77
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-13T12:22:11+00:00'
+            elementCondition: null
+            fieldUid: 32972c85-b85e-45de-a6a1-d58a643d3e81 # Headiing
+            handle: nameofPerson
+            includeInCards: false
+            instructions: null
+            label: 'Name Of Person'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 063e91f9-14e3-4efa-b649-5041f79b5883
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-13T12:22:11+00:00'
+            elementCondition: null
+            fieldUid: 86b0adf0-5bb4-4cc3-b597-b32bd746081e # Rich Text - Full
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: 'Person Designation'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f95c47ce-552a-415a-86ee-9b943e4020f0
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 04489395-3699-443b-b6bc-f566c0ec45de
+        userCondition: null
+handle: ceoSlide
+hasTitleField: false
+icon: a
+name: 'CEO Slide'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

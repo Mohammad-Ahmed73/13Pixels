@@ -1,0 +1,19 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 5eefdcdd-6407-4cd7-9ce4-0055574620d9 # FAQ
+handle: faq
+maxAuthors: 1
+name: FAQ
+propagationMethod: all
+siteSettings:
+  08c386f4-5a41-4c9f-8282-f6785af06bfc: # $CRAFT_SITE_NAME
+    enabledByDefault: true
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: 1
+  uid: 44fca43d-573c-4ca1-9ab7-5d95789b7bb3
+type: structure

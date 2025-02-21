@@ -1,0 +1,21 @@
+columnSuffix: null
+handle: portfolioTag
+instructions: null
+name: 'Portfolio Tag'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: 3
+  minRelations: null
+  selectionLabel: 'Add Tag'
+  showCardsInGrid: false
+  showSiteMenu: true
+  source: 'group:b90e7f6e-a412-43a1-9441-43a56a71a522' # Portfolio Category
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Categories

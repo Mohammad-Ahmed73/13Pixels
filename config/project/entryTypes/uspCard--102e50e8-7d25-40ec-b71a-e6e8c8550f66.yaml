@@ -1,0 +1,71 @@
+color: fuchsia
+fieldLayouts:
+  7091e3da-c7ff-4bdc-a238-32b0fe71d458:
+    cardView:
+      - 'layoutElement:3a36f7b4-0fbc-40a4-8d77-154c1d796b29'
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-04T12:16:46+00:00'
+            elementCondition: null
+            fieldUid: dee0e12a-d0be-4dce-864e-96f853d767f2 # Plain Text
+            handle: heading
+            includeInCards: true
+            instructions: null
+            label: Heading
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3a36f7b4-0fbc-40a4-8d77-154c1d796b29
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-04T12:16:46+00:00'
+            elementCondition: null
+            fieldUid: dee0e12a-d0be-4dce-864e-96f853d767f2 # Plain Text
+            handle: text
+            includeInCards: false
+            instructions: null
+            label: Text
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c05849e8-4dbb-421b-94cd-c75c9ddd9514
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-13T14:15:13+00:00'
+            elementCondition: null
+            fieldUid: 1fc66fb5-acd7-4c9f-9da1-e1e25e32dce7 # Number
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d9e8df9c-163d-410b-a678-805ecaba0522
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: aee6cf8b-560a-4a78-a14f-71f9360fa4c9
+        userCondition: null
+handle: uspCard
+hasTitleField: false
+icon: star-shooting
+name: 'USP Card'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

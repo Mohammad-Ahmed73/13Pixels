@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: sliderImages
+instructions: null
+name: 'Slider Images'
+searchable: false
+settings:
+  createButtonLabel: 'New image'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 08255804-15c4-4dab-a60b-2b98d3942b27 # Slider Image
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

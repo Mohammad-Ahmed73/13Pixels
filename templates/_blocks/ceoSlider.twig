@@ -1,0 +1,114 @@
+
+{% set slides = block.ceoSlide.all() %}
+{% set slideCount = slides|length %}
+{% if (block.theme|length) and block.theme == 'light' %}
+	{% set bgClass = '' %}
+	{% set textClass = '' %}
+	{% set btnStyle = 'green-outline-light' %}
+	{% set navBtnStyle = 'green-outline' %}
+{% else %}
+	{% set bgClass = 'bg-gray-1000 py-16 lg:py-32' %}
+	{% set textClass = 'text-white' %}
+	{% set btnStyle = 'green-outline' %}
+	{% set navBtnStyle = 'green-outline' %}
+{% endif %}
+
+{% embed '_components/section' with {
+    paddingX: 'flush',
+    paddingY: 'sectionPadding',
+    maxWidth: true,
+    class: 'bg-[#F6F7FA]'
+} %}
+{% block sectionContent %}
+<div class="relative w-full">
+    <div class="swiper js-ceo-slider">
+        <div class="swiper-wrapper">
+            {% for slide in slides %}
+                <div class="swiper-slide">
+                    {% if slide.quote|length %}
+                        {% include '_components/richText' with {
+                            class: 'lg:text-2xl md:text-lg text-md md:font-semibold font-medium',
+                            content: slide.quote
+                        } %}
+                    {% endif %}
+
+                    <div class="flex items-center justify-between md:flex-nowrap flex-wrap gap-6 md:mt-[48px] mt-6">
+                        <div class="flex items-center gap-6 md:w-auto w-full">
+                            <div class="md:w-[80px] md:h-[80px] w-[60px] h-[60px] rounded-full overflow-hidden">
+                                {% include '_components/picture' with {
+                                    image: slide.personImage,
+                                    transform: '1x1',
+                                    ratio: false,
+                                    imgClass: 'object-cover w-full h-full'
+                                } %}
+                            </div>
+                            <div class="">
+                                {% if slide.nameofPerson|length %}
+                                    {% include '_components/heading' with {
+                                        tag: 'h5',
+                                        size: '2xl',
+                                        class: 'text-dark font-medium md:font-semibold',
+                                        text: slide.nameofPerson,
+                                    } %}
+                                {% endif %}
+
+                                {% if slide.richTextFull|length %}
+                                    {% include '_components/richText' with {
+                                        class: 'md:text-base text-sm font-medium mt-1',
+                                        content: slide.richTextFull
+                                    } %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center gap-5 md:w-auto w-full">
+                            <!-- Navigation Arrows -->
+                            {% include '_components/buttons/buttonRound' with {
+								type: 'button',
+								icon: 'arrow-left',
+								style: navBtnStyle,
+								class: 'slider-button-prev'
+							} %}
+                            <!-- Pagination Dots -->
+                            <div class="swiper-pagination text-[#0E0A2066] text-base font-medium"></div>
+                            {% include '_components/buttons/buttonRound' with {
+								type: 'button',
+								icon: 'arrow-right',
+								style: navBtnStyle,
+								class: 'slider-button-next'
+							} %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% endembed %}
+
+{# Swiper JS #}
+{% js %}
+document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.js-ceo-slider', {
+        loop: true, 
+        speed: 1000,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+       pagination: {
+            el: ".swiper-pagination",
+            type: "fraction", // Enables "01 / 05" format
+            formatFractionCurrent: function (number) {
+                return number.toString().padStart(2, '0'); // Converts 1 to "01"
+            },
+            formatFractionTotal: function (number) {
+                return number.toString().padStart(2, '0'); // Converts 5 to "05"
+            }
+        }
+    });
+});
+{% endjs %}

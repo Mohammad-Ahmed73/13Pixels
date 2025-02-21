@@ -1,0 +1,137 @@
+color: yellow
+fieldLayouts:
+  a7bc4d13-46f4-404d-a142-c7afebd142be:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-13T05:17:18+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: ca87f9f7-04c4-45f9-9e71-17c926a62a22
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-13T05:20:13+00:00'
+            elementCondition: null
+            fieldUid: b77958a3-700a-4ea9-a7f4-1328358556fd # Portfolio Description
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c62d2f72-55e1-4952-994d-ce088743c241
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-13T05:20:13+00:00'
+            elementCondition: null
+            fieldUid: 8a02b8c4-ed63-45a6-b8ed-3390c78f7cc5 # Portfolio Selector
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 50ead056-1f0e-4f22-849b-26dd1258fb68
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-13T05:20:13+00:00'
+            elementCondition: null
+            fieldUid: 32972c85-b85e-45de-a6a1-d58a643d3e81 # Headiing
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b8c372ee-076f-4e4f-b21d-35e425838bb4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-13T05:20:13+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2c3c902e-03ba-4eab-b50a-74bd9b53857b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: b930d469-2eba-4045-a300-76558d464597
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-13T05:20:13+00:00'
+            elementCondition: null
+            fieldUid: b8cf975c-8b0e-4f79-968b-ae246d2f8bf1 # Padding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3f244108-b8ee-4ed2-ba9e-88633ed2698a
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Block Setting'
+        uid: 31fb5e49-3fcb-4e4d-8a23-92b79ff194c1
+        userCondition: null
+handle: portfolioSelector
+hasTitleField: true
+icon: address-book
+name: 'Portfolio Selector'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

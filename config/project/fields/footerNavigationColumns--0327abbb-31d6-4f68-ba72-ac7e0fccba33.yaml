@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: footerNavigationColumns
+instructions: null
+name: 'Footer Navigation Columns'
+searchable: false
+settings:
+  createButtonLabel: 'Add column'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 75251b3a-7876-48bb-8719-9bb34b84a0e0 # Navigation Column
+  includeTableView: false
+  maxEntries: 2
+  minEntries: 1
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

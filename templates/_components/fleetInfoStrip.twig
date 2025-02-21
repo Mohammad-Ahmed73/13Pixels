@@ -1,0 +1,39 @@
+{#
+	Fleet Info Strip Component
+
+	@type {include}
+    @param {object} item
+    @param {string} size
+
+	@example
+    {% include '_components/cards/fleet' with {
+        content: item,
+        size: 'small'
+    } %}
+#}
+
+{% set textSizes = {
+	small: 'text-xs',
+	base: 'text-base'
+} %}
+
+{% set size = size ?? 'base' %}
+
+{% set icon = '' %}
+{% if item.value == 'handLuggageSpace' %}
+	{% set icon = 'fa-light fa-suitcase-rolling' %}
+{% elseif item.value == 'airConditioning' %}
+	{% set icon = 'fa-light fa-air-conditioner' %}
+{% elseif item.value == 'partitionCabinWithIntercom' %}
+	{% set icon = 'fa-light fa-shield-check' %}
+{% elseif item.value == 'refrigeratedRefreshments' %}
+	{% set icon = 'fa-light fa-whiskey-glass-ice' %}
+{% elseif item.value == 'multiCabinCharging' %}
+	{% set icon = 'fa-light fa-battery-bolt' %}
+{% elseif item.value == 'inCabinWifi' %}
+	{% set icon = 'fa-light fa-wifi' %}
+{% endif %}
+<div class="flex {{ size == 'small' ? 'gap-x-0.5' : 'gap-x-2' }}">
+	<i class="{{ icon }} {{ attribute(textSizes, size) }} w-5 pt-1"></i>
+	<span class="inline-block font-light {{ attribute(textSizes, size) }}">{{ item.label }}</span>
+</div>

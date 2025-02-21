@@ -1,0 +1,123 @@
+color: sky
+fieldLayouts:
+  ea442c38-7b27-4161-9e7b-1f7393052e37:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-14T16:49:47+00:00'
+            elementCondition: null
+            fieldUid: 32972c85-b85e-45de-a6a1-d58a643d3e81 # Headiing
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 652dafac-1c5f-44ea-b687-a0024d6e34ff
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-14T16:49:47+00:00'
+            elementCondition: null
+            fieldUid: 86b0adf0-5bb4-4cc3-b597-b32bd746081e # Rich Text - Full
+            handle: descriptionblog
+            includeInCards: false
+            instructions: null
+            label: 'Description '
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ea300d9f-b22b-412c-9b06-868017a82ff7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-14T16:49:47+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7a34a0ee-536a-4586-9ad8-e2c9f2c9c1c7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-14T16:49:47+00:00'
+            elementCondition: null
+            fieldUid: 6ab5b49e-92c6-4370-85a8-b71c99d1d999 # Blog Entries
+            handle: blog
+            includeInCards: false
+            instructions: null
+            label: 'Blog Entries'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 83fd4f31-1807-4a91-8570-9f2d9026e831
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 374aacb7-5fcb-4258-80d5-8a4c5c5e85ab
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-14T16:49:47+00:00'
+            elementCondition: null
+            fieldUid: 4ddfdf96-b71c-4a70-826e-4b46188161a3 # Theme
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: aa4044aa-506d-4af3-a12f-a6e16118dc5b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-14T16:49:47+00:00'
+            elementCondition: null
+            fieldUid: b8cf975c-8b0e-4f79-968b-ae246d2f8bf1 # Padding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 67dc3515-f5e1-4aad-a9cd-935668203c02
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Block Settings'
+        uid: 37295c01-3485-4ca7-ad22-824942218244
+        userCondition: null
+handle: blogSlider
+hasTitleField: false
+icon: atom
+name: 'Blog Slider'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

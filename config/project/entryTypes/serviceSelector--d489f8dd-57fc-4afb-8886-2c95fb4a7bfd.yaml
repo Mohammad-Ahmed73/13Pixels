@@ -1,0 +1,107 @@
+color: rose
+fieldLayouts:
+  922e66c9-b5bc-4d3d-9761-b8d368cf06d3:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-05T08:07:33+00:00'
+            elementCondition: null
+            fieldUid: 67f3a8e1-fb07-4135-9632-b9d51eb53605 # Eyebrow
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9ec9e346-da8f-4e02-b644-4b2a98c07aa2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-05T08:07:33+00:00'
+            elementCondition: null
+            fieldUid: f873b65a-cad9-4540-968d-2693401774ae # Service Selector
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a5189f65-2c83-4cc1-a3d9-abc27532c37c
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-05T08:08:48+00:00'
+            elementCondition: null
+            fieldUid: 3f7fee31-8d56-4142-85fe-a05aa37baa07 # Services Description
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e99b1f46-fe82-4be4-b783-38d3df0d49f3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-05T08:07:33+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a274fcae-6a9a-4803-98db-4e22574c4b4c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 65c3b5c9-d153-40a5-b4a1-c3e437b3c560
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-05T08:07:33+00:00'
+            elementCondition: null
+            fieldUid: b8cf975c-8b0e-4f79-968b-ae246d2f8bf1 # Padding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f5959d9d-fd7e-4ca4-bf3d-e89f6e99df51
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Block Settings'
+        uid: eb1d0503-6d54-47c3-8f78-6830fa304408
+        userCondition: null
+handle: serviceSelector
+hasTitleField: false
+icon: taxi
+name: 'Service Selector'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

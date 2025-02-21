@@ -1,0 +1,35 @@
+columnSuffix: null
+handle: headerNavigation
+instructions: null
+name: 'Header Navigation'
+searchable: false
+settings:
+  createButtonLabel: 'New item'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - df10c92e-5039-4a9f-b9f0-ec8193e92a7e # Link
+    -
+      __assoc__:
+        -
+          - uid
+          - 0ff0054d-4429-4d13-b8e8-8428703d8525 # Link - Dropdown Fleet
+    -
+      __assoc__:
+        -
+          - uid
+          - c29f12ad-07c4-45ab-a0e2-ea570b18326e # Link - Dropdown Cards
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

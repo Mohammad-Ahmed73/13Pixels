@@ -1,0 +1,50 @@
+{
+	"name": "craft-cms",
+	"private": true,
+	"version": "5.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite --port 3000",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@prettier/plugin-php": "^0.22.2",
+		"@tailwindcss/aspect-ratio": "^0.4.2",
+		"@vheemstra/vite-plugin-imagemin": "^2.0.0",
+		"@zackad/prettier-plugin-twig-melody": "^0.6.0",
+		"alpinejs": "^3.14.1",
+		"autoprefixer": "^10.4.19",
+		"imagemin-pngquant": "^10.0.0",
+		"imagemin-svgo": "^11.0.1",
+		"postcss": "^8.4.39",
+		"prettier": "^3.3.2",
+		"prettier-plugin-tailwindcss": "^0.6.5",
+		"rollup-plugin-copy": "^3.5.0",
+		"sharp": "^0.33.4",
+		"svgo": "^3.3.2",
+		"tailwindcss": "^3.4.4",
+		"vite": "^5.3.3",
+		"vite-plugin-favicon2": "^1.1.5",
+		"vite-plugin-image-optimizer": "^1.1.8",
+		"vite-plugin-restart": "^0.4.1"
+	},
+	"dependencies": {
+		"@alpinejs/collapse": "^3.14.1",
+		"@alpinejs/focus": "^3.14.1",
+		"gsap": "^3.12.5",
+		"smoothscroll-polyfill": "^0.4.4",
+		"swiper": "^11.1.4"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/madebyshape/craft-cms.git"
+	},
+	"author": "Jason Mayo (@bymayo)",
+	"authorUrl": "https://madebyshape.co.uk",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/madebyshape/craft-cms/issues"
+	},
+	"homepage": "https://github.com/madebyshape/craft-cms#readme"
+}

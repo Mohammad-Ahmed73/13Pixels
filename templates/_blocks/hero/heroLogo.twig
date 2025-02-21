@@ -1,0 +1,82 @@
+{% embed '_components/section'
+	with {
+		paddingX: 'flush',
+		paddingY: 'sectionPadding',
+		maxWidth: true,
+		class: 'relative bg-dark z-0'
+	}
+%}
+	{% block sectionContent %}
+		{# Text + Image Container #}
+		<div class="flex flex-col items-center gap-10 md:flex-row">
+			{# Left Text #}
+			<div class="md:w-80 md:text-left text-center">
+				{% if block.heading|length %}
+					{% include '_components/heading' with {
+						tag: 'h1',
+						size: '7xl',
+						text: block.heading,
+						class: 'text-white font-bold mb-8'
+					} %}
+				{% endif %}
+
+				{% if block.text|length %}
+					<p class="text-md font-normal text-white md:text-lg lg:text-2xl mb-8">
+						{{ block.text }}
+					</p>
+				{% endif %}
+				{# CTA Button Section #}
+				{% if block.button.url|length %}
+					{% include '_components/buttons/buttonBlock' with {
+						text: block.button.text,
+						type: 'a',
+						style: 'green',
+						size: 'large',
+						rounded: true,
+						icon: 'arrow-right',
+						url: block.button.url
+					} %}
+				{% endif %}
+			</div>
+
+			{# Right Image #}
+			{% if block.leftimage|length %}
+				<div class="w-full md:w-1/2">
+					{% include '_components/picture' with {
+						image: block.leftimage.one(),
+						transform: 'noRatio',
+						ratio: false,
+						focalPoint: true,
+						loading: 'lazy',
+						imgClass: 'w-full h-auto max-w-md mx-auto'
+					} %}
+				</div>
+			{% endif %}
+		</div>
+
+		{% include '_components/infoSlider' with {
+			slides: block.infoSlider,
+			class: 'md:mt-[60px] mt-[40px]'
+		} %}
+
+		{# Media + Overlay #}
+		<div class="absolute inset-0 z-[-1] none">
+			{# Overlays #}
+			<div class="absolute inset-0 z-10 bg-black/40"></div>
+			<div class="absolute inset-x-0 bottom-0 z-20 h-1/2 bg-gradient-to-t from-black to-transparent"></div>
+			<div class="absolute inset-x-0 top-0 z-20 h-1/2 bg-gradient-to-b from-black to-transparent"></div>
+			<div class="absolute inset-0">
+				{# Image #}
+				{% if block.image|length %}
+					{% include '_components/picture' with {
+						image: block.image.one(),
+						transform: '16x9',
+						ratio: false,
+						focalPoint: true,
+						imgClass: 'object-cover w-full h-full'
+					} %}
+				{% endif %}
+			</div>
+		</div>
+	{% endblock %}
+{% endembed %}

@@ -1,0 +1,17 @@
+columnSuffix: null
+handle: urlLink
+instructions: null
+name: 'URL Link'
+searchable: false
+settings:
+  fullGraphqlData: false
+  maxLength: 255
+  showLabelField: false
+  types:
+    - url
+    - email
+    - entry
+    - tel
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

@@ -1,0 +1,73 @@
+color: blue
+fieldLayouts:
+  3fff6047-2fff-47c6-a24e-da832d4fb507:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 464fb9e5-de9b-4a1f-8d1e-995ee7f41ae8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ea7b1718-1f3c-4e3c-a393-6d7b429fe23b
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: b8cf975c-8b0e-4f79-968b-ae246d2f8bf1 # Padding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 80ae118f-8fb7-41b5-b823-131bb64fe7d6
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Block Settings'
+        uid: 92d77f65-2a35-4a65-8677-44ec2840842f
+        userCondition: null
+handle: fleetGrid
+hasTitleField: false
+icon: van-shuttle
+name: 'Fleet Grid'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

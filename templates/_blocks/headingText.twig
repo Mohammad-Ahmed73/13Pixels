@@ -1,0 +1,89 @@
+{% if block.layout == 'normal' %}
+	{% set wrapperOuterClass = '' %}
+	{% set wrapperInnerClass = '' %}
+	{% set wrapperTextClass = 'lg:grid-cols-12' %}
+	{% set headingClass = 'max-w-[800px] md:col-span-7 md:pr-10' %}
+	{% set textClass = 'md:col-span-4 md:col-start-9' %}
+{% elseif block.layout == 'centered' %}
+	{% set wrapperOuterClass = 'grid lg:grid-cols-12 ' ~ vars.class.gap.x %}
+	{% set wrapperInnerClass = 'lg:col-span-8' %}
+	{% set wrapperTextClass = '' %}
+	{% set headingClass = 'max-w-screen-lg' %}
+	{% set textClass = '' %}
+{% elseif block.layout == 'left' %}
+	{% set wrapperOuterClass = '' %}
+	{% set wrapperInnerClass = '' %}
+	{% set wrapperTextClass = 'lg:grid-cols-12' %}
+	{% set headingClass = 'md:col-span-7' %}
+	{% set textClass = 'md:col-span-7 md:col-start-1' %}
+{% endif %}
+
+{% embed '_components/section'
+	with {
+		paddingY: block.padding.value
+	}
+%}
+	{% block sectionContent %}
+		{% if (block.eyebrow|length) and block.layout != 'centered' %}
+			{% include '_components/eyebrow' with {
+				text: block.eyebrow
+			} only %}
+		{% endif %}
+
+		<div class="{{ wrapperOuterClass }}">
+			<div class="{{ block.layout == 'centered' ? 'lg:col-span-2 lg:pt-2.5' }}">
+				{% if (block.eyebrow|length) and block.layout == 'centered' %}
+					{% include '_components/eyebrow' with {
+						text: block.eyebrow
+					} only %}
+				{% endif %}
+			</div>
+			<div class="{{ wrapperInnerClass }}">
+				<div class="grid gap-y-5 lg:gap-y-7 {{ wrapperTextClass }} {{ vars.class.gap.x }}">
+					{# Heading #}
+					<div class="flex flex-col items-start gap-6 md:gap-8 {{ headingClass }}">
+						{% if block.heading|length %}
+							{% include '_components/heading' with {
+								tag: 'h2',
+								size: '5xl',
+								text: block.heading
+							} %}
+						{% endif %}
+					</div>
+
+					{# Text #}
+					<div class="flex flex-col gap-y-7 {{ textClass }}">
+						{% if block.text|length %}
+							{% include '_components/richText' with {
+								content: block.text,
+								highlightFirst: block.highlightFirst ? true,
+								class: block.layout == 'centered' ? 'md:columns-2 md:gap-10'
+							} only %}
+						{% endif %}
+
+						{% if (block.button1.url|length) or (block.button2.url|length) %}
+							<div class="flex flex-wrap gap-x-5 gap-y-3">
+								{% if block.button1.url|length %}
+									{% include '_components/buttons/button' with {
+										text: block.button1.text,
+										type: 'a',
+										url: block.button1.url,
+										class: block.layout != 'centered' ? 'w-full'
+									} %}
+								{% endif %}
+								{% if block.button2.url|length %}
+									{% include '_components/buttons/button' with {
+										text: block.button2.text,
+										type: 'a',
+										url: block.button2.url,
+										class: block.layout != 'centered' ? 'w-full'
+									} %}
+								{% endif %}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+{% endembed %}

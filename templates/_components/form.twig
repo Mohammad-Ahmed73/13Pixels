@@ -1,0 +1,44 @@
+{#
+    Form (Formie) Component
+
+    @type {include}
+    @param {string} form
+    @param {string} style
+
+	@example
+	{% include '_components/form' with {
+		form: 'contact',
+		style: 'customDark'
+	} %}
+#}
+
+{% set style = style ?? 'custom-dark' %}
+{% set settings = settings ?? null %}
+
+{% set form = form %}
+
+{% if settings|length %}
+	{% do form.setSettings(settings) %}
+{% endif %}
+
+{{
+	craft.formie.renderForm(
+		form,
+		{
+			themeConfig: {
+				formWrapper: {
+					resetClass: true,
+					attributes: {
+						class: 'fui-' ~ style
+					}
+				},
+				submitButton: {
+					resetClass: true,
+					attributes: {
+						class: 'hidden'
+					}
+				}
+			}
+		}
+	)
+}}

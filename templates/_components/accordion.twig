@@ -1,0 +1,75 @@
+{#
+    Accordion component
+
+    @type {include}
+    @param {array} rows - required
+#}
+
+<div 
+    x-data="{ visible: '{{ 'row-' ~ rows[0].question|kebab }}' }" 
+    x-cloak>
+    <div class="transform-gpu w-full flex flex-col">
+        {% for row in rows %}
+            {% set rowId = 'row-' ~ row.question|kebab %}
+            {% set rowIndex = loop.index0 %}
+
+            <div 
+                x-ref="{{ rowId }}"
+                class="transform-gpu w-full transition duration-300 first:border-t-dark border-y md:py-[26px] py-4 text-black"
+                :class="{ 
+                    'border-b-dark': visible == '{{ rowId }}',
+                    'border-t-transparent border-b-dark': visible != '{{ rowId }}',
+                 }">
+                <div 
+                    x-on:click.prevent="
+                        previousRowIndex = visible ? {{ rowIndex }} - 1 : null;
+                        visible = visible != '{{ rowId }}' ? '{{ rowId }}' : false
+                    "
+                    x-on:keydown.enter.prevent="
+                        previousRowIndex = visible ? {{ rowIndex }} - 1 : null;
+                        visible = visible != '{{ rowId }}' ? '{{ rowId }}' : false
+                    "
+                    x-on:keydown.space.prevent="
+                        previousRowIndex = visible ? {{ rowIndex }} - 1 : null;
+                        visible = visible != '{{ rowId }}' ? '{{ rowId }}' : false
+                    "
+                    class="transform-gpu group transition group flex items-center gap-x-6 cursor-pointer md:px-6 focus:outline-none"
+                    tabindex="0"
+                    >
+                    <div class="md:w-10/12">
+                        <div class="text-base md:text-xl text-dark font-medium md:font-semibold">{{ row.question }}</div>
+                    </div>
+                    <div class="ml-auto">
+                        {% include '_components/buttons/buttonRound' with {
+                            style: 'simple-btn', 
+                            icon: 'minus', 
+                            type: 'button', 
+                            size: 'small', 
+                            attributes: 'x-show="visible == \'' ~ rowId ~ '\'"',
+                            class: 'w-auto h-auto'
+                        } %}
+                        {% include '_components/buttons/buttonRound' with {
+                            style: 'simple-btn', 
+                            icon: 'plus', 
+                            type: 'button', 
+                            size: 'small', 
+                            attributes: 'x-show="visible != \'' ~ rowId ~ '\'"',
+                            class: 'w-auto h-auto'
+                        } %}
+                    </div>
+                </div>
+                <div 
+                    x-show="visible == '{{ rowId }}'" 
+                    x-collapse
+                    class="transform-gpu w-full">
+                    <div class="transform-gpu w-full md:px-6 md:pt-[26px] pt-4">
+                        {% include '_components/richText' with {
+                            content: row.answer,
+                            class: 'font-light text-base' 
+                        } %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

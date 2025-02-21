@@ -1,0 +1,123 @@
+{#
+    Hero + Image Component
+
+    @type {include}
+    @param {string} heading - required
+    @param {string} text
+    @param {string} eyebrow
+    @param {string} image
+	@param {object} button
+
+    @example
+    {% include '_components/heroImage' with {
+        heading: 'Hero heading',
+        text: 'Hero text',
+        eyebrow: 'Hero eyebrow',
+        image: 'hero-image.jpg',
+		button: {
+			text: 'Button text',
+			url: 'Button url'
+		}
+    } %}
+
+#}
+
+{% set heading = heading ?? '' %}
+{% set text = text ?? '' %}
+{% set eyebrow = eyebrow ?? '' %}
+{% set image = image ?? '' %}
+{% set button = button ?? '' %}
+{% set videoUrl = videoUrl ?? '' %}
+
+<section aria-label="Hero">
+	<div class="bg-gray-1000">
+		<div class="grid gap-y-10 pb-5 pt-36 text-white md:grid-cols-12 md:pb-16 md:pt-52 {{ vars.class.siteMargin.x }}">
+			{# Text #}
+			<div class="flex flex-col gap-y-5 md:col-span-9 md:pr-10">
+				{% if eyebrow|length %}
+					{% include '_components/eyebrow' with {
+						text: eyebrow,
+						style: 'grey',
+						spacing: ''
+					} only %}
+				{% endif %}
+				{% if heading|length %}
+					{% include '_components/heading' with {
+						tag: 'h1',
+						size: '8xl',
+						text: heading,
+						class: 'text-5xl md:!text-6xl lg:!text-5xl xl:!text-6xl 2xl:!text-[77px]'
+					} %}
+				{% endif %}
+				{% include '_components/richText' with {
+					content: '<p>' ~ text ~ '</p>',
+					class: 'max-w-[970px]'
+				} %}
+			</div>
+
+			{# Button #}
+			{% if button|length %}
+				<div class="md:col-span-3 md:flex md:items-end md:justify-end">
+					{% include '_components/buttons/buttonBlock' with {
+						text: button.text,
+						type: 'a',
+						url: button.url,
+						class: 'w-full md:w-auto'
+					} %}
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="relative">
+		{% if videoUrl %}
+			{# Video #}
+			<div class="relative z-20 {{ vars.class.siteMargin.x }}">
+				<div x-data="{ showVideo: false }" class="overflow-hidden relative aspect-h-9 aspect-w-16 w-full bg-black">
+					{# Image Preview #}
+					<div 
+						class="group absolute inset-0 z-10 cursor-pointer"
+						x-show="!showVideo"
+						@click="showVideo = true"
+						x-cloak>
+						<div class="absolute z-20 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex h-12 items-center justify-between ">
+							{% include "_components/videoPlay" with {
+							class: 'ml-auto'
+							} %}
+						</div>
+						{% if image|length %}
+							{% include '_components/picture' with {
+								image: image,
+								transform: '16x9',
+								alt: image.title,
+								imgClass: 'w-full h-full object-cover max-w-none'
+							} %}
+						{% endif %}
+					</div>
+
+					{# Video #}
+					<template x-if="showVideo">
+						<div class="absolute inset-0">
+							{% set videoId = videoUrl|split('watch?v=')[1] %}
+							{% set videoId = videoId|split('&')[0] %}
+							<iframe class="w-full h-full" src="https://www.youtube.com/embed/{{ videoId }}?feature=oembed" frameborder="0" allowfullscreen aria-label="YouTube video player"></iframe>
+						</div>
+					</template>
+				</div>
+			</div>
+		{% elseif image|length %}
+			{# Image #}
+			<div class="relative z-20 {{ vars.class.siteMargin.x }}">
+				<div class="aspect-h-3 aspect-w-4 md:aspect-h-8 md:aspect-w-16">
+					{% include '_components/picture' with {
+						image: image,
+						transform: '4x3',
+						ratio: false,
+						focalPoint: true
+					} %}
+				</div>
+			</div>
+		{% endif %}
+		<div class="absolute left-0 top-0 z-10 h-1/2 w-full bg-gray-1000"></div>
+	</div>
+</section>

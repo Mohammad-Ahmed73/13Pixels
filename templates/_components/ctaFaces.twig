@@ -1,0 +1,72 @@
+{#
+    CTA Faces Component
+
+    @type {include}
+    @param {string} style
+    @param {bool} centered
+
+    @example
+    {% include '_components/ctaFaces' with {
+        style: 'regular'
+    } %}
+#}
+
+{% set style = style|default('regular') %}
+{% set centered = centered ?? true %}
+{% set theme = theme ?? 'light' %}
+{% set text = text ?? global.ctaFacesText %}
+{% set button = button ?? global.ctaFacesButton %}
+{% set images = images ?? global.ctaFacesImages %}
+
+{% switch style %}
+{% case 'regular' %}
+	{% set imageClass = '-ml-3 h-12 w-12 border-2' %}
+	{% set starsClass = 'flex' %}
+	{% set textClass = 'text-sm' %}
+	{% set wrapClass = 'pl-3' %}
+{% case 'small' %}
+	{% set imageClass = '-ml-2 h-6 w-6 border' %}
+	{% set starsClass = 'hidden' %}
+	{% set textClass = 'text-sm' %}
+	{% set wrapClass = 'pl-2' %}
+{% endswitch %}
+
+{% switch theme %}
+{% case 'light' %}
+	{% set borderClass = 'border-white' %}
+	{% set ctaTextClass = 'text-black' %}
+	{% set btnStyle = 'green-outline-light' %}
+{% case 'dark' %}
+	{% set borderClass = 'border-black' %}
+	{% set ctaTextClass = 'text-white' %}
+	{% set btnStyle = 'green-outline' %}
+{% endswitch %}
+
+<div class="{{ centered ? 'flex justify-center' : '' }} {{ class ?? '' }}">
+	<div class="flex flex-col items-center gap-x-5 gap-y-4 md:flex-row">
+		<div class="inline-flex {{ wrapClass }}">
+			{% for image in images.all() %}
+				<div class="bg-black-300 relative z-10 overflow-hidden rounded-full {{ borderClass }} {{ imageClass }}">
+					{% include '_components/picture' with {
+						image: image,
+						transform: '1x1',
+						ratio: true,
+						focalPoint: true,
+						lazy: false
+					} %}
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="font-light {{ ctaTextClass }}">
+			{{ text }}
+		</div>
+
+		{% include '_components/buttons/buttonBlock' with {
+			text: button.text,
+			style: btnStyle,
+			type: 'a',
+			url: button.url
+		} only %}
+	</div>
+</div>

@@ -1,0 +1,118 @@
+{#
+    Button Round Component
+
+    @type {include}
+    @param {string} style
+    @param {string} icon
+    @param {string} type
+    @param {string} url
+    @param {string} class
+    @param {string} attributes
+    @param {integer} tabIndex
+    @param {string} size
+    @param {string} target
+
+    Usage:
+    {% include '_components/buttons/buttonRound' with {
+        style: 'green-outline', 
+        icon: 'arrow-right', 
+        type: 'button', 
+        url: '#', 
+        class: '', 
+    } %}
+#}
+
+{% set icon = icon ?? null %}
+{% set size = size|default('medium')%}
+
+{% set styleMap = {
+    'green': { 
+        'style': 'bg-green disabled:border-dark',
+        'icon': 'text-dark disabled:text-dark',
+    },
+    'green-outline': { 
+        'style': 'border border-green hover:bg-green group-hover:bg-green focus-visible:bg-green group-focus-visible:bg-green disabled:border-dark group-hover:text-white hover:text-white focus-visible:text-white group-focus-visible:text-white', 
+        'icon': 'text-xl text-green hover:text-white group-hover:text-white focus-visible:text-white group-focus-visible:text-white disabled:text-dark',
+    },
+    'white': { 
+        'style': 'bg-[#FFFFFFF5] text-dark', 
+        'icon': '',
+    },
+    'disabled': { 
+        'style': 'border-dark',
+        'icon': 'text-dark',
+    },
+    'simple-btn': {
+        'style': 'w-6 h-6',
+        'icon': 'text-dark',
+    }
+} %}
+
+{% set buttonSize = '' %} {# Declare buttonSize before the switch block #}
+
+{% switch size %}
+    {% case 'large' %}
+        {% set buttonSize = 'lg:h-[56px] md:w-[88px] md:h-[48px] md:w-[88px] h-[40px] w-[72px] text-base' %}
+    {% case 'medium' %}
+        {% set buttonSize = 'lg:h-[48px] lg:w-[88px] h-[40px] w-[72px] text-base' %}
+    {% case 'small' %}
+        {% set buttonSize = 'h-[40px] w-[72px] text-sm' %}
+{% endswitch %}
+
+{% set iconMap = {
+    'arrow-right': 'fa-light fa-arrow-right',
+    'arrow-left': 'fa-light fa-arrow-left',
+    'arrow-up': 'fa-light fa-arrow-up',
+    'arrow-down': 'fa-light fa-arrow-down',
+    'arrow-up-right': 'fa-light fa-arrow-up-right',
+    'chevron-up': 'fa-sharp fa-light fa-chevron-up',
+    'chevron-down': 'fa-sharp fa-light fa-chevron-down',
+    'chevron-left': 'fa-sharp fa-light fa-chevron-left',
+    'chevron-right': 'fa-sharp fa-light fa-chevron-right',
+    'minus': 'fa-light fa-minus',
+    'plus': 'fa-light fa-plus',
+    'plane': 'fa-solid fa-paper-plane',
+    'xmark': 'fa-sharp fa-regular fa-xmark',
+    'bars': 'fa-sharp fa-regular fa-bars',
+    'search': 'fa-sharp fa-regular fa-magnifying-glass',
+    'facebook': 'fa-brands fa-facebook',
+    'x-twitter': 'fa-brands fa-x-twitter',
+    'linkedin': 'fa-brands fa-linkedin',
+    'instagram': 'fa-brands fa-instagram',
+} %}
+{% set selectedIcon = icon ? iconMap[icon] : '' %}
+
+{% set baseClass = '
+    group
+    rounded-full 
+    duration-300 
+    outline-none
+    shadow-none
+    overflow-hidden
+    focus:outline-none
+    lg:hover:duration-150
+    lg:group-hover:duration-150
+' %}
+{% set selectedStyle = styleMap[style|default('green-outline')] %}
+{% set type = type|default('button') %}
+{% set class = class|default('') %}
+{% set url = url|default('#') %}
+{% set tabIndex = tabIndex|default(0) %}
+{% set text = text ?? '' %}
+
+<{{ type }}
+    {{ type == 'a' ? ('href="' ~ url ~ '"')|raw }} 
+    class="{{ baseClass }} {{ buttonSize }} {{ selectedStyle.style }} {{ selectedStyle.icon }} {{ class }}"
+    {{ attributes|default('')|raw }}
+    tabindex="{{ tabIndex }}"
+    target="{{ target|default('_self') }}"
+>
+    <div class="relative w-full h-full flex items-center justify-center">
+        {% if selectedIcon %}
+            <i class="{{ selectedIcon }} relative z-20 text-xl" aria-hidden="true"></i>
+        {% endif %}
+        {% if text %}
+            <span class="relative z-20 block">{{ text }}</span>
+        {% endif %}
+    </div>
+</{{ type }}>

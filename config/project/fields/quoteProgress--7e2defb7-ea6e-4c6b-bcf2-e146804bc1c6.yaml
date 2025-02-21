@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: quoteProgress
+instructions: null
+name: 'Quote Progress'
+searchable: false
+settings:
+  createButtonLabel: 'Add progress'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - f05b9e1f-df26-4fbb-a236-f9b60ca23ba4 # Quote Progress
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

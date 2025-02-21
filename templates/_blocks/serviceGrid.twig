@@ -1,0 +1,52 @@
+{% set entries = craft.entries.section('services') %}
+
+{% embed '_components/section'
+	with {
+		paddingY: block.padding.value
+	}
+%}
+	{% block sectionContent %}
+		<div id="fleet-grid" class="grid gap-y-10 md:grid-cols-2 md:gap-y-16 lg:gap-y-24 {{ vars.class.gap.x }}">
+			{% for item in entries %}
+				<a href="{{ item.url }}" class="group relative block focus-visible:outline-none">
+					<div class="aspect-h-8 aspect-w-12 relative z-10 w-full overflow-hidden">
+						{% include '_components/picture' with {
+							image: item.image.one(),
+							transform: '4x3',
+							ratio: false,
+							focalPoint: false,
+							alt: '',
+							imgClass: 'object-cover w-full h-full transition-transform duration-500 group-hover:scale-[1.03] group-focus-visible:scale-[1.03]'
+						} %}
+					</div>
+					{% include '_components/heading' with {
+						text: item.title,
+						tag: 'div',
+						size: '5xl',
+						class: 'py-4 md:py-5'
+					} %}
+					<div class="relative">
+						{% include '_components/richText' with {
+							content: item.textExcerpt,
+							class: 'font-light max-w-[700px] lg:pr-24'
+						} only %}
+
+						{% include '_components/buttons/buttonRound' with {
+							style: 'green-outline',
+							icon: 'arrow-up-right',
+							type: 'div',
+							class: 'hidden absolute top-0 right-3 lg:block'
+						} %}
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+		{% include '_components/ctaFaces' with {
+			style: 'regular',
+			class: 'pt-10 lg:pt-16',
+			text: block.ctaText|length ? block.ctaText : null,
+			button: block.ctaButton|length ? block.ctaButton : null,
+			theme: block.theme|length ? block.theme : null
+		} %}
+	{% endblock %}
+{% endembed %}

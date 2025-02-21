@@ -1,0 +1,207 @@
+color: null
+fieldLayouts:
+  ffd94b2c-fed9-44e4-a89a-11bdb35ccdcc:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-08-09T08:55:55+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 241aef64-e89d-448a-8a21-5d2bff797ec2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:55:55+00:00'
+            elementCondition: null
+            fieldUid: cb87554f-d2ed-4a0f-81ad-32f9832f7865 # Fleet Tag
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: de061553-e921-4b63-b187-0c638789d11e
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2024-08-09T08:55:55+00:00'
+            elementCondition: null
+            fieldUid: dee0e12a-d0be-4dce-864e-96f853d767f2 # Plain Text
+            handle: introductionText
+            includeInCards: false
+            instructions: null
+            label: 'Introduction Text'
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6756e194-539b-47ef-b24b-b2a586522b9f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:55:55+00:00'
+            elementCondition: null
+            fieldUid: f693e845-ded2-4966-ab74-bb6d4ca0d3c6 # Number of
+            handle: numberOfPassengers
+            includeInCards: false
+            instructions: null
+            label: 'Number of Passengers'
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4cb6894e-43f1-40ea-a43a-4e17fe817900
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:55:55+00:00'
+            elementCondition: null
+            fieldUid: f693e845-ded2-4966-ab74-bb6d4ca0d3c6 # Number of
+            handle: numberOfSuitcases
+            includeInCards: false
+            instructions: null
+            label: 'Number of Suitcases'
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0e89a6cd-9139-4804-8044-4fcd064f68de
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:55:55+00:00'
+            elementCondition: null
+            fieldUid: d640a2ab-e813-42e1-aeee-69524da7ecaa # Fleet Information
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 247f6a54-46f1-40cd-b729-0ebb261bc436
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:55:55+00:00'
+            elementCondition: null
+            fieldUid: 4060ca93-4d55-48ba-be72-11fd85105282 # Assets - Image
+            handle: image
+            includeInCards: false
+            instructions: null
+            label: Image
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 07be2412-46af-4696-be5a-5d3bec4cab9d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-09-30T13:16:05+00:00'
+            elementCondition: null
+            fieldUid: ad4eda2e-00bd-445a-9c4c-c7a920870ebf # Video URL
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f651fa96-b6bb-4773-adee-d81f2dc70728
+            userCondition: null
+            warning: null
+            width: 100
+        name: General
+        uid: cd020926-8dde-4cb1-94fa-ec2a249d3182
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-08-09T08:57:12+00:00'
+            elementCondition: null
+            fieldUid: f961ae4f-abe8-4842-b296-16d412036c48 # Content Builder
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ed2c77dc-e913-42c1-bf65-57c46844849a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8178e4c8-5b99-4429-ab4a-6c91c1e3c6ea
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2024-08-09T08:55:55+00:00'
+            elementCondition: null
+            fieldUid: 787967f0-9a61-4502-9ec1-b413d02b9279 # Meta & Social Data
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a5630fb7-4526-42c4-8807-00428dad552e
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Meta & Social Data'
+        uid: dc5303c0-c956-4661-9c92-fa5a19b629c5
+        userCondition: null
+handle: fleetDetail
+hasTitleField: true
+icon: van-shuttle
+name: ' Fleet Detail'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

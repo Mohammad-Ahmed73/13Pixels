@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: textIconCards
+instructions: null
+name: 'Text + Icon Cards'
+searchable: false
+settings:
+  createButtonLabel: 'New Card'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 04c4f46d-ac8f-435c-843c-320f0fb582ac # Text + Icon Card
+  includeTableView: false
+  maxEntries: 3
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

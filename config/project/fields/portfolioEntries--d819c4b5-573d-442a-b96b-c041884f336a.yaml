@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: portfolioEntries
+instructions: null
+name: 'Portfolio Entries'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionLabel: 'Add Portfolio'
+  showCardsInGrid: false
+  showSiteMenu: false
+  sources:
+    - 'section:5e28f7c9-784b-4ede-8789-ff4b309a9efe' # Portfolio
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

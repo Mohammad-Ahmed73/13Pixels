@@ -1,0 +1,105 @@
+columnSuffix: null
+handle: contentBuilder
+instructions: null
+name: 'Content Builder'
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 0cb5f968-0499-4ffe-9f81-0804be95a62e # Fleet Grid
+    -
+      __assoc__:
+        -
+          - uid
+          - 7a3a53b0-aefc-4c7f-a3fc-b890fe021391 # Fleet Slider
+    -
+      __assoc__:
+        -
+          - uid
+          - 291b8794-da4b-44d3-b993-50203f9590b6 # Gallery
+    -
+      __assoc__:
+        -
+          - uid
+          - 221a3e88-bf37-4ec3-8b78-bb2262608fd5 # Heading + Text
+    -
+      __assoc__:
+        -
+          - uid
+          - f00435c2-516d-4d32-bb6e-a525ffcc9019 # Image Slider
+    -
+      __assoc__:
+        -
+          - uid
+          - 64700cdf-f2e4-4360-a2b6-a7433e0da135 # Scrolling Text
+    -
+      __assoc__:
+        -
+          - uid
+          - 31f99b09-7d43-4a28-8bb0-bf33ff1ecc56 # Service Grid
+    -
+      __assoc__:
+        -
+          - uid
+          - d489f8dd-57fc-4afb-8886-2c95fb4a7bfd # Service Selector
+    -
+      __assoc__:
+        -
+          - uid
+          - accd1fcb-b9ba-4c5e-b586-e40e58daea71 # Staggered Blocks
+    -
+      __assoc__:
+        -
+          - uid
+          - d671fd86-cab7-4360-b1ec-0a993aaddef8 # Text + FAQ
+    -
+      __assoc__:
+        -
+          - uid
+          - e95b14f5-b435-4149-b65f-9dafd6231f8a # Text + Icon Cards
+    -
+      __assoc__:
+        -
+          - uid
+          - 49163c94-0c7c-4a8e-a5e6-3a46e8122ddb # Trustpilot
+    -
+      __assoc__:
+        -
+          - uid
+          - 75794816-59b0-4813-b5a5-311173879c8c # USP
+    -
+      __assoc__:
+        -
+          - uid
+          - bc97d373-e1ce-47db-ac34-79b740c6a9a8 # Portfolio Selector
+    -
+      __assoc__:
+        -
+          - uid
+          - 6805feeb-3828-41db-b7c0-00edc34f37cd # Choose Us Slider
+    -
+      __assoc__:
+        -
+          - uid
+          - 8387bf86-efe1-4fce-8549-c82173acabd9 # CEO Slider
+    -
+      __assoc__:
+        -
+          - uid
+          - 2cecb3f7-40be-414d-9fea-8892a5d0f500 # Blog Slider
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

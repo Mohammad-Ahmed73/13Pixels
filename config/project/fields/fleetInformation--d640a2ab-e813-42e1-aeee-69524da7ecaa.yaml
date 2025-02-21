@@ -1,0 +1,77 @@
+columnSuffix: null
+handle: fleetInformation
+instructions: null
+name: 'Fleet Information'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Hand luggage space'
+        -
+          - value
+          - handLuggageSpace
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Air Conditioning'
+        -
+          - value
+          - airConditioning
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Partition Cabin with Intercom'
+        -
+          - value
+          - partitionCabinWithIntercom
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Refrigerated Refreshments'
+        -
+          - value
+          - refrigeratedRefreshments
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'Multi-Cabin Charging'
+        -
+          - value
+          - multiCabinCharging
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - 'In-Cabin WiFi'
+        -
+          - value
+          - inCabinWifi
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\MultiSelect

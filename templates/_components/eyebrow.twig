@@ -1,0 +1,17 @@
+{#
+	Eyebrow Component
+
+	@type {include}
+	@param {string} text - required
+
+	@example
+	{% include '_components/eyebrow' with {
+		text: 'Eyebrow text',
+	} %}
+#}
+
+{% set style = style ?? '' %}
+
+<div class="relative text-sm/none font-light tracking-wide text-current {{ style != 'none' ? 'pl-4 after:absolute after:left-0 after:top-2 after:h-[0.5px] after:w-2 after:bg-current xl:pl-7 xl:after:w-4' }} {{ spacing is defined ? spacing : 'pb-5' }} {{ class is defined ? ' ' ~ class }}">
+	{{ text }}
+</div>

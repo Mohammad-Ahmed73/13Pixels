@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: serviceSelector
+instructions: null
+name: 'Service Selector'
+searchable: false
+settings:
+  createButtonLabel: 'New service'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 8d34ac83-d60e-4c48-9004-da40628cc6dd # Service Selector Item
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

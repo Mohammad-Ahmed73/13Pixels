@@ -1,0 +1,55 @@
+{# Entries + Pagination #}
+{% set entriesParams = {
+	section: 'blog',
+	limit: 4
+} %}
+
+{% set entries = craft.entries(entriesParams) %}
+{% paginate entries as pageInfo, pageEntries %}
+
+{% extends '_layouts/global' %}
+
+{% block site %}
+	{# Hero #}
+	{% include '_components/heroImage' with {
+		heading: entry.heading
+	} %}
+
+	{% embed '_components/section'
+		with {
+			paddingY: 'flush'
+		}
+	%}
+		{% block sectionContent %}
+			{# Entries #}
+			<div id="entries-grid" class="grid gap-y-12 pt-10 md:grid-cols-12 md:gap-y-16 lg:gap-y-24 lg:pt-16 {{ vars.class.gap.x }} {{ vars.class.gap.y }}">
+				{% for item in pageEntries %}
+					{% set timeContent %}
+						{% for block in item.contentBuilder.all() %}
+							{% include '_blocks/body/' ~ block.type.handle %}
+						{% endfor %}
+					{% endset %}
+					{# prettier-ignore-start #}
+					{% set readTime = include('_components/readTime', { text: timeContent }) %}
+                    {# prettier-ignore-end #}
+					<div class="md:col-span-6 lg:col-span-4">
+						{% include '_components/cards/blog' with {
+							content: item,
+							read: readTime
+						} %}
+					</div>
+				{% endfor %}
+			</div>
+
+			{# Pagination #}
+			{% if pageInfo.totalPages > 1 %}
+				<div class="py-16">
+					{% include '_components/pagination' with {
+						pageInfo: pageInfo,
+						scrollTarget: '#entries-grid'
+					} %}
+				</div>
+			{% endif %}
+		{% endblock %}
+	{% endembed %}
+{% endblock %}

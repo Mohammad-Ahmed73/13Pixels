@@ -1,0 +1,13 @@
+<div 
+    class="flex items-center gap-2 text-white cursor-pointer duration-500 xl:text-base hover:text-green hover:duration-300"
+    x-data
+    x-on:click.prevent="window.scrollTo({ top: 0, behavior: 'smooth' })">
+        {% include '_components/eyebrow' with {
+            text: 'Back to top',
+            style: 'none',
+            spacing: ''
+        } %}
+        <div class="rounded-full border-[0.5px] border-current w-6 h-6 flex items-center justify-center text-xs">
+            <i class="fa-sharp fa-light fa-chevron-up"></i>
+        </div>
+</div>

@@ -1,0 +1,147 @@
+{% set slides = block.blog|length ? block.blog.all() : craft.entries.section('blog').all() %}
+{% set slideCount = slides|length %}
+
+{% if (block.theme|length) and block.theme == 'light' %}
+	{% set bgClass = '' %}
+	{% set textClass = '' %}
+	{% set btnStyle = 'green-outline-light' %}
+	{% set navBtnStyle = 'green-outline' %}
+{% else %}
+	{% set bgClass = 'bg-gray-1000 py-16 lg:py-32' %}
+	{% set textClass = 'text-white' %}
+	{% set btnStyle = 'green-outline' %}
+	{% set navBtnStyle = 'green-outline' %}
+{% endif %}
+
+{% embed '_components/section'
+	with {
+		paddingX: 'flush',
+		paddingY: 'sectionPadding',
+		maxWidth: true,
+		class: 'overflow-hidden'
+	}
+%}
+	{% block sectionContent %}
+		<div class="{{ bgClass }}">
+			<div class="relative {{ vars.class.siteMargin.x }}">
+				{# Heading #}
+				{% if (block.descriptionblog|length) or (block.heading|length) %}
+					<div class="mb-8 grid gap-y-6 sm:grid-cols-12 lg:mb-16 {{ textClass }}">
+						<div class="text-dark flex flex-col gap-5 md:col-span-7 lg:col-span-9">
+							{% if block.heading|length %}
+								{% include '_components/heading' with {
+									tag: 'h2',
+									size: '6xl',
+									text: block.heading,
+									class: 'font-bold'
+								} %}
+							{% endif %}
+							{% if block.descriptionblog|length %}
+								{% include '_components/richText' with {
+									content: block.descriptionblog,
+									style: 'p',
+									class: 'font-medium text-dark text-md'
+								} %}
+							{% endif %}
+						</div>
+						{% if block.button.url|length %}
+							<div class="flex flex-wrap gap-x-5 gap-y-3 md:col-span-5 md:items-end md:justify-end lg:col-span-3">
+								{% include '_components/buttons/buttonBlock' with {
+									type: 'a',
+									style: 'green',
+									size: 'medium',
+									rounded: true,
+									icon: 'arrow-right',
+									url: block.button.url,
+									text: block.button.text
+								} %}
+							</div>
+						{% endif %}
+					</div>
+				{% endif %}
+
+				{# Slider #}
+				<section x-data="{{ block.type }}" x-init="slider({{ block.id }})">
+					<div class="swiper z-10 !overflow-visible js-slider-{{ block.id }}">
+						<div class="swiper-wrapper">
+							{% for item in slides %}
+								<div class="swiper-slide relative">
+									{% include '_components/cards/blog' with {
+										content: item
+									} %}
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+
+					{# Slider Nav + Button #}
+					<div class="mt-5 flex flex-row items-center justify-end gap-y-5 md:mt-12 md:flex-row">
+						<div class="flex items-center justify-end gap-3">
+							{% include '_components/buttons/buttonRound' with {
+								type: 'button',
+								icon: 'arrow-left',
+								style: navBtnStyle,
+								class: 'slider-button-prev-' ~ block.id
+							} %}
+							<!-- Pagination Dots -->
+							<div class="swiper-pagination"></div>
+							{% include '_components/buttons/buttonRound' with {
+								type: 'button',
+								icon: 'arrow-right',
+								style: navBtnStyle,
+								class: 'slider-button-next-' ~ block.id
+							} %}
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	{% endblock %}
+{% endembed %}
+
+{# prettier-ignore-start #}
+{% js %}
+   document.addEventListener('alpine:init', () => {
+      Alpine.data('{{ block.type }}', () => ({
+         slider(id) { 
+            const carousel = document.querySelector(`.js-slider-${id}`)
+            const swiper = new Swiper(carousel, {
+                loop: false, 
+                grabCursor: true,
+                autoHeight: false,  
+                centeredSlides: true, 
+                allowTouchMove: true,
+                speed: 750,
+                navigation: {
+                    nextEl: '.slider-button-next-' + id,
+                    prevEl: '.slider-button-prev-' + id,
+                },
+				pagination: {
+					el: ".swiper-pagination",
+					type: "fraction", // Enables "01 / 05" format
+					formatFractionCurrent: function (number) {
+						return number.toString().padStart(2, '0'); // Converts 1 to "01"
+					},
+					formatFractionTotal: function (number) {
+						return number.toString().padStart(2, '0'); // Converts 5 to "05"
+					}
+				},
+                slidesPerView: 1,
+                spaceBetween: 30,
+                initialSlide: 1,
+                breakpoints: { 
+					768: {
+						slidesPerView: 2,
+                        centeredSlides: false, 
+					},
+					1280: {
+						slidesPerView: 2,
+                        centeredSlides: false, 
+					},
+				},
+            })            
+         }
+      }))
+   })
+{% endjs %}
+{# prettier-ignore-end #}

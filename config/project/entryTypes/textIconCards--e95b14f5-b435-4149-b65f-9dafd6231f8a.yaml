@@ -1,0 +1,234 @@
+color: emerald
+fieldLayouts:
+  6f21bc4c-c3c9-4992-bd37-a19d2e6067fc:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition: null
+            fieldUid: 67f3a8e1-fb07-4135-9632-b9d51eb53605 # Eyebrow
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f01296fa-ee4f-41de-9fcb-1a464df79f24
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition: null
+            fieldUid: 32972c85-b85e-45de-a6a1-d58a643d3e81 # Headiing
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 85479bd5-f29c-4e0e-b8ea-20f411f60998
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-03T12:27:12+00:00'
+            elementCondition: null
+            fieldUid: 87cfa2ad-e72c-4945-a612-b4b65d89f456 # Description
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ce5d4147-999c-417f-a371-136b65529369
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition: null
+            fieldUid: 16f0b21a-80bb-448e-8e45-e4fe7fc8d4af # Text + Icon Cards
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c155655f-edd8-4c75-ac73-4660e3cabc14
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-05T08:06:34+00:00'
+            elementCondition: null
+            fieldUid: 86b0adf0-5bb4-4cc3-b597-b32bd746081e # Rich Text - Full
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 50334569-7e61-42fc-a9de-b18989db7ff1
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: 58593d95-0158-4d63-a75e-99922ad151ef
+            userCondition: null
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            dismissible: false
+            elementCondition: null
+            style: tip
+            tip: 'Leave blank to use the CTA content set in globals.'
+            type: craft\fieldlayoutelements\Tip
+            uid: 4cd439b4-07c7-46f1-befd-04f12d002882
+            userCondition: null
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition: null
+            fieldUid: dee0e12a-d0be-4dce-864e-96f853d767f2 # Plain Text
+            handle: ctaText
+            includeInCards: false
+            instructions: null
+            label: 'CTA Text'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d5707a80-dad0-4809-896c-12dde32aab6b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: ctaButton
+            includeInCards: false
+            instructions: null
+            label: 'CTA Button'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 81c191bd-3924-4699-8a51-932f359e2cc1
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ed510811-c090-4035-b169-b35cacae9195
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition: null
+            fieldUid: 4060ca93-4d55-48ba-be72-11fd85105282 # Assets - Image
+            handle: image
+            includeInCards: false
+            instructions: null
+            label: Image
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6a14c345-d19d-40aa-b9dd-d72d85666c79
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\RelationalFieldConditionRule
+                  fieldUid: 4060ca93-4d55-48ba-be72-11fd85105282 # Assets - Image
+                  layoutElementUid: 6a14c345-d19d-40aa-b9dd-d72d85666c79
+                  operator: notempty
+                  uid: 7a5621fd-cae9-4176-aa6e-c85d993511ef
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: eb7ba0c1-3129-4cdf-ac5b-c3b67462601a # Info Slider
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 358ace69-a980-4a8e-a796-92ec9a8a5b04
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Image + Info'
+        uid: b8f38c2f-de78-424c-8fda-4786e88d18ab
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition: null
+            fieldUid: 4ddfdf96-b71c-4a70-826e-4b46188161a3 # Theme
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6432aebf-d831-4a3c-afa4-2d4ed1261fe2
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-02-03T12:26:03+00:00'
+            elementCondition: null
+            fieldUid: b8cf975c-8b0e-4f79-968b-ae246d2f8bf1 # Padding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4822ed66-b912-440d-9791-f5300617b91c
+            userCondition: null
+            warning: null
+            width: 50
+        name: 'Block Settings'
+        uid: 13703a64-a565-4b69-8c5a-a90739fd6eda
+        userCondition: null
+handle: textIconCards
+hasTitleField: false
+icon: icons
+name: 'Text + Icon Cards'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

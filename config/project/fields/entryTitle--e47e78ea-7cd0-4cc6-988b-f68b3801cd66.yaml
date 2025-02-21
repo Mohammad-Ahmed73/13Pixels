@@ -1,0 +1,16 @@
+columnSuffix: null
+handle: entryTitle
+instructions: null
+name: 'Entry Title'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: 70
+  code: false
+  initialRows: 4
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

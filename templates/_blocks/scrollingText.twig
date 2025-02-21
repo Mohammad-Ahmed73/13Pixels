@@ -1,0 +1,58 @@
+{# Use Global or Block Text #}
+{% set scrollingText = block.scrollingText ? block.scrollingText : global.scrollingText %}
+
+{% embed '_components/section'
+	with {
+		paddingY: block.padding.value,
+		paddingX: 'flush'
+	}
+%}
+	{% block sectionContent %}
+		<div class="swiper w-full js-slider-{{ block.id }}" x-data="{{ block.type }}" x-init="slider('{{ block.id }}')">
+			<div class="swiper-wrapper !ease-linear">
+				{% for i in 0..5 %}
+					<div class="swiper-slide mr-[4vw] !w-auto">
+						<div class="flex items-center text-gray-300">
+							<div class="text-[10vw]/none md:text-[8vw]/none xl:text-[105px]/none">
+								{{ scrollingText }}
+							</div>
+							<div class="ml-[4vw] mt-[1vw] h-[1vw] w-[1vw] rounded-full bg-current md:h-[0.6vw] md:w-[0.6vw] xl:mt-3 xl:h-2 xl:w-2"></div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	{% endblock %}
+{% endembed %}
+
+{# Set speed based on character count #}
+{% set charSpeed = 500 %}
+{% set textLength = scrollingText|length %}
+{% set fullSpeed = charSpeed * textLength %}
+
+{# prettier-ignore-start #}
+{% js %}
+   document.addEventListener('alpine:init', () => {
+      Alpine.data('{{ block.type }}', () => ({
+         slider(id) { 
+            const carousel = document.querySelector(`.js-slider-${id}`)
+            const swiper = new Swiper(carousel, {
+                slidesPerView: 'auto',
+                spaceBetween: 0,
+                loop: true,
+                allowTouchMove: false,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                    reverseDirection: false,
+                },
+                speed: {{ fullSpeed }},
+                grabCursor: false,
+                mousewheelControl: false,
+                keyboardControl: false,
+            })
+         }
+      }))
+   })
+{% endjs %}
+{# prettier-ignore-end #}

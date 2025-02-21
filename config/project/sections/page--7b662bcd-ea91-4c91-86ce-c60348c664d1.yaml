@@ -1,0 +1,41 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: bdf6317d-0df7-449f-a937-a1a274ffb106 # Page - Blocks
+  -
+    uid: 32f943b3-1429-40be-9171-55e40a0186ba # Page - Blog Exterior
+  -
+    uid: 673b7afa-9d17-452e-bbda-b389beeaa2e0
+  -
+    uid: a825bcf0-1760-4d77-b097-f008cdb60d54 # Page - Contact
+  -
+    uid: 7c420a89-cf98-4c48-b38f-64793c3047f0 # Page - Quote
+  -
+    uid: 82c54e9a-5472-4399-8f54-8ce7367fb144 # Page - Text + Nav
+handle: page
+maxAuthors: 1
+name: Page
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - Page
+      -
+        - refresh
+        - '1'
+      -
+        - urlFormat
+        - '{url}'
+propagationMethod: all
+siteSettings:
+  08c386f4-5a41-4c9f-8282-f6785af06bfc: # $CRAFT_SITE_NAME
+    enabledByDefault: true
+    hasUrls: true
+    template: _pages/base.twig
+    uriFormat: '{slug}'
+structure:
+  maxLevels: null
+  uid: 4c0a1eed-b32a-43d6-ad31-77d4dc6ba447
+type: structure

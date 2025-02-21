@@ -1,0 +1,74 @@
+{#
+    Accordion component
+
+    @type {include}
+    @param {array} rows - required
+#}
+
+<div 
+    x-data="{ visible: '{{ 'row-' ~ rows[0].question|kebab }}' }" 
+    x-cloak>
+    <div class="transform-gpu w-full flex flex-col">
+        {% for row in rows %}
+            {% set rowId = 'row-' ~ row.question|kebab %}
+
+            <div 
+                x-ref="{{ rowId }}"
+                class="transform-gpu w-full transition duration-300 border px-6 lg:px-10 text-white"
+                :class="{ 
+                    'border-t-[rgba(255,255,255,0.4)] border-b-[rgba(255,255,255,0.4)] border-x-transparent': visible === '{{ rowId }}', 
+                    'border-x-transparent': visible !== '{{ rowId }}',
+                }">
+                
+                <div 
+                    x-on:click.prevent="visible = visible !== '{{ rowId }}' ? '{{ rowId }}' : false"
+                    x-on:keydown.enter.prevent="visible = visible !== '{{ rowId }}' ? '{{ rowId }}' : false"
+                    x-on:keydown.space.prevent="visible = visible !== '{{ rowId }}' ? '{{ rowId }}' : false"
+                    class="transform-gpu group flex gap-x-7 cursor-pointer py-4 lg:py-6 focus:outline-none"
+                    tabindex="0">
+                    
+                    <div class="w-10/12">
+                        <div class="text-lg/6 lg:text-xl/6 xl:text-2xl text-white font-bold">{{ row.question }}</div>
+                    </div>
+ 
+                    <div class="ml-auto flex items-center">
+                        <!-- Icon for open/closed state -->
+                        <div class="transform transition-transform duration-300"
+                             :class="visible === '{{ rowId }}' ? 'rotate-180' : 'rotate-0'">
+                            <div x-show="visible === '{{ rowId }}'" x-cloak>
+                                {% include '_components/buttons/buttonRound' with {
+                                    style: 'rotate', 
+                                    icon: 'minus',  
+                                    type: 'button', 
+                                    size: 'small', 
+                                    iconStyle: '#FFFFFF'
+                                } %}
+                            </div>
+                            <div x-show="visible !== '{{ rowId }}'" x-cloak>
+                                {% include '_components/buttons/buttonRound' with {
+                                    style: 'rotate', 
+                                    icon: 'plus',  
+                                    type: 'button', 
+                                    size: 'small', 
+                                    iconStyle: '#FFFFFF'
+                                } %}
+                            </div>
+                        </div>
+                    </div>                                 
+                </div>
+
+                <div 
+                    x-show="visible === '{{ rowId }}'" 
+                    x-collapse
+                    class="transform-gpu w-full">
+                    <div class="transform-gpu w-full pb-7 pr-16 lg:pb-8">
+                        {% include '_components/richText' with {
+                            content: row.answer,
+                            class: 'font-light text-base text-[#FFFFFF99]' 
+                        } %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

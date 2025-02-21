@@ -1,0 +1,15 @@
+{% embed '_components/section'
+	with {
+		paddingY: paddingY ?? 'bottom',
+		paddingYSize: 'body',
+		paddingX: 'flush'
+	}
+%}
+	{% block sectionContent %}
+		{% if block.richText|length %}
+			{% include '_components/richText' with {
+				content: block.richText
+			} only %}
+		{% endif %}
+	{% endblock %}
+{% endembed %}

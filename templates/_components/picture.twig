@@ -1,0 +1,118 @@
+{#
+   Picture
+   Generate a picture element with an srcset and lazy load
+
+   @type {include}
+   @param {string/object} image
+   @param {string} transform
+   @param {string} pictureClass
+   @param {string} imgClass
+   @param {bool} svgConvert
+   @param {string} svgConvertClass
+   @param {string} alt
+   @param {bool} ratio
+   @param {bool} focalPoint
+
+   @example
+   {% include '_components/picture' with {
+      image: entry.image,
+      transform: 'hero',
+      alt: 'Image alt text',
+      ratio: true,
+      focalPoint: true
+   } %}
+
+#}
+
+{% if 
+    image['extension'] is defined and image.extension == 'svg' or
+    image['extension'] is defined and image.extension == 'gif' or
+    image['extension'] is not defined and '.gif' in image
+%}    
+
+   {% if svgConvert is defined %}
+
+        {# Inline SVG #}
+        {% set svgConvertClass = svgConvertClass ?? 'fill-current' %}
+        {{ svg(image)|attr({ class: svgConvertClass }) }}
+
+   {% else %}
+
+        {# SVG & Animated Gif #}
+        <img 
+            src="{{ image['extension'] is defined ? image.url : image }}" 
+            alt="{{ alt ?? image.title }}"
+            {% if imgClass is defined %} class="{{ imgClass }}"{% endif %}
+        >
+      
+   {% endif %}
+
+{% else %}
+
+   {# All other image types #}
+
+   {% set production = craft.app.config.env == 'production' ? true : false %}
+   {% set transform = transform ?? [] %}
+   {% set ratio = ratio ?? true %}
+   {% set focalPoint = focalPoint ?? false %}
+   {% set webp = craft.imager.serverSupportsWebp() and production %}
+
+   {% set pictureTransform = craft.imager.transformImage(
+      image,
+      transform
+   ) %}
+
+   {% if webp %}
+      {% set pictureTransformWebp = craft.imager.transformImage(
+         image,
+         transform,
+         {
+            format: 'webp'
+         }
+      ) %}
+   {% endif %}
+
+   {% if image['hasFocalPoint'] is not defined %}
+      {% set focalPoint = false %}
+   {% else %}
+      {% set focalPointClass = 'w-full h-full object-cover' %}
+      {% set focalPointPosition = 'object-position: ' ~ (image.hasFocalPoint ? image.getFocalPoint()|first * 100 : '50') ~ '% ' ~ (image.hasFocalPoint ? image.getFocalPoint()|last * 100 : '50') ~ '%' %}
+   {% endif %}
+
+   {% if
+      pictureTransform|length or
+      webp
+   %}
+
+      {% if ratio %}
+         <div 
+            class="relative overflow-hidden w-full" 
+            style="padding-top: {{ (pictureTransform[0].height / pictureTransform[0].width) * 100 }}%;"
+         >
+      {% endif %}
+
+      <picture{% if pictureClass is defined or ratio %} class="{{ ratio ? 'absolute top-0 left-0 w-full h-full' }} {{ pictureClass is defined ? pictureClass }}"{% endif %}>
+            {% if webp %}
+               <source
+                  type="image/webp"
+                  srcset="{{ craft.imager.srcset(pictureTransformWebp) }}"
+                  sizes="100vw"
+               >
+            {% endif %}
+            <img
+               src="{{ webp ? pictureTransformWebp|last : pictureTransform|last }}"
+               srcset="{{ craft.imager.srcset(pictureTransform) }}"
+               sizes="100vw"
+               alt="{{ alt ?? image.title }}"
+               class="{% if focalPoint %}{{ focalPointClass }}{% endif %}{% if imgClass is defined %} {{ imgClass }}{% endif %}"
+               {% if focalPoint %}style="{{ focalPointPosition }}"{% endif %}
+            >
+      </picture>
+
+      {% if ratio %}
+         </div>
+      {% endif %}
+
+   {% endif %}
+
+{% endif %}

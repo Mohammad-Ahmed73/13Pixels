@@ -1,0 +1,44 @@
+columnSuffix: null
+handle: layoutHeadingText
+instructions: null
+name: 'Layout - Heading + Text'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Normal
+        -
+          - value
+          - normal
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - Centered
+        -
+          - value
+          - centered
+        -
+          - default
+          - ''
+    -
+      __assoc__:
+        -
+          - label
+          - Left
+        -
+          - value
+          - left
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

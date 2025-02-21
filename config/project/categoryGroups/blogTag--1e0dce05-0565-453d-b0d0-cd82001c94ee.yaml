@@ -1,0 +1,50 @@
+defaultPlacement: end
+fieldLayouts:
+  d30181d8-ea79-4b4b-bdda-b8ea02c1f3b8:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: d7e0c987-3377-4b55-b76a-1fd5c4e32f09
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 91f23dde-bc98-4164-a5d3-a11f04d2e176
+        userCondition: null
+handle: blogTag
+name: 'Blog Tag'
+siteSettings:
+  08c386f4-5a41-4c9f-8282-f6785af06bfc: # $CRAFT_SITE_NAME
+    hasUrls: false
+    template: null
+    uriFormat: null
+structure:
+  maxLevels: null
+  uid: 712876d1-c974-4bbd-948f-d8181ac314e3

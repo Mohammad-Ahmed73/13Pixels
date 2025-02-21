@@ -1,0 +1,57 @@
+<section aria-label="Hero" class="relative flex {{ block.heroBackground == 'dark' ? 'bg-gray-1000' : 'bg-gray-600' }}">
+	{# Text #}
+	<div class="relative z-30 w-full {{ vars.class.siteMargin.x }}">
+		<div class="relative z-20 flex h-full flex-col pb-12 pt-40 text-white lg:pb-16 xl:pb-20 xl:pt-48">
+			<div class="mt-auto grid gap-10 md:grid-cols-12">
+				{# Text #}
+				<div class="flex flex-col gap-y-4 md:col-span-9 lg:col-span-9">
+					{% if block.eyebrow|length %}
+						{% include '_components/eyebrow' with {
+							text: block.eyebrow,
+							spacing: ''
+						} only %}
+					{% endif %}
+					{% if block.heading|length %}
+						{% include '_components/heading' with {
+							tag: 'h1',
+							size: '7xl',
+							text: block.heading
+						} %}
+					{% endif %}
+					{% if block.text|length %}
+						{% include '_components/richText' with {
+							content: '<p>' ~ block.text ~ '</p>',
+							class: 'max-w-[700px]'
+						} %}
+					{% endif %}
+				</div>
+				{% if block.button.url|length %}
+					<div class="flex md:col-span-full lg:col-span-3">
+						{% include '_components/buttons/buttonBlock' with {
+							text: block.button.text,
+							style: 'green',
+							type: 'a',
+							url: block.button.url,
+							class: 'mt-auto lg:ml-auto'
+						} %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	{# Image #}
+	{% if block.image|length %}
+		<div class="absolute inset-x-0 top-0 z-20 h-3/4 bg-gradient-to-b from-gray-1000 to-transparent opacity-30"></div>
+		<div class="absolute inset-0 z-20 bg-gray-1000/60"></div>
+		<div class="absolute inset-0 z-10">
+			{% include '_components/picture' with {
+				image: block.image.one(),
+				transform: '16x9',
+				ratio: false,
+				focalPoint: true,
+				imgClass: 'object-cover w-full h-full'
+			} %}
+		</div>
+	{% endif %}
+</section>

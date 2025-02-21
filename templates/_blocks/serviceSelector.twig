@@ -1,0 +1,110 @@
+{% set services = block.serviceSelector.all() %}
+
+{% embed '_components/section'
+    with {
+        paddingY: block.padding.value,
+        paddingX: 'flush'
+    }
+%}
+    {% block sectionContent %}
+        <div class="bg-gray-1000 py-16 md:py-20 lg:py-36" x-data="serviceSelector()" x-init="init()">
+            <div class=" {{ vars.class.siteMargin.x }}">
+                <div class="grid gap-y-5 md:grid-cols-12 {{ vars.class.gap.x }}">
+                    {# Text + Services #}
+                    <div class="flex flex-col text-white md:col-span-6 lg:col-span-5">
+                        {% if block.eyebrow|length %}
+                            {% include '_components/eyebrow' with {
+                                text: block.eyebrow,
+                                spacing: ''
+                            } only %}
+                        {% endif %}
+                        {% if block.servicesDescription|length %}
+							{% include '_components/richText' with {
+								class: 'text-sm font-light pt-2',
+								content: block.servicesDescription
+							} %}
+						{% endif %}
+
+                        <div class="mt-auto w-full pt-10 md:pt-20 lg:pt-32">
+                            <div class="flex flex-col pb-8 lg:pb-12">
+                                {% for item in services %}
+                                    <a href="{{ item.service.one().url }}" class="group relative inline-block" @mouseover="showImage({{ loop.index0 }})">
+                                        <div class="transition-all duration-500 group-focus-visible:text-green group-hover:xl:translate-x-14 group-hover:xl:text-green group-focus-visible:xl:translate-x-14">
+                                            {% set svgContent = source('_svg/arrow-down-right.svg') %}
+                                            {{
+                                                svg(svgContent)|attr({
+                                                    class: 'absolute top-1/2 left-0 fill-current w-12 h-12 -translate-x-16 -translate-y-1/2 transition-opacity opacity-0 hidden duration-500 xl:block group-hover:opacity-100 group-focus-visible:opacity-100',
+                                                    'aria-hidden': 'true'
+                                                })
+                                            }}
+                                            <div class="text-3xl tracking-tight xl:text-5xl">
+                                                {{ item.text }}
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                            {% if block.button.url|length %}
+                                {% include '_components/buttons/button' with {
+                                    text: block.button.text,
+                                    type: 'a',
+                                    style: '',
+                                    url: block.button.url,
+                                    class: 'w-full md:w-4/5'
+                                } %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {# Image (on hover) #}
+                    <div class="hidden md:col-span-6 md:block lg:col-span-7">
+                        <div class="h-full w-full relative">
+                            {% for item in services %}
+								{% set serviceEntry = item.service.one() %}
+								<div 
+									x-show="currentImageIndex === {{ loop.index0 }}" 
+									x-transition:enter="transition-opacity duration-700 ease-out"
+									x-transition:enter-start="opacity-0"
+									x-transition:enter-end="opacity-100"
+									x-transition:leave="transition-opacity duration-500 ease-in"
+									x-transition:leave-start="opacity-100"
+									x-transition:leave-end="opacity-0"
+									class="absolute inset-0">
+								
+									{# Text Excerpt #}
+									<div class="absolute z-30 inset-x-5 bottom-5 text-white text-sm font-light lg:w-3/4 xl:left-10 xl:bottom-10">
+										{{ serviceEntry.textExcerpt }}
+									</div>
+									{# Overlay #}
+									<div class="absolute z-20 inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black opacity-70"></div>
+                                    {% include '_components/picture' with {
+                                        image: serviceEntry.image.one(),
+                                        transform: '4x3',
+                                        ratio: false,
+                                        imgClass: 'w-full h-full object-cover'
+                                    } %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endembed %}
+
+{# prettier-ignore-start #}
+{% js %}
+document.addEventListener('alpine:init', () => {
+    Alpine.data('serviceSelector', () => ({
+        currentImageIndex: 0,
+        init() {
+            this.currentImageIndex = 0;
+        },
+        showImage(index) {
+            this.currentImageIndex = index;
+        }
+    }));
+});
+{% endjs %}
+{# prettier-ignore-end #}

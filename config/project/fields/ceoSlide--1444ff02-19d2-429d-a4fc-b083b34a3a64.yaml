@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: ceoSlide
+instructions: null
+name: 'Ceo Slide'
+searchable: false
+settings:
+  createButtonLabel: 'Add New Slide'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - c9073088-77dd-4918-befb-f2f933e9ee9c # CEO Slide
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

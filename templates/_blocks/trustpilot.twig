@@ -1,0 +1,118 @@
+{%- minify -%}
+{% set slides = global.trustpilotCards.all() %}
+{% set slideCount = slides|length %}
+{% set starSvg = source('_svg/star.svg') %}
+
+{% embed '_components/section' with { paddingY: 'topBottom', paddingX: 'flush', class: 'overflow-hidden' } %}
+    {% block sectionContent %}
+        <div class="bg-gray-1000">
+            <div class="text-white {{ vars.class.siteMargin.x }}">
+                {% if global.trustpilotHeading|length %}
+                    <div class="grid grid-cols-2 gap-10 pb-6 lg:pb-16">
+                        <div>
+                            {% include '_components/heading' with { tag: 'h2', class: 'font-bold text-3xl lg:text-4xl xl:text-5xl', style: 'gradient', text: global.trustpilotHeading } %}
+                            {% if global.plainText|length %}
+                                {% include '_components/richText' with { tag: 'p', class: 'text-lg text-white/70', content: global.plainText } %}
+                            {% endif %}
+                        </div>
+                        <div class="hidden lg:flex flex-wrap mt-4 lg:mt-0 lg:ml-auto lg:items-center">
+                            <div class="w-full lg:justify-center gap-4">
+                                {% include '_components/buttons/buttonRound' with { type: 'button', icon: 'arrow-left', style: 'green', iconStyle: '#FFFFFF', class: 'slider-button-prev-' ~ block.id } %}
+                                {% include '_components/buttons/buttonRound' with { type: 'button', icon: 'arrow-right', style: 'green', iconStyle: '#FFFFFF', class: 'slider-button-next-' ~ block.id } %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="relative">
+                    <section x-data="{{ block.type }}" x-init="slider({{ block.id }})">
+                        <div class="swiper z-10 !overflow-visible js-slider-{{ block.id }}">
+                            <div class="swiper-wrapper">
+                                {% for item in slides %}
+                                    <div class="swiper-slide !h-auto">
+                                        <div class="relative min-h-[300px] border border-white/20 bg-[#1A1A1A]" style="background: radial-gradient(121.18% 95% at 4.71% 75.52%, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%); border-radius: 25px; padding-block: 30px; padding-inline: 20px; overflow-y: auto; box-sizing: border-box;">
+                                            <div class="flex flex-col justify-between gap-y-4">
+                                                <div class="flex items-center justify-between gap-2">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="rounded-full" style="width: 45px; height: 45px;">
+                                                            {% if item.authorImage|length %}
+                                                                {% include '_components/picture' with { image: item.authorImage.one(), transform: '1x1', ratio: false, loading: 'lazy', imgClass: 'w-full h-full object-cover' } %}
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="flex flex-col">
+                                                            <span class="text-lg font-bold text-white">{{ item.quoteAuthor }}</span>
+                                                            {# <span class="text-sm text-white/70">{{ item.authorCountry }}</span> #}
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex items-center gap-1.5">
+                                                        {% if item.starRating|length %}
+                                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <defs>
+                                                                    <linearGradient id="starGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                                        <stop offset="0%" style="stop-color:#FF6B00; stop-opacity:1" />
+                                                                        <stop offset="100%" style="stop-color:#FF8533; stop-opacity:1" />
+                                                                    </linearGradient>
+                                                                </defs>
+                                                                <path d="M8 0L10.2469 4.79139L15.6085 5.52786L11.8042 9.22861L12.7023 14.4721L8 12L3.29772 14.4721L4.19577 9.22861L0.391548 5.52786L5.75315 4.79139L8 0Z" fill="url(#starGradient)" />
+                                                            </svg>
+                                                            <span class="text-sm font-medium text-white">{{ item.starRating }}</span>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="mt-0">
+                                                    {% if item.heading|length %}
+                                                        <p class="mb-2 text-base font-normal text-white/90">{{ item.heading }}</p>
+                                                    {% endif %}
+                                                    {% if item.quote|length %}
+                                                        <p class="text-base font-light text-white/70">{{ item.quote }}</p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="flex mt-8 justify-end lg:hidden">
+                            <div class="gap-4">
+                                {% include '_components/buttons/buttonRound' with { type: 'button', icon: 'arrow-left', style: 'green', iconStyle: '#FFFFFF', class: 'slider-button-prev-' ~ block.id } %}
+                                {% include '_components/buttons/buttonRound' with { type: 'button', icon: 'arrow-right', style: 'green', iconStyle: '#FFFFFF', class: 'slider-button-next-' ~ block.id } %}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endembed %}
+
+{% js %}
+document.addEventListener('alpine:init', () => {
+    Alpine.data('{{ block.type }}', () => ({
+        slider(id) {
+            const carousel = document.querySelector(`.js-slider-${id}`);
+            const swiper = new Swiper(carousel, {
+                loop: false,
+                grabCursor: true,
+                autoHeight: false,
+                centeredSlides: true,
+                allowTouchMove: true,
+                speed: 750,
+                navigation: {
+                    nextEl: '.slider-button-next-' + id,
+                    prevEl: '.slider-button-prev-' + id,
+                },
+                slidesPerView: 1,
+                spaceBetween: 20,
+                initialSlide: 1,
+                breakpoints: {
+                    768: { slidesPerView: 2, centeredSlides: false },
+                    1024: { slidesPerView: 3, centeredSlides: false },
+                    1280: { slidesPerView: 3.5, centeredSlides: false },
+                    1440: { slidesPerView: 4, centeredSlides: false },
+                },
+            });
+        }
+    }));
+});
+{% endjs %}
+{%- endminify -%}

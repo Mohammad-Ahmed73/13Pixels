@@ -1,0 +1,99 @@
+color: fuchsia
+fieldLayouts:
+  e2a613c8-bba9-47eb-92c4-0ab07eeb0ba8:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2024-08-09T08:06:10+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: e3c9d503-bce2-48bf-9f84-9e7314df356d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:06:10+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: button
+            includeInCards: false
+            instructions: null
+            label: Button
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f8933ecd-25d3-4806-b9ab-c153262ba5c5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:06:10+00:00'
+            elementCondition: null
+            fieldUid: 26fb68a7-68a1-41cc-8216-6658d0458588 # Dropdown Cards
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1ed7f105-0304-48c2-9f97-8fbc1ec2f490
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2024-08-09T08:06:10+00:00'
+            elementCondition: null
+            fieldUid: 3ae65c29-e9b0-4b1c-a365-d56e5b103f40 # Button
+            handle: buttonCTA
+            includeInCards: false
+            instructions: null
+            label: 'Button CTA'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 84d49f19-c504-40ac-b07e-ca32bc5213c4
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 367c3eeb-58bd-4f61-95f0-a35b4f698083
+        userCondition: null
+handle: linkDropdownCards
+hasTitleField: false
+icon: circle-arrow-down
+name: 'Link - Dropdown Cards'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

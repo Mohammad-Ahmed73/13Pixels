@@ -1,0 +1,43 @@
+{% embed '_components/section'
+	with {
+		paddingY: paddingY ?? 'bottom',
+		paddingYSize: 'body',
+		paddingX: 'flush'
+	}
+%}
+	{% block sectionContent %}
+		<div class="bg-gray-600 p-7 text-white lg:p-12">
+			{# Quote #}
+			{% if block.quote|length %}
+				{% include '_components/heading' with {
+					text: block.quote,
+					tag: 'div',
+					size: '4xl'
+				} %}
+			{% endif %}
+
+			{# Author and Secondary Text #}
+			{% if (block.quoteAuthor|length) or (block.secondaryText|length) %}
+				<div class="flex items-center pt-7">
+					{% if block.quoteAuthorImage|length %}
+						<div class="mr-4 w-10 overflow-hidden rounded-full lg:w-12">
+							{% include '_components/picture' with {
+								image: block.quoteAuthorImage.one(),
+								transform: '1x1',
+								ratio: true
+							} %}
+						</div>
+					{% endif %}
+					<div class="leading-none">
+						{% if block.quoteAuthor|length %}
+							<span class="mb-1.5 block text-md font-medium">{{ block.quoteAuthor }}</span>
+						{% endif %}
+						{% if block.secondaryText|length %}
+							<span class="block text-sm font-light">{{ block.secondaryText }}</span>
+						{% endif %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	{% endblock %}
+{% endembed %}

@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: dropdownCards
+instructions: null
+name: 'Dropdown Cards'
+searchable: false
+settings:
+  createButtonLabel: 'New card'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 83e2bb23-12d2-4bbc-87a2-fb663976f6d0 # Dropdown Card
+  includeTableView: false
+  maxEntries: 4
+  minEntries: null
+  pageSize: 50
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: true
+  viewMode: cards
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

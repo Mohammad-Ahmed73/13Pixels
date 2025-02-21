@@ -1,0 +1,13 @@
+headingLevels:
+  - 2
+  - 3
+name: Full
+toolbar:
+  - heading
+  - '|'
+  - bold
+  - italic
+  - link
+  - '|'
+  - bulletedList
+  - numberedList

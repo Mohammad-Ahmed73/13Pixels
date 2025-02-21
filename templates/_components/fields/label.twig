@@ -1,0 +1,21 @@
+{#
+   Field Label
+   Outputs a field label with the correct markup
+
+   @type {include}
+   @param {string} id
+   @param {string} label
+   @param {string} class
+   @param {bool} required
+#}
+
+{% set baseClass = 'block text-xs font-light mb-1' %}
+
+{% set class = class is defined ? baseClass ~ ' ' ~ class : baseClass %}
+
+<label for="{{ id }}" class="{{ class }}">
+   {{ label }}
+   {% if required is defined and required %}
+      <span class="text-red-500 ml-px">*</span>
+   {% endif %}
+</label>

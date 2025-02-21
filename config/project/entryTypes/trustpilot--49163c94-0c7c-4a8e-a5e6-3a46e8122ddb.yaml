@@ -1,0 +1,73 @@
+color: teal
+fieldLayouts:
+  e5de6b5e-28ad-4434-a34e-9b9207179fa1:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 469a2180-e397-4e53-8ec2-dfb9b17b0202
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 92117bd6-7580-49dd-9858-c000624de2e6
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-02-06T05:09:00+00:00'
+            elementCondition: null
+            fieldUid: b8cf975c-8b0e-4f79-968b-ae246d2f8bf1 # Padding
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 353c57f7-5c51-4520-a97d-28158450d0b3
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Block Settings'
+        uid: b7eaddbe-1fc1-4709-81d5-7cc4c9124a50
+        userCondition: null
+handle: trustpilot
+hasTitleField: false
+icon: star
+name: Trustpilot
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

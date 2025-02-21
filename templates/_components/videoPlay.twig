@@ -1,0 +1,20 @@
+{#
+    Video Play Component
+
+    @type {include}
+    @param {string} class
+    @param {string} attributes
+
+    @example
+    {% include '_components/videoPlay' with {
+        class: '',
+        attributes: ''
+    } %}
+#}
+
+<div class="flex h-20 w-20 cursor-pointer items-center justify-center rounded-full bg-green text-lg text-white transition duration-300 hover:scale-110 hover:bg-black focus-visible:scale-110 focus-visible:bg-black group-hover:scale-110 group-hover:bg-black group-focus-visible:scale-110 group-focus-visible:bg-black xl:h-28 xl:w-28 xl:text-xl {{
+	class
+		?? ''
+	}}">
+	<i class="fa-sharp fa-light fa-play"></i>
+</div>
