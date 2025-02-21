@@ -96,17 +96,17 @@ document.addEventListener('DOMContentLoaded', function() {
         slidesPerView: 1,
         spaceBetween: 20,
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
+            nextEl: ".slider-button-next", // ✅ Correct class
+            prevEl: ".slider-button-prev"  // ✅ Correct class
         },
-       pagination: {
+        pagination: {
             el: ".swiper-pagination",
-            type: "fraction", // Enables "01 / 05" format
+            type: "fraction",
             formatFractionCurrent: function (number) {
-                return number.toString().padStart(2, '0'); // Converts 1 to "01"
+                return number.toString().padStart(2, '0');
             },
             formatFractionTotal: function (number) {
-                return number.toString().padStart(2, '0'); // Converts 5 to "05"
+                return number.toString().padStart(2, '0');
             }
         }
     });

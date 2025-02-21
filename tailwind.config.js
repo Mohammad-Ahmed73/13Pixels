@@ -40,6 +40,10 @@ export default {
 				// 900: '#256C22',
 				// 1000: '#1A4C18',
 			},
+			blue: {
+				DEFAULT: '#0E0A20',
+				800: '#0E0A20CC',
+			},
 		},
 		fontSize: {
 			xs: '0.75rem', // 12
@@ -91,6 +95,7 @@ export default {
 			},
 			borderRadius: {
 				'30': '30px',
+				'60': '60px',
 			},
 		},
 	},
